@@ -1,5 +1,5 @@
 \section{Theory of ERTI}
-Assume that there is a perturbation $\delta c_{ijkl}$ in the background elastic media
+rssume that there is a perturbation $\delta c_{ijkl}$ in the background elastic media
 $c_{ijkl}$, the background wavefileds $u_i$ and perturbed wavefields
 $\delta u_i$ satisfy:
 \begin{equation}
@@ -211,19 +211,24 @@ PS parts by DIW. Accordingly, we implement the ERTI through a two-stage
 workflow, i.e. estimating $V_p$ using PP reflections followed by the $V_s$ estimation
 using PS reflections.
 
-\subsection{PP reflection for $V_p$}
-In this stage, we use traveltime of PP reflection to recover the low-to-intermediate wavenumber of $V_p$ model. 
+\subsection{Stage \uppercase\expandafter{\romannumeral1}: PP reflection for $V_p$}
+In this stage, we use traveltimes of PP reflection to recover the low-to-intermediate wavenumbers of $V_p$ model. 
 The perturbation of $V_p$ ($\delta V_p$) is obtained through elastic reverse time migration (ERTM). 
-When the migration velocity model is inaccurate, the migration/demigration of large-offset data would produce deviated
-zero-offset two-way travletime, which will increase the nonlinearity of inversion.
-Therefore, 
+When the migration velocity model is inaccurate, 
+%the migration/demigration of large-offset data would produce deviated
+%zero-offset two-way travletime, which will increase the nonlinearity of inversion.
+%Therefore, 
 people always assume
-the two way travletime of zero-offset as an invariants during reflection inversion, such as reflection traveltime tomography or RWI.
-This assumption leads to the usage of zero or small offset data to generate the velocity
-perturbation \cite[]{Zhou2015}. 
-Besides, since the traveltime rather than the amplitude of predicted reflection is considered in ERTI, 
-ERTM is sufficient to obtain the image perturbation but not a least-squares manner (LSRTM) to find the correct reflectivity. 
-Thus, the objective function is:
+the two way travletime of zero-offset as an invariants during reflection inversion, such as reflection traveltime tomography or RWI,
+and thus use the zero or small offset data to generate the velocity perturbation \cite[]{Zhou2015}. 
+Nonetheless, this method still may have problem to ensure a correct zero offset traveltime in the
+demigration when velocity anomaly is complex. A better method would be the demigration with extended
+image \cite[]{Webill2013, Symes2015, Qiang2017}, but it is out of the scope of this paper.
+Besides, since the traveltime rather than the amplitude is fitted in ERTI, 
+ERTM (instead of its least-squares counterpart) is sufficient to obtain the image perturbation for
+the kinematic demigration.
+%but not a least-squares manner (LSRTM) to find the correct reflectivity. 
+Thus, the objective function can be written as:
 \begin{equation}
 	\left\{
 		\begin{aligned}
@@ -234,21 +239,22 @@ Thus, the objective function is:
 	\right.
     \label{eq:ObjectivefunctionPP} 
 \end{equation}
-where $d^{c}_{pp}$ and $d^{o}_{pp}$ are calculated and observed PP reflection obtained by surface P/S
-separation, respectively. According to the previous derivation, we can obtain the gradient of  $V_p$ ($\frac{\partial E}{\partial
-V_p}$).
-Note, 
+where $d^{c}_{pp}$ and $d^{o}_{pp}$ are synthesized and observed PP reflection through the P/S
+separation on the recording surface, respectively. According to the previous derivation, we can
+obtain the gradient of  $V_p$, i.e. $\frac{\partial E}{\partial
+V_p}$.
+Note that, 
 the divergence operator is implied in $\frac{\partial
 E}{\partial V_p}$, which makes the gradient calculation only involve PP reflection.
 %is similar to the $V_p$ gradient of EFWI.
-Therefore, the PP reflection inversion for $V_p$ in elastic media is similar to the acoustic case
-except that we need the P/S separation for the former one. Besides, the separated multicomponent PP
-recordings will include some SP conversions (if any) in the elastic case, which may lead to the mismatch of
-the traveltime inversion.
+Therefore, the PP reflection traveltime inversion for $V_p$ in elastic media is similar to the acoustic case
+except that we need the isolation of PS component in the former one. In addition, the separated
+P-wave reflections may include some SP conversions due to the source-side effects in the elastic
+case. This may lead to the mismatch of the traveltime inversion.
 %calculate RHS of equation \eqref{eq:AdjointWE} and replacing $\delta c_{ijkl}$ with
 %$\delta V_p$ in equation \eqref{eq:DeltaWE} and \eqref{eq:AdjointDeltaWE}.
-\subsection{PS reflection for $V_s$}
-In the S-wave stage, we utilize the PS reflection to retrieve the background component of
+\subsection{Stage \uppercase\expandafter{\romannumeral2}: PS reflection for $V_s$}
+In the second stage, we utilize the PS reflections to retrieve the background component of
 $V_s$ model. Similarly, the objective function becomes:
 \begin{equation}
 	\left\{
@@ -260,110 +266,121 @@ $V_s$ model. Similarly, the objective function becomes:
 	\right.
     \label{eq:ObjectivefunctionPP} 
 \end{equation}
-However, the implementation is a little different from the previous stage. 
-There are two ways to predict the PS reflection after the P-wave stage.
+where $d^{c}_{ps}$ and $d^{o}_{ps}$ are synthesized and observed PS reflections, respectively.
+After the P-wave stage inversion, both the background model and the structural image 
+perturbation of $V_p$ have been well recovered. These are the good constrains for the prediction 
+of PS reflection. Moreover, in
+most geological settings, $V_p$ and $V_s$ share the same structure in the subsurface. 
+It means that we can use the well-located $\delta V_p$ instead of $\delta V_s$ to generate the PS reflections. 
+Therefore, to fit the traveltimes, there are two ways to predict the PS reflection after the P-wave stage:
 
 {\bf{\uppercase\expandafter{\romannumeral1}}}: Migrate the observed PS data with inverted $V_p$ model and
 initial $V_s$ model to get the high wavenumber of $V_s$ ($\delta V_s$), then predict the PS reflection;
 
-{\bf{\uppercase\expandafter{\romannumeral2}}}:
-After the
-P-wave stage inversion, both the background and the structure of $V_p$ have been well recovered. As we know, in
-most cases $V_p$ and $V_s$ share the same structure in the subsurface. Therefore, we
-can use the well-located $\delta V_p$ instead of $\delta V_s$ to generate the PS reflections. 
+{\bf{\uppercase\expandafter{\romannumeral2}}}: Start from the inverted $V_p$ model and initial $V_s$
+model, use the well-located $\delta V_p$ to generate the PS reflections. 
+
+%However, the implementation is a little different from the previous stage. 
 
 Unfortunately, the predicted PS reflection with method {\bf\uppercase\expandafter{\romannumeral1}} are
-sensitive to the error of $V_p$ model. A slightly deviated $V_p$ model around the true value will lead
-to a wrongly estimated traveltime residual of PS reflection. However, method
-{\bf\uppercase\expandafter{\romannumeral1}} can provide correct traveltime residuals. 
+very sensitive to the error of $V_p$ model. This sensitivy makes the inversion more nonlinear.
 %The difference between method {\bf\uppercase\expandafter{\romannumeral1}} and {\bf\uppercase\expandafter{\romannumeral1}} is that 
-Under the high-frequency approximation, We will explain this using a single reflector example through 
-the map migration and demigration.
+Under the high-frequency approximation, we will explain this situation using a single reflector example through 
+map migration and demigration.
 
-Since the PS reflection is asymmetric, the ray path of PS is shown in figure \ref{fig:PS_refl}.
+%A slight deviation of $V_p$ around the true value will lead
+%to a wrongly traveltime residual of PS reflection. However, method
+%{\bf\uppercase\expandafter{\romannumeral2}} can provide correct traveltime residuals. 
+
+%Since the PS reflection is asymmetric, the ray path of PS is shown in 
+Figure \ref{fig:PS_refl} shows the asymmetricray path of PS reflection.
 According to the Snell's law and geometrical relationship, we have:
 \begin{equation}
 \begin{split}
     &\frac{sin\theta_1}{V_p}=\frac{sin\theta_2}{V_s},\\
-	&h(tan\theta_1+tan\theta_2)=X,
+	&z(tan\theta_1+tan\theta_2)=X,
 \end{split}
     \label{eq:Snell_PS} 
 \end{equation}
-with $V_p$ and $V_s$ are the correct velocity, $X$ is the offset, $h$ is the depth, 
-and $\theta_1$ and $\theta_2$ are the incident and reflected angle, respectively.
+with $V_p$ and $V_s$ are the correct velocity, $X$ is the offset, $z$ is the depth, 
+and $\theta_1$ and $\theta_2$ are the incident and reflected angles, respectively.
 Therefore, the moveout of PS reflection is:
 \begin{equation}
-	t=\frac{h}{cos\theta_1V_p}+\frac{h}{cos\theta_2V_s}.
+	t=\frac{z}{cos\theta_1V_p}+\frac{z}{cos\theta_2V_s}.
     \label{eq:TravelTime_PS} 
 \end{equation}
 The difference between method {\bf\uppercase\expandafter{\romannumeral1}} and {\bf\uppercase\expandafter{\romannumeral2}} 
-is the migrated depth of the two processes when velocity model is inaccurate. 
-To show the difference of the above two method, zero (near) offset map migration is implemented
+is the migrated depth when velocity model is inaccurate. 
+To show the difference, zero (near) offset map migration is implemented
 to obtain the migrated depth when velocity is wrong. Then, we use this depth and the
 wrong velocity through equation \eqref{eq:TravelTime_PS} to predict the traveltime of PS reflection.
 
 In method {\bf\uppercase\expandafter{\romannumeral1}}, since the zero-offset two-way traveltime
-keeps unchanged during map migration, the migrated depth ($h_{1}$) satisfies:
+keeps unchanged during map migration, the migrated depth ($z_{1}$) satisfies:
 \begin{equation}
-	\frac{h_{1}}{V^{'}_p}+\frac{h_{1}}{V^{'}_s}=\frac{h}{V_p}+\frac{h}{V_s},
+	\frac{z_{1}}{V^{'}_p}+\frac{z_{1}}{V^{'}_s}=\frac{z}{V_p}+\frac{z}{V_s},
 	\label{eq:Mapmigration_PS} 
 \end{equation}
 where $V^{'}_p$ and $V^{'}_s$ are the wrong velocity. Easily, we can get:
 \begin{equation}
-	{h_{1}}=\frac{V^{'}_s(V_p+V_s)}{V_s(V^{'}_p+V^{'}_s)}h.
+	{z_{1}}=\frac{V^{'}_s(V_p+V_s)}{V_s(V^{'}_p+V^{'}_s)}z.
     \label{eq:ZerooffMig_PS} 
 \end{equation}
-As we know, it is common to find $V_p>V_s$ and $V^{'}_p>V^{'}_s$. Therefore, a small perturbation of
-$V^{'}_p$ will lead to a relatively big change of the term $\frac{V_p+V_s}{V^{'}_p+V^{'}_s}$, which
-means that the migration depth $h_{1}$ is very sensitive to both $V^{'}_p$ and $V^{'}_s$. 
+Generally, $V_p>V_s$ and $V^{'}_p>V^{'}_s$. Therefore, a small perturbation of
+$V^{'}_p$ will lead to a relatively big change of $\frac{V_p+V_s}{V^{'}_p+V^{'}_s}$, which
+means that the migration depth $z_{1}$ is very sensitive to both $V^{'}_p$ and $V^{'}_s$. 
 While in method \uppercase\expandafter{\romannumeral2}, the depth after migration is: 
 \begin{equation}
-	{h_{2}}=\frac{V^{'}_p}{V_p}h.
+	{z_{2}}=\frac{V^{'}_p}{V_p}z.
     \label{eq:ZerooffMig_PP} 
 \end{equation}
 Then, the demigration process can be implemented with:
 \begin{equation}
-	t^{'}=\frac{h^{'}}{cos\theta_1V^{'}_p}+\frac{h^{'}}{cos\theta_2V^{'}_s}.
+	t^{'}=\frac{z^{'}}{cos\theta_1V^{'}_p}+\frac{z^{'}}{cos\theta_2V^{'}_s}.
     \label{eq:Demigration_PS} 
 \end{equation}
-where $h^{'}\in\{h_1,h_2\}$ is the migrated depth and $t^{'}$ is the corresponding traveltime.
+where $z^{'}\in\{z_1,z_2\}$ is the migrated depth and $t^{'}$ is the corresponding two-way traveltime.
 
 To
-test the sensitivity of demigrated PS traveltime to $V^{'}_p$ and $h$, we compare the predicted PS traveltime
-curves of the wrong velocity with that of the true velocity.
+test the sensitivity of demigrated PS traveltime to $V^{'}_p$ and $h$, we compare the predicted traveltime
+curves of the wrong velocity with the observed ones.
 Here, $V_p=2500m/s$, $V_s=1500m/s$, $V^{'}_s=1300m/s$ are fixed and the value of $V^{'}_p$
 are perturbed ($V^{'}_p=2450, 2500, 2550m/s$) to calculate the curves.
-As shown in figure \ref{fig:Sens_vp}a, the predicted PS traveltime with method
-\Rome{1} (black) oscillates around the true value (red) up and down. 
+As shown in Figure \ref{fig:Sens_vp}a, 
+the predicted PS traveltime with method
+\Rome{1} (black) oscillates around the true value (red). 
 Theoretically, the predicted
 curve should behave like the second black line ($V^{'}_p=V_p$), where the zero-offset traveltime is correct while
-the long offset traveltime is larger than the true one. Especially, when $V^{'}_p=2450m/s$ the
-predicted curve (above the true value) is inconsistent with the S-wave velocity error
+the long offset traveltime is larger than the true one. Especially, when $V^{'}_p=2450m/s$, the
+predicted curve is inconsistent with the S-wave velocity error
 ($V^{'}_s<V_s$). While when $V^{'}_p=2550m/s$ the predicted curve is below the true value. 
 This means that the sign of the traveltime residual will be very sensitive to the error of $V_p$ model,  
-even if the error of $V_p$ is as small as $\pm50m/s$. This change of the residual's sign will cause
-the change of the gradient's direction during the inversion. Therefore, the nonlinearity of
-inversion increases obviously due to this sensitivity. However, if we use method \Rome{2} (blue),
-the predicted curves are all below the true value, whose traveltime residual are consistent
+even if the error of $V_p$ is as small as $\pm50m/s$. 
+If the depth of reflector decreases, the sensitivity of method \Rome{1} reduces (figure \ref{fig:Sens_vp}b). But the
+inconsistency between residual and velocity error still exists, especailly in the small offset.
+This kind of sign change leads to 
+the abnormal change of the gradient's direction during the inversion. Therefore, the nonlinearity of
+inversion increases obviously due to this sensitivity. Fortunately, if we use method \Rome{2} ,
+the predicted curves (blue) are all below the true value, whose traveltime residual are consistent
 with the S-wave velocity error.
-If the depth of reflector decreases, the sensitivity in method \Rome{1} reduces (figure \ref{fig:Sens_vp}b). But the
-inconsistency of residual and velocity error still exists, especailly in the small offset.
-However,
-method \Rome{2} also provides correct time residuals as the previous one.
-According to the above analysis, we recommend method \Rome{2}.
-Nonethelss, there are two disadvantages along with this process. First, since we use the $\delta
-V_p$ to generate PS reflection, the amplitude of PS will be inaccurate even if the ELSRTM is used to
-find the corrcet reflectivity. Luckily, ERTI does not rely on the amplitude information otherwise it
-will be difficult problem. Second, according to figure \ref{fig:Sens_vp}, the traveltime difference
-is large for the PS reflection in the deeper part, DIW may suffer from the cycle-skipping in this
-situation. We can utilize the ``layer-stripping'' strategy, during which the shallow part is
-inverted using the early arrived reflection followed by the deep part inversion with the late
-arrived reflections. In this way, the incorrect traveltime residuals of the deeper part will not
-mislead the inversion of shallow part. After that, the inversion of shallow part can ensure
-the traveltime residual of deeper part correct.
+%However,
+%method \Rome{2} also provides correct time residuals as the previous one.
+According to the above analysis, we recommend method \Rome{2} to implement the PS stage inversion.
 
-Besides, in order to make sure that reflected S-wavepath is used to update $V_s$, wave mode decomposition 
-is implemented to calculate $K^{SS}_{V_s}$ with:
+Nonethelss, the amplitude of PS will be inaccurate since we use the $\delta
+V_p$ to generate PS reflection, even if $\delta V_p$ is obtained by the ELSRTM workflows
+Luckily, this has little effect on ERTI, because it does not rely on the amplitude information.
+As shown in figure \ref{fig:Sens_vp}, the traveltime residuals are 
+large for the PS reflection in the deeper part, DIW may suffer from the cycle-skipping problem in this
+situation. We can utilize the ``layer-stripping'' strategy to tackle this, during which the shallow part is
+inverted using the early arrived reflection followed by the inversion of deep part using the late
+arrived reflections gradually. In this way, the incorrect traveltime residuals of the deeper part will not
+mislead the inversion of shallow part. Vice versa, the reliable inversion of the shallow part
+guaranteen
+the correctness of traveltime residual for the deeper part.
+
+In order to make sure that reflected S-wavepath is used to update $V_s$, wave mode decomposition 
+is applied to calculate $K^{SS}_{V_s}$, namely:
 %we drop the first term in the RHS of equation \eqref{eq:GradientCijkl} when
 %calculating $\frac{\partial E}{\partial V_s}$. And also wave mode decomposition is
 %applied to make sure that only S-wave energy are involved:
@@ -376,55 +393,8 @@ is implemented to calculate $K^{SS}_{V_s}$ with:
     \label{eq:GradientVel_MD}
 \end{equation}
 This is similar to the gradient precondtioning for EFWI proposed by \cite{WangEtAl2017}. The mode
-decomposition can mitigate parameter trade-offs and suppress artifacts for the
+decomposition based precondition can mitigate parameter trade-offs and suppress artifacts for the
 $V_s$ inversion.
-\section{Comparison with correlation based objective function}
-Besides DIW methdo, the temporal or spatial correlation is also widely used to extract the
-traveltime differences \cite[]{vanLeeuwen:2010,chi2015,Wang2015}:
-\begin{equation}
-\left\{
-	\begin{aligned}
-		&\Delta t(h)=\mathop{\arg\min}_{\Delta t}\int d^{o}(t+\Delta t,h)d^{c}(t,h)dt,\\
-	&E_t=\frac{1}{2}\sum\parallel \Delta t(h)\parallel ^2
-	\end{aligned}
-	\right.
-    \label{eq:Obj_TimeCorr} 
-\end{equation}
-or 
-\begin{equation}
-\left\{
-	\begin{aligned}
-		&\Delta h(t)=\mathop{\arg\min}_{\Delta h}\int d^{o}(t,h+\Delta h)d^{c}(t,h)dt,\\
-	&E_h=\frac{1}{2}\sum\parallel \Delta h(t)\parallel ^2
-	\end{aligned}
-	\right.
-    \label{eq:Obj_SpatialCorr} 
-\end{equation}
-The traveltime residual extracted by correlation function is the global average delay of a single trace or time.
-If there are multievents in the seismograms, the correlation-based method can not extract the local traveltime information, 
-whcih may increase the difficulty of event-to-event traveltime fitting.
-Nevertheless, DIW can preserves the local variation of traveltime differences according to equation
-\eqref{eq:Objectivefunction}, which have a higher resolution than the correlation-based method.
-
-To investigate the behaviors of DIW and correlation-based objective function, we use three 
-models of different complexity as shown in figure \ref{fig:DIW_L2}. Since the estimated PS
-traveltime residual would be wrong if initial model is far from the true value with method \Rome{2}, 
-we only investigate the behavior of PP traveltime misfit
-function, which is almost the same as the acoustic case. 
-In this investigation, a constant background velocity ($V_p=2500m/s$) model and different reflectivity model
-are used to implement the Born modeling. Then, we perturb the background velocity to calculate the
-objective function through migration/demigration process. 
-
-In figure \ref{fig:DIW_L2}b, we can see that for the simple one-reflector case, the temporal correlation objective function 
-has a better convexity than the spatial correlation and DIW method. But when there are
-multi-reflectors (figure \ref{fig:DIW_L2}c and d), the temoral correlation fails to find the correct minimal due to the
-multi-events in the recordings. While the behavior of spatial correlation and DIW method are
-robust to locate the correct solution. In the third test, we choose a part of Sigsbee2A model to
-simulate a complicated case. Figure \ref{fig:DIW_L2}e shows that the temporal correlation still
-fails to find the correct solution and the DIW even has a better convexity than the spatial
-correlation, especailly when the initail velocity is high. The above investigation indicates that
-DIW method is robust and effective to extract traveltime residual, especially for the complicated
-model.
 \section{numerical example}
 We select a part of the Sigsbee2A model (Figure
 \ref{fig:TrueAndInitial}a and b) to test the inversion algorithm and strategy.
@@ -516,6 +486,56 @@ On the left part, the inverted results are acceptable even when starting from 7H
 low-to-intermediate components in this area is particularly good for EFWI. However, on the right
 part, the inversion are more dependent on the low-frequency components in the data due to the
 improper recovery of the background components.
+\section{Discussion}
+%Comparison with correlation based objective function}
+Besides DIW method, the temporal or spatial correlation is also widely used to extract the
+traveltime differences \cite[]{vanLeeuwen:2010,chi2015,Wang2015}:
+\begin{equation}
+\left\{
+	\begin{aligned}
+		&\Delta t(h)=\mathop{\arg\max}_{\Delta t}\int d^{o}(t+\Delta t,h)d^{c}(t,h)dt,\\
+	&E_t=\frac{1}{2}\sum\parallel \Delta t(h)\parallel ^2
+	\end{aligned}
+	\right.
+    \label{eq:Obj_TimeCorr} 
+\end{equation}
+or 
+\begin{equation}
+\left\{
+	\begin{aligned}
+		&\Delta h(t)=\mathop{\arg\max}_{\Delta h}\int d^{o}(t,h+\Delta h)d^{c}(t,h)dt,\\
+	&E_h=\frac{1}{2}\sum\parallel \Delta h(t)\parallel ^2
+	\end{aligned}
+	\right.
+    \label{eq:Obj_SpatialCorr} 
+\end{equation}
+The traveltime residual extracted by correlation function is the global average delay of a single trace or time.
+If there are multi-arrivals in the seismograms, the correlation-based method can not
+accurately extract the local traveltime information, 
+whcih may increase the difficulty of event-to-event traveltime fitting.
+Nevertheless, DIW can estimate the local variation of traveltime differences
+, which have a higher resolution than the correlation-based method.
+
+To investigate the behaviors of DIW and correlation-based objective function, we use three 
+models of different complexity as shown in figure \ref{fig:DIW_L2}. 
+%Since the estimated PS
+%traveltime residual would be wrong if initial model is far from the true value with method \Rome{2}, 
+For simplicity,
+we only investigate the behavior of PP traveltime misfit
+function, which is almost the same as the acoustic case. 
+A constant background velocity ($V_p=2500m/s$) model and different reflectivity model
+are used to implement the Born modeling. We perturb the background velocity to calculate the
+objective function through migration/demigration process. 
+
+As shown in figure \ref{fig:DIW_L2}, we can see that for the simple one-reflector case, the temporal correlation objective function 
+has a better convexity than the spatial correlation and DIW method. But when there are
+multi-reflectors, the temporal correlation fails to find the correct minimal due to the
+multi-arrivals in the seismograms. While the behavior of spatial correlation and DIW method are
+robust to locate the correct solution. In the third test, we choose a part of Sigsbee2A model to
+simulate a complicated case. Figure \ref{fig:DIW_L2}e shows that the temporal correlation still
+fails to find the correct solution and the DIW method even has a best convexity, especailly when the initail velocity is high. The above investigation indicates that
+DIW method is robust and effective to extract traveltime residual, especially for the complicated
+model.
 \section{Conclusions}
 We extend the wave equation reflection travletime inversion towards elastic media to build the
 low-wavenumber
