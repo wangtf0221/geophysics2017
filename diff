@@ -1,0 +1,43 @@
+23c23
+< local minima due to the absense of low frequencies in the data when the low-wavenumber
+---
+> local minimal due to the absense of low frequencies in the data when the low-wavenumber
+33a34,47
+> 
+> Building the long-to-intermediate components with the reflection information can be
+> implemented in the image domain or the data domain. 
+> In the image domain, the ray-based tomography \cite[]{(Pratt and Goulty, 1991;
+> Shipp and Singh,2002; Operto et al., 2004} update the background velocity by flatting the common
+> image gathers. However, the ray-based method will fail to
+> present the real case of wave propagation in case of complex heterogeneties. 
+> Alternatively, this task also can be fulfilled by the wave equation method 
+> through minizing the energy of
+> non-zero offset on the extended-domain gathers \cite[]{Symes, 2008; Fleury
+> and Perrone, 2012; Biondi and Almomin, 2013}.
+> The extended-domain methods are limited due to its prohibitively computational cost,
+> especially in three-dimension case.
+> While in the data domain,
+35,36c49
+< which aim to
+< invert the long-wavelength components of the model by using the reflections 
+---
+> which aim to invert the long-wavelength components of the model by using the reflections 
+49c62
+< conventional FWI \cite[]{Ma2013, Chi2015, Luo2016}.
+---
+> conventional FWI \cite[]{Ma2013, Wang2015,Chi2015, Luo2016}.
+52,55c65,73
+< %Elastic reflections carry background information of the P and S wave velocities can
+< %be in favor of EFWI with good initial P and S wave
+< %velocity models, 
+< In this abstract,   
+---
+> It is common to observe that different mode-conversions, mainly P-P
+> and P-S events, overlap and intersect with each other. The cross points between events
+> would be singularities for traveltime difference estimation even using the local shift estimation 
+> method like dynamic image warping (DIW).
+> Therefore, the estimated travletime differences would be inaccurate if using the
+> original multicomponent seismic data, which makes the elastic WERTI difficult to implement.
+> And also more hierarchical strategies should be considered to deal with the multi-parameter inversion problem.
+> 
+> In this paper,

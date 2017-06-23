@@ -1,0 +1,117 @@
+\section{Parameter trade-off in isotropic FWI}
+The full waveform inversion is driven by minimising the misfit function $C$, between
+observed data and modelled data in a least-square sense:
+\begin{equation}
+	C = \sum_{S}\int^T_0 dt\sum_{R}\|d_{mod}-d_{obs}\|^2
+	\label{eq:ObjFun}
+\end{equation}
+where $d_{mod}$ are the forward modelled synthetic data and $d_{obs}$ are the observed
+data, with differences summed over the total recording time T, for all receivers and
+all shots.For 2D isotropic FWI problem without concerning density, the gradients of
+elastic parameters $\lambda$ and $\mu$ are:
+\begin{equation}
+	\frac{\partial C}{\partial \lambda}=-\int_{0}^{T}(\frac{\partial u_x}{\partial
+	x}+\frac{\partial u_z}{\partial z})(\frac{\partial \psi
+	_x}{\partial x}+\frac{\partial
+	\psi _z}{\partial z})
+	\label{eq:Gradient_lam}
+\end{equation}
+\begin{equation}
+	\frac{\partial C}{\partial \mu}=-\int_{0}^{T}\left[(\frac{\partial u_x}{\partial
+	z}+\frac{\partial u_z}{\partial z})(\frac{\partial \psi	_x}{\partial
+	z}+\frac{\partial \psi _z}{\partial x})+2\left(\frac{\partial u_x}{\partial
+	x}\frac{\partial \psi _x}{\partial x}+\frac{\partial u_z}{\partial
+	z}\frac{\partial \psi _z}{\partial z}\right)\right]
+	\label{eq:Gradient_mu}
+\end{equation}
+where $u$ and $\psi$ are the forward modelled and back-propagated data residuals
+respectively.
+\cite{wu.aki:1985} and \cite{tarantola:1986} discussed the diffraction patterns of different
+parameterizations in isotropic media.The radiation patterns show that even in the
+simplest case of isotropy, there are still trade-offs
+between $\lambda$ and $\mu$ because of the nature of multi-parameter inversion. As
+shown in Figure 1, $\delta \lambda$ only scatter P
+wave energy, however, $\delta \mu$ scatter both P wave and S wave.So we can not
+distinguish the scattered P-wave energy coming from which perturbation
+definitely.Nevertheless, we can confirm that scattered S wave are only assosiated with
+$\mu$ perturbations.Accordingly, if we use the whole wavefields with both P and S wave
+to calculate the gradient, then the gradient of $\mu$ will be distorted by the P wave
+scattered from $\lambda$ if $\delta \lambda$ is stronger than
+$\delta \mu$.And the gradient of $\lambda$ will not
+be distorted if $\delta \mu$ is weak because of the divergence operator in
+equation \ref{eq:Gradient_lam}, which will make sure the gradient is calculated
+with pure P wave.Taking Account of this, we may alleviate the trade-off between
+$\lambda$ and $\mu$ through wave mode separation and decomposition.
+\inputdir{radiationpattern}
+\multiplot{2}{lambdaP,mu}{width=0.3\textwidth}
+{Normalized diffraction patterns of (a) $\lambda$ and (b) $\mu$, the red line
+represents the scattered P wave energy while the blue line represents the scattered S
+wave energy.}
+\section{Wavefield separation and decomposition in gradient calculation}
+The gradient in equation \ref{eq:Gradient_lam} and \ref{eq:Gradient_mu} are
+calculate using mixed wavefields, so we can rewrite the euqtions as:
+\begin{equation}
+	\frac{\partial C}{\partial \lambda}=&-\int_{0}^{T}(\frac{\partial 
+	u_x}{\partial x}+\frac{\partial u_z}{\partial
+	z})(\frac{\partial \psi	^P_x+\partial \psi ^S_x}{\partial x}+\frac{\partial
+	\psi ^P_z+\partial \psi ^S_z}{\partial z})
+	\label{eq:DeGradient_lam}
+\end{equation}
+\begin{eqnarray}
+\label{eq:DeGradient_mu}
+\begin{split}
+	\frac{\partial C}{\partial \mu}=&-\int_{0}^{T}[(\frac{\partial u
+	_x}{\partial z}+\frac{\partial u_z}{\partial
+	x})(\frac{\partial \psi ^P_x+\partial \psi ^S_x}{\partial z}+\frac{\partial \psi
+	^P_z+\partial \psi ^S_z}{\partial x}) \\
+	&+2 \left(\frac{\partial u_x}{\partial x}\frac{\partial \psi ^P_x+ \partial \psi
+	^S_x}{\partial x}+\frac{\partial u_z}{\partial z}\frac{\partial \psi ^P_z+\partial
+	\psi ^S_x}{\partial z}\right)]
+\end{split}
+\end{eqnarray}
+
+where $\psi ^P$ and $\psi ^S$ are back-propagated P and S wavefields of data residuals
+from receivers.To solve equation \ref{eq:DeGradient_lam} and \ref{eq:DeGradient_mu} require not
+only wave mode separation but also wavefield vector decomposition.This can be achieved
+with \cite[]{zhang.mcmechan:2010} :
+\begin{equation}
+%	\begin{array}{lcl}
+	\mathbf U^P=\mathbf K(\mathbf K\cdot \mathbf U), \mathbf U^S=-\mathbf
+	K\times(\mathbf K\times \mathbf U)
+%\end{array}
+\label{eq:Decomp}
+\end{equation}
+where $\mathbf K=(k_x,k_y,k_z)$ is the P-wave polarization vector, $\mathbf U$ is the
+vector wavefield, and $\mathbf U^P$ and $\mathbf U^S$ are separated vector wavefield
+of P and S wave respectively.
+As mentioned above, we separate the back-propagated S wave residuals to
+calculate the gradient of $\mu$ in order to guarantee it will not be destorted by the
+P wave scattered from $\lambda$, while the gradient of $\lambda$ don't need separation
+because of the intrinsic divergence operator. Thus the modified gradient of $\mu$ can
+be written as:
+\begin{equation}
+	\frac{\partial C}{\partial \mu}=-\int_{0}^{T}\left[(\frac{\partial u_x
+	}{\partial z}+\frac{\partial u_z}{\partial
+	x})(\frac{\partial \psi ^S_x}{\partial z}+\frac{\partial \psi
+	^S_z}{\partial x})
+	+2\left(\frac{\partial u_x}{\partial x}\frac{\partial \psi ^S_x}{\partial
+	x}+\frac{\partial u_z}{\partial	z}\frac{\partial \psi ^S_z}{\partial
+	z}\right)\right]
+	\label{eq:SeGradient_mu}
+\end{equation}
+we can see that in equation \ref{eq:SeGradient_mu}, the calculation make use of
+forward propagated P and S wave eneregy and back-propagated S wave.
+Therefore this gradient will highly sensitive to S wave residuals, which
+are only generated by $\mu$ perturbations.So our method claims enough S wave energy
+in the data residuals.Lots of kinds of wave energy will satisfy the requirement,
+including S-S, P-S and even PS-S when there is strong PS conversion occured.
+Mode-converted PS-waves are highly sensitive to short-scale features of S-wave
+velocity although alone are inadequate for S-wave velocity inversion. Vital
+intermediate length scale information on S-wave velocity can be recovered from P wave
+AVO response \cite[]{sears:2010}, or from S-S and PS-S wave data, to avoid the short-scale
+information from PS-wave data dominating the inversion and falling into a local
+minimum.Due to the probability of wrong update of $\mu$ introduced by P wave AVO
+response , we suggest the utilization of S-S or PS-S if they are available.
+
+
+

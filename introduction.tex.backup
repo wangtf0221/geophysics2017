@@ -1,0 +1,79 @@
+\section{Introduction}
+Quantitative imaging of the subsurface is essential for characterizing
+petroleum reservoirs, monitoring injected CO$_2$ and evaluating near-surface soil or rock properties.
+A depth model that quantifies the elastic properties is more desirable than qualitative
+stacked images of reflectivity obtained through seismic migration.
+With the emergence of lone-offset wide-azimuth acquisitions and broad-band sources,
+full waveform inversion (FWI) has been recognized as an
+efficient tool for constructing velocity models and quantitative seismic imaging; see \cite{virieux2009overview} for a review.
+Though the acoustic FWI, primaryly focusing on P-wave velocity inversion, has been
+widely studied in the past decades
+\cite[e.g.]{tarantola1984,pratt1998gauss,shipp:2002}, people are paying more attention
+to the waveform inversion under the elastic assumption, refered to as elastic full waveform inversion
+(EFWI) \cite[]{tanrantola1986}.
+EFWI provides high-resolution model estimation of the elastic properties but also
+notoriously surfers from the nonlinearities of
+multi-parameter inversion and also the same cycle-skipping problem as in acoustic
+case \cite[]{sears:2008,brossier2009}.
+To deal with the chanllenges cycle-skipping problems and parameter trade-offs, more
+preconditions, hierarchical strategies and parameterization should be considered
+\cite[]{sears:2008,prieux:2013b,operto2013guided,wang:2015,Oh2016}.
+
+In the surface observation geometry, full waveform inversion (FWI) often suffers from the
+local minimal due to the absense of low frequencies in the data when the low-wavenumber
+component is missing in the initial model.
+In the classical FWI, the long-offset data
+corresponding to diving waves are very important to build the long-to-intermediate
+wavelengths of the model. However, the penetration depths of
+diving waves are always far from sufficient to reach the target in the deeper part
+with the limited surface offset,
+even using the wide-azimuth surveys. 
+In addtion, the signal-to-noise level at the far
+offset is low. Therefore, reflected waves should be included to help build the
+macro-model containing long-to-intermediate component.
+
+Building the long-to-intermediate components with the reflection information can be
+implemented in the image domain or the data domain. 
+In the image domain, the ray-based tomography \cite[]{(Pratt and Goulty, 1991;
+Shipp and Singh,2002; Operto et al., 2004} update the background velocity by flatting the common
+image gathers. However, the ray-based method will fail to
+present the real case of wave propagation in case of complex heterogeneties. 
+Alternatively, this task also can be fulfilled by the wave equation method 
+through minizing the energy of
+non-zero offset on the extended-domain gathers \cite[]{Symes, 2008; Fleury
+and Perrone, 2012; Biondi and Almomin, 2013}.
+The extended-domain methods are limited due to its prohibitively computational cost,
+especially in three-dimension case.
+While in the data domain,
+\cite{xu:2012} suggested using a reflection waveform inversion (RWI) method, 
+which aim to invert the long-wavelength components of the model by using the reflections 
+predicted by migration/demigration process.
+Through minimizing misfit function of waveform, the RWI method are developed
+by several work \cite[]{Wu2015b,Zhou2015}, and recently extended to elastic case by
+\cite{Guo2016}.
+
+%\cite{Zhou2015} proposed a joint FWI method to combine the diving and reflected waves to
+%utilize both the conventional FWI and RWI.
+%In addition, \cite{Wang:2015} found that wave mode decomposition may be beneficial to deal with the
+%elastic parameter trade-offs.
+However, traveltime information are more sensitive and linearly related to
+low-wavenumber model perturbation. Using traveltime inversion will be more robust and helpful to
+build appropriate initial models containing long-wavelength components for
+conventional FWI \cite[]{Ma2013, Wang2015,Chi2015, Luo2016}.
+Unfortunately, in elastic case, traveltimes of a particular wave modes are difficult
+to extract due to the complicated mode-conversions.
+It is common to observe that different mode-conversions, mainly P-P
+and P-S events, overlap and intersect with each other. The cross points between events
+would be singularities for traveltime difference estimation even using the local shift estimation 
+method like dynamic image warping (DIW).
+Therefore, the estimated travletime differences would be inaccurate if using the
+original multicomponent seismic data, which makes the elastic WERTI difficult to implement.
+And also more hierarchical strategies should be considered to deal with the multi-parameter inversion problem.
+
+In this paper,
+we aim to tackle the traveltime misfits of P-P and P-S reflections with the help
+of wave mode decomposition and dynamic image warping (DIW) \cite[]{Hale2013}.
+Then, we use the traveltime of P-P and P-S reflections to implement the 
+WERTI method \cite[]{Ma2013} with a two-stage workflow.
+Finally, the numerical example of Sigsee2A model proves the robustness and validity of our
+elastic WERTI method.

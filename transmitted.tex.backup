@@ -1,0 +1,121 @@
+\subsection{Transmitted geometry} 
+For transmitted waves, the incident and scattered angles are the same, the components
+of slowness vectors satisfy:
+\begin{align}
+  p^s_1&=sin\theta,\\
+  p^s_3&=cos\theta,\\
+  p^r_1&=-sin\theta,\\
+  p^r_3&=-cos\theta.
+  \label{SlownessVector}
+\end{align}
+Thus we can plot the radiation patterns in isotropic media:
+\inputdir{Iso.transmit}
+Substitue the slowness vectors into equation \ref{eq:ChristoffelEquation} and solve
+the eigenvalue problem will give us the plorization vectors $\mathbf{g}^M_i$. Then we
+can plot the radiation patterns in terms of transmitted waves.
+
+Assume the model is homogeneous anisotropic with parameters:
+\begin{align}
+  V_{P0}&=3000m/s,\\
+  V_{S0}&=1500m/s,\\
+  \epsilon&=0.2,\\
+  \delta&=0.1.
+  \label{ThomsenParameter}
+\end{align}
+Through the metioned procedures we have the following results (Figure 1).From figure 
+1 can see that in the PP mode there is no energy scattered from $V_{S0}$ 
+perturbation.And the scattered wave energy from perturbation of $V_{P0}$ has a
+maximum along the direction of symmetry axis and goes to zero in the horizontal
+direction.While the perturbation of $V_{hor}$ produces a maximum wave energy in the
+horizontal direction and reduces to zero of toward the symmetry axis.The perturbation
+of $V_{nmo}$ has a four times smaller maximum than that of $V_{P0}$ along the angle of
+$45^{\circ}$ with the symmetry axis.
+
+	Also, the PS mode and SP mode have the same
+form.One interesting thing is that in this two modes the influence of $\Omega(V_{S0})$ is
+zero.The maximum of $\Omega(V_{P0})$ appears around the angle of $45^{\circ}$ with the
+symmetry axis.But $\Omega(V_{hor})$ reaches its maximum almost around the angle of
+$60^{\circ}$ with the symmetry axis.In another word, the influnce of $V_{hor}$ seems
+more ``horizontal''.
+
+	In the SS mode (Figure 1(d)), the perturbation of $V_{S0}$ scatters the wave
+energy uniformly.As expected, the $\Omega(V_{P0})$ has no impact on the scattered S
+wavefield.For the perturbation of $V_{nmo}$ in the SS mode,it has an oppsite value 
+of $\Omega(V_{nmo})$ in the PP mode for every angle.And $V_{hor}$ is identical to
+$V_{nmo}$.That is why we can't see the blue line for $V_{nmo}$ in Figure 1(d)
+(overlapped by the magenta line for $V_{hor}$).
+
+	Now we have all the radiation patterns with different wave modes and different
+parameter perturbations.Next we can analyse how the mixed wavefield will affect on the
+radiation patterns. First, we consider the simplest case of $V_{S0}$.From Figure 1 we
+can conclude that the perturbation of $V_{S0}$ only affect on the scattered S
+wavefield.
+\inputdir{Fig.transmitted.wave}
+\multiplot*{2}{transmittedP2P,transmittedP2S,transmittedS2P,transmittedS2S}{width=0.4\textwidth}
+{Four types of radiation pattern in terms of velocity perturbations,
+  $V_{P0}$(red), $V_{S0}$(green), $V_{nmo}$(blue) and
+  $V_{hor}$(magenta) respectively.(a):PP mode,(b):PS mode,(c):SP mode,(d):SS mode.}
+
+Assume that the P and S wavefield will arrive at the perturbation location at the same
+time.Under this assumption we can combine the different radiation patterns with simple
+addition and subtraction to analyse the effect of mixed wavefield on the radiation
+patterns.For $V_{P0}$, the SS mode will not affect the scattered energy.
+Figure 2(a) shows the different wave mode combinations of the perturbation of 
+$V_{P0}$.The red line represents the radiation pattern of mixed wavefield (the sum of 
+all the three wave modes).We can see that the bule line is the same with 
+$\Omega^{PP}(V_{P0})$, because the $\Omega^{PS}(V_{P0})$-$\Omega^{SP}(V_{P0})=0$
+(we have mentioned above).However, the green
+line and red line have a equivalent maximum but around different angle with the
+symmetry axis.Also, the maximum is larger than that of $\Omega^{PP}(V_{P0})$, i.e. the
+scheme of red or green line will amplify the energy scattered by the
+$V_{P0}$ perturbation.So for the $V_{P0}$, the radiation pattern of the mixed
+wavefield will have a larger maximum around the angle of $30^{\circ}$ with the
+symmetry axis.
+\inputdir{Fig.transmitted.wave}
+\multiplot*{1}{transmittedVp0.3sum}{width=0.5\textwidth}
+{Different wave mode combinations of radiation pattern in terms of
+  perturbations $V_{P0}$.red line:
+  $\Omega^{PP}(V_{P0})$+$\Omega^{PS}(V_{P0})$+$\Omega^{SP}(V_{P0})$;
+  green line:$\Omega^{PP}(V_{P0})$-$\Omega^{PS}(V_{P0})$-$\Omega^{SP}(V_{P0})$;
+  and blue line:$\Omega^{PP}(V_{P0})$+$\Omega^{PS}(V_{P0})$-$\Omega^{SP}(V_{P0})$.}
+
+  Figure 3 show the different wave mode combinations of $V_{hor}$.The red line represents the 
+radiation pattern of mixed wavefield (the sum of all the four wave modes).Similar with
+$V_{P0}$, the PS mode and SP mode of $V_{hor}$ behave the same with each other, i.e.
+$\Omega^{PS}(V_{hor})$-$\Omega^{SP}(V_{hor})=0$.So the radiation pattern of mixed
+wavefields will have a larger maximum around the angle of $30^{\circ}$ with the
+horizontal axis.
+\inputdir{Fig.transmitted.wave}
+\multiplot*{1}{transmittedVhor}{width=0.5\textwidth}
+{Different wave mode combinations of radiation pattern in terms of perturbations,
+  $V_{hor}$.red line:
+  $\Omega^{PP}(V_{hor})$+$\Omega^{PS}(V_{hor})$+$\Omega^{SP}(V_{hor})$+$\Omega^{SS}(V_{hor})$;
+  green line:$\Omega^{PP}(V_{P0})$-$\Omega^{SS}(V_{P0})$;
+  blue line:$\Omega^{PP}(V_{P0})$+$\Omega^{SS}(V_{P0})$;
+  and magenta line:
+  $\Omega^{PP}(V_{P0})$+$\Omega^{PS}(V_{P0})$+$\Omega^{SP}(V_{P0})$-$\Omega^{SS}(V_{hor})$.}
+
+  For $V_{nmo}$ there are some differences from the other two perturbations.In Figure
+4, we actually have four types of combinations as in the desciption of the
+figure.However, the blue line of $\Omega^{PP}(V_{nmo})$+$\Omega^{SS}(V_{nmo})$ does not
+appear.The reason is that the the summation of
+$\Omega^{PP}(V_{nmo})$ and $\Omega^{SS}(V_{nmo})$ equals zero.From Figure 1(a) and
+1(d) we know that $\Omega^{PP}(V_{nmo})$ and $\Omega^{SS}(V_{nmo})$ have a same form,
+now here we know that they have the same value with oppsite sign.So if using the mixed
+wavefield to get the radiation pattern, we will have the red line in Figure 4.It looks
+complex with small amplitude.If we use the scheme of green line, the amplitude will
+reaches a larger maximum of 0.5 around the angle of $45^{\circ}$ with the symmetry
+axis.However, the largest amplitude appears when we use the scheme of magenta line.And
+the angle of maximum goes to about $300^{\circ}$ with the symmetry axis.The scheme of
+magenta line will strengthen the scattered energy of $V_{nmo}$, which may help to
+give us a better gradient of $V_{nmo}$ to recover a better $\delta$.
+
+\inputdir{Fig.transmitted.wave}
+\multiplot*{1}{transmittedVnmo}{width=0.5\textwidth}
+{Different wave mode combinations of radiation pattern of a particular velocity perturbations,
+  $V_{nmo}$.red line:
+  $\Omega^{PP}(V_{nmo})$+$\Omega^{PS}(V_{nmo})$+$\Omega^{SP}(V_{nmo})$+$\Omega^{SS}(V_{nmo})$;
+  green line:$\Omega^{PP}(V_{nmo})$-$\Omega^{SS}(V_{nmo})$;
+  blue line:$\Omega^{PP}(V_{nmo})$+$\Omega^{SS}(V_{nmo})$;
+  and magenta line:
+  $\Omega^{PP}(V_{nmo})$+$\Omega^{PS}(V_{nmo})$+$\Omega^{SP}(V_{nmo})$-$\Omega^{SS}(V_{nmo})$.}

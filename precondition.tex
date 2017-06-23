@@ -1,0 +1,41 @@
+\section{Local dip filtering}
+Standard depth tomography methods often do not converge, converge slowly, or
+converge to a model that is geologically unrealistic. By using dip based steering
+filters rather than standard isotropic regularization operators, convergence speed
+and final model quality are improved. By formulating the tomography operator in
+two-way vertical traveltime (τ,ξ) rather than in depth (z,x) coordinates, we can
+uncouple velocity estimation from reflector position estimation. In this coordinate
+system we avoid many of the problems associated with the depth tomography
+problem, and converge quickly to a reasonable solution.
+
+Depth velocity estimation is one of the most difficult problems in reflection
+seismology.
+The tomography problem is by nature non-linear and under-determined. A
+standard technique is to perform a non-linear loop over a linearized inversion
+problem.
+Unfortunately, such a technique is prone to converge to a local minimum of the
+objective function (Phillips and Fehler, 1991). In addition, each of the linearized
+inversion
+problems are under-determined, requiring some type of regularization. Often
+an isotropic operator is used to regularize the tomography problem (Biondi, 1990),
+but these operators tend to fill-in the null space with isotropic features that are
+often
+geologically unreasonable (Etgen, 1997).
+
+Fortunately, we often have other sources of information, such as well logs, stacked
+sections, or geologist’s interpretation, that we can use to construct anisotropic
+operators
+(steering filters) (Clapp et al., 1997, 1998) that fill the null space with more
+geologically reasonable velocities. Convergence speed can be improved by changing
+from a regularized to a preconditioned problem (Claerbout and Nichols, 1993). By
+forming the regularization operator in a helical coordinate system we can efficiently
+obtain an inverse operator by polynomial division (Claerbout, 1998). This new operator
+can be used as a preconditioner, creating an equivalent optimization problem
+(Fomel et al., 1997) that converges significantly faster
+
+Smoothing is performed by solving a sparse symmetric positive-definite
+system of equations: (S'S+D'TD)y = S'Sx, where D is a matrix of 
+derivative (difference) operators, S is a matrix of smoothing (sum)
+operators, T is a matrix of tensor filter coefficients, x is an input 
+image and y is an output image.
+

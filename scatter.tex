@@ -1,0 +1,148 @@
+\subsection{Scattered wavefields of one single scatter}
+The radiation patterns we plot are not the wavefield energy scattered by
+the perturbations.However,analyze the scattered wavefields using wave mode separation 
+can help us to have a insight of the real scattered wavefields.So, we can compare the
+theoretical result (equation 19) with the real simulated perturbed wavefields.
+In anisotropic media, the parameterization of stiffness will simplify the test of our
+theory.We calculate the theory radiation patter with equation:
+\begin{equation}
+	\delta
+	u^{MN}_n(\mathbf{x}_r,\omega)=\int\limits_{V(\mathbf{x}^{'})}
+	A(\omega)\Omega^{MN}(c_{ijkl})\delta c_{ijkl}dV(\mathbf{x}^{'}),
+	\label{eq:Kernel}
+\end{equation}
+where
+\begin{equation}
+	A(\omega)=\sum_{m=1,3}f_m(\mathbf{x}_s,\omega)g^M_{m,s}g^N_{n,r}
+	G^M_sG^N_r\frac{\omega^2}{v^M_sv^N_r}.
+	\label{eq:A}
+\end{equation}
+Be ware of the difference from equation 19.Here we intent to calculate the whole
+scattered wavefield, so there are two incident wavefield (x- and z- component) that
+will cause the scattering phenomenon.That's why there is a summation in the equation.
+To test our theory, we design a $360^\circ$
+aquisition geometry with a single scatter in the center of the geometry.And the incident
+angle (source location) varies from $0^\circ$ to $90^\circ$ with a increment of
+$30^\circ$.There is no need to test incident angle of $90^\circ$ to $180^\circ$
+because of symmetry.We solve the elastic velocity-stress equation with the
+staggered-grid finite difference scheme to get the simulated wavefields.
+The scattered wavefield is obtained by subtracting the background wavefield from the
+perturbed wavefield.
+
+\inputdir{scatter}
+\multiplot*{1}{real.epsi.x,theory.epsi.x}{width=1.0\textwidth}
+{The normalized x-component of scattered wavefield energy in terms of $c_{11}$ perturbation with
+different incident angle.In this two pictures, red line represents PS mode and blue line is PP
+	mode.(a):results from simulation;(b):theoretical results from this paper.
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{real.epsi.y,theory.epsi.y}{width=1.0\textwidth}
+{The normalized y-component of scattered wavefield energy in terms of $c_{11}$ perturbation with
+different incident angle.In this two pictures, red line represents PS mode and blue line is PP
+	mode.(a):results from simulation;(b):theoretical results from this paper.
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{real.delta.x,theory.delta.x}{width=1.0\textwidth}
+{The normalized x-component of scattered wavefield energy in terms of $c_{13}$ perturbation with
+different incident angle.In this two pictures, red line represents PS mode and blue line is PP
+	mode.(a):results from simulation;(b):theoretical results from this paper.
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{real.delta.y,theory.delta.y}{width=1.0\textwidth}
+{The normalized y-component of scattered wavefield energy in terms of $c_{13}$ perturbation with
+different incident angle.In this two pictures, red line represents PS mode and blue line is PP
+	mode.(a):results from simulation;(b):theoretical results from this paper.
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{real.vp0.x,theory.vp0.x}{width=1.0\textwidth}
+{The normalized x-component of scattered wavefield energy in terms of $c_{33}$ perturbation with
+different incident angle.In this two pictures, red line represents PS mode and blue line is PP
+	mode.(a):results from simulation;(b):theoretical results from this paper.
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{real.vp0.y,theory.vp0.y}{width=1.0\textwidth}
+{The normalized y-component of scattered wavefield energy in terms of $c_{33}$ perturbation with
+different incident angle.In this two pictures, red line represents PS mode and blue line is PP
+	mode.(a):results from simulation;(b):theoretical results from this paper.
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{real.vs0.x,theory.vs0.x}{width=1.0\textwidth}
+{The normalized x-component of scattered wavefield energy in terms of $c_{55}$ perturbation with
+different incident angle.In this two pictures, red line represents PS mode and blue line is PP
+	mode.(a):results from simulation;(b):theoretical results from this paper.
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{real.vs0.y,theory.vs0.y}{width=1.0\textwidth}
+{The normalized y-component of scattered wavefield energy in terms of $c_{55}$ perturbation with
+different incident angle.In this two pictures, red line represents PS mode and blue line is PP
+	mode.(a):results from simulation;(b):theoretical results from this paper.
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{theory.PP.x,theory.PP.y}{width=1.0\textwidth}
+{The normalized scattered wavefield energy in terms of PP wave mode with
+different incident angle for x- anx z- component.In this two pictures, lines with
+different color represent different parameter perturbation, blue($\delta c_{13}$),
+magenta($\delta c_{11}$),red($\delta c_{33}$), black($\delta c_{55}$).
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{theory.PS.x,theory.PS.y}{width=1.0\textwidth}
+{The normalized scattered wavefield energy in terms of PS wave mode with
+different incident angle for x- anx z- component.In this two pictures, lines with
+different color represent different parameter perturbation, blue($\delta c_{13}$),
+magenta($\delta c_{11}$),red($\delta c_{33}$), black($\delta c_{55}$).
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{theory.SP.x,theory.SP.y}{width=1.0\textwidth}
+{The normalized scattered wavefield energy in terms of PS wave mode with
+different incident angle for x- anx z- component.In this two pictures, lines with
+different color represent different parameter perturbation, blue($\delta c_{13}$),
+magenta($\delta c_{11}$),red($\delta c_{33}$), black($\delta c_{55}$).
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{theory.SS.x,theory.SS.y}{width=1.0\textwidth}
+{The normalized scattered wavefield energy in terms of PS wave mode with
+different incident angle for x- anx z- component.In this two pictures, lines with
+different color represent different parameter perturbation, blue($\delta c_{13}$),
+magenta($\delta c_{11}$),red($\delta c_{33}$), black($\delta c_{55}$).
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{real.c11c33c13.x,real.c11c33c13.y}{width=1.0\textwidth}
+{The normalized scattered wavefield energy in terms of c11, c33 and c13 with
+different incident angle for x- anx z- component.In this two pictures, lines with
+different color represent different wave modes, blue(PP),
+red(PS).
+	}
+
+\inputdir{scatter}
+\multiplot*{1}{real.c11c33c13c55.x,real.c11c33c13c55.y}{width=1.0\textwidth}
+{The normalized scattered wavefield energy in terms of c11, c33, c55 and c13 with
+different incident angle for x- anx z- component.In this two pictures, lines with
+different color represent different wave modes, blue(PP),
+red(PS).
+	}
+
+\inputdir{Fig.theory.iso}
+\multiplot*{1}{lamdaX,lamdaY}{width=1.0\textwidth}
+{The theoritical x- and z-component of scattered wavefield energy in terms of $\lambda$ perturbation with
+different incident angle.In this two pictures, red line represents PP mode and blue line is PS
+	mode.(a):x-component;(b):z-component.
+	}
+
+\inputdir{Fig.theory.iso}
+\multiplot*{1}{muX,muY}{width=1.0\textwidth}
+{The theoritical x- and z-component of scattered wavefield energy in terms of $\mu$ perturbation with
+different incident angle.In this two pictures, red line represents PP mode and blue line is PS
+	mode.(a):x-component;(b):z-component.
+	}
