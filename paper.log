@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.7.19)  1 MAY 2017 16:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.7.19)  3 AUG 2017 20:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -617,12 +617,12 @@ Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count150
 
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 37.
+LaTeX Font Info:    Try loading font information for U+msa on input line 38.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 37.
+LaTeX Font Info:    Try loading font information for U+msb on input line 38.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -630,258 +630,231 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 (./introduction.tex [3] [4]) (./theory.tex [5] [6] [7] [8] [9] [10] [11]
-[12] [13]
+Overfull \hbox (1.06375pt too wide) in paragraph at lines 276--294
+\OT1/cmr/m/n/10.95 In this stage, we use trav-el-times of PP re-flec-tion to re
+-cover the low-to-intermediate wavenum-
+ []
 
-Package natbib Warning: Citation `chi2015' on page 14 undefined on input line 3
-46.
-
-[14] [15] [16] [17]
-Overfull \hbox (2.9479pt too wide) in paragraph at lines 467--482
+[12] [13] [14] [15]
+Overfull \hbox (2.9479pt too wide) in paragraph at lines 471--491
 []\OT1/cmr/m/n/10.95 Usually, the low-frequency com-po-nents in the data and th
 e low-to-intermediate wavenum-
  []
 
-[18] [19] [20] <Kernel/1vp.pdf, id=84, 339.2675pt x 289.08pt>
+[16] [17] [18] <Kernel/Combinations/K_MN.pdf, id=75, 419.5675pt x 447.6725pt>
+File: Kernel/Combinations/K_MN.pdf Graphic file (type pdf)
+
+<use Kernel/Combinations/K_MN.pdf>
+Package pdftex.def Info: Kernel/Combinations/K_MN.pdf used on input line 528.
+(pdftex.def)             Requested size: 216.81pt x 231.32922pt.
+
+<Kernel/1vp.pdf, id=76, 339.2675pt x 289.08pt>
 File: Kernel/1vp.pdf Graphic file (type pdf)
-
-<use Kernel/1vp.pdf>
-Package pdftex.def Info: Kernel/1vp.pdf used on input line 519.
+ <use Kernel/1vp.pdf>
+Package pdftex.def Info: Kernel/1vp.pdf used on input line 537.
 (pdftex.def)             Requested size: 216.81pt x 184.73708pt.
- <Kernel/1vs.pdf, id=85, 339.2675pt x 289.08pt>
+
+<Kernel/1vs.pdf, id=77, 339.2675pt x 289.08pt>
 File: Kernel/1vs.pdf Graphic file (type pdf)
-
-<use Kernel/1vs.pdf>
-Package pdftex.def Info: Kernel/1vs.pdf used on input line 520.
+ <use Kernel/1vs.pdf>
+Package pdftex.def Info: Kernel/1vs.pdf used on input line 538.
 (pdftex.def)             Requested size: 216.81pt x 184.73708pt.
- <Kernel/Vponlyvp.pdf, id=86, 303.1325pt x 303.1325pt>
+
+<Kernel/Vponlyvp.pdf, id=78, 303.1325pt x 303.1325pt>
 File: Kernel/Vponlyvp.pdf Graphic file (type pdf)
 
 <use Kernel/Vponlyvp.pdf>
-Package pdftex.def Info: Kernel/Vponlyvp.pdf used on input line 521.
+Package pdftex.def Info: Kernel/Vponlyvp.pdf used on input line 539.
 (pdftex.def)             Requested size: 216.81pt x 216.8121pt.
 
-<Kernel/Vsonlyvp.pdf, id=87, 303.1325pt x 303.1325pt>
+<Kernel/Vsonlyvp.pdf, id=79, 303.1325pt x 303.1325pt>
 File: Kernel/Vsonlyvp.pdf Graphic file (type pdf)
 
 <use Kernel/Vsonlyvp.pdf>
-Package pdftex.def Info: Kernel/Vsonlyvp.pdf used on input line 522.
+Package pdftex.def Info: Kernel/Vsonlyvp.pdf used on input line 540.
 (pdftex.def)             Requested size: 216.81pt x 216.8121pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Kernel/2vp.pdf, id=88, 339.2675pt x 289.08pt>
+<Kernel/2vp.pdf, id=80, 339.2675pt x 289.08pt>
 File: Kernel/2vp.pdf Graphic file (type pdf)
  <use Kernel/2vp.pdf>
-Package pdftex.def Info: Kernel/2vp.pdf used on input line 529.
+Package pdftex.def Info: Kernel/2vp.pdf used on input line 547.
 (pdftex.def)             Requested size: 216.81pt x 184.73708pt.
 
-<Kernel/2vs.pdf, id=89, 339.2675pt x 289.08pt>
+<Kernel/2vs.pdf, id=81, 339.2675pt x 289.08pt>
 File: Kernel/2vs.pdf Graphic file (type pdf)
  <use Kernel/2vs.pdf>
-Package pdftex.def Info: Kernel/2vs.pdf used on input line 530.
+Package pdftex.def Info: Kernel/2vs.pdf used on input line 548.
 (pdftex.def)             Requested size: 216.81pt x 184.73708pt.
 
-<Kernel/Vponlyvs.pdf, id=90, 303.1325pt x 303.1325pt>
+<Kernel/Vponlyvs.pdf, id=82, 303.1325pt x 303.1325pt>
 File: Kernel/Vponlyvs.pdf Graphic file (type pdf)
 
 <use Kernel/Vponlyvs.pdf>
-Package pdftex.def Info: Kernel/Vponlyvs.pdf used on input line 531.
+Package pdftex.def Info: Kernel/Vponlyvs.pdf used on input line 549.
 (pdftex.def)             Requested size: 216.81pt x 216.8121pt.
 
-<Kernel/Vsonlyvs.pdf, id=91, 303.1325pt x 303.1325pt>
+<Kernel/Vsonlyvs.pdf, id=83, 303.1325pt x 303.1325pt>
 File: Kernel/Vsonlyvs.pdf Graphic file (type pdf)
 
 <use Kernel/Vsonlyvs.pdf>
-Package pdftex.def Info: Kernel/Vsonlyvs.pdf used on input line 532.
+Package pdftex.def Info: Kernel/Vsonlyvs.pdf used on input line 550.
 (pdftex.def)             Requested size: 216.81pt x 216.8121pt.
 
-<Kernel/VsonlyvsPP.pdf, id=92, 303.1325pt x 303.1325pt>
+<Kernel/VsonlyvsPP.pdf, id=84, 303.1325pt x 303.1325pt>
 File: Kernel/VsonlyvsPP.pdf Graphic file (type pdf)
 
 <use Kernel/VsonlyvsPP.pdf>
-Package pdftex.def Info: Kernel/VsonlyvsPP.pdf used on input line 539.
+Package pdftex.def Info: Kernel/VsonlyvsPP.pdf used on input line 557.
 (pdftex.def)             Requested size: 216.81pt x 216.8121pt.
 
-<Kernel/VsonlyvsPS.pdf, id=93, 303.1325pt x 303.1325pt>
+<Kernel/VsonlyvsPS.pdf, id=85, 303.1325pt x 303.1325pt>
 File: Kernel/VsonlyvsPS.pdf Graphic file (type pdf)
 
 <use Kernel/VsonlyvsPS.pdf>
-Package pdftex.def Info: Kernel/VsonlyvsPS.pdf used on input line 540.
+Package pdftex.def Info: Kernel/VsonlyvsPS.pdf used on input line 558.
 (pdftex.def)             Requested size: 216.81pt x 216.8121pt.
 
-<Kernel/VsonlyvsSP.pdf, id=94, 303.1325pt x 303.1325pt>
+<Kernel/VsonlyvsSP.pdf, id=86, 303.1325pt x 303.1325pt>
 File: Kernel/VsonlyvsSP.pdf Graphic file (type pdf)
 
 <use Kernel/VsonlyvsSP.pdf>
-Package pdftex.def Info: Kernel/VsonlyvsSP.pdf used on input line 541.
+Package pdftex.def Info: Kernel/VsonlyvsSP.pdf used on input line 559.
 (pdftex.def)             Requested size: 216.81pt x 216.8121pt.
 
-<Kernel/VsonlyvsSS.pdf, id=95, 303.1325pt x 303.1325pt>
+<Kernel/VsonlyvsSS.pdf, id=87, 303.1325pt x 303.1325pt>
 File: Kernel/VsonlyvsSS.pdf Graphic file (type pdf)
 
 <use Kernel/VsonlyvsSS.pdf>
-Package pdftex.def Info: Kernel/VsonlyvsSS.pdf used on input line 542.
+Package pdftex.def Info: Kernel/VsonlyvsSS.pdf used on input line 560.
 (pdftex.def)             Requested size: 216.81pt x 216.8121pt.
 
-<PS_problem/PS_refl.pdf, id=96, 361.35pt x 289.08pt>
-File: PS_problem/PS_refl.pdf Graphic file (type pdf)
+<Kernel/Combinations/K_vp.pdf, id=88, 614.295pt x 744.7825pt>
+File: Kernel/Combinations/K_vp.pdf Graphic file (type pdf)
 
-<use PS_problem/PS_refl.pdf>
-Package pdftex.def Info: PS_problem/PS_refl.pdf used on input line 549.
-(pdftex.def)             Requested size: 173.44534pt x 138.75682pt.
+<use Kernel/Combinations/K_vp.pdf>
+Package pdftex.def Info: Kernel/Combinations/K_vp.pdf used on input line 568.
+(pdftex.def)             Requested size: 346.89731pt x 420.58698pt.
 
-<PS_problem/h1000.pdf, id=97, 400.49625pt x 401.5pt>
-File: PS_problem/h1000.pdf Graphic file (type pdf)
+<Kernel/Combinations/K_vs1.pdf, id=89, 614.295pt x 679.53876pt>
+File: Kernel/Combinations/K_vs1.pdf Graphic file (type pdf)
 
-<use PS_problem/h1000.pdf>
-Package pdftex.def Info: PS_problem/h1000.pdf used on input line 556.
-(pdftex.def)             Requested size: 216.81pt x 217.35814pt.
- <PS_problem/h500.pdf, id=98, 400.49625pt x 401.5pt>
-File: PS_problem/h500.pdf Graphic file (type pdf)
+<use Kernel/Combinations/K_vs1.pdf>
+Package pdftex.def Info: Kernel/Combinations/K_vs1.pdf used on input line 584.
+(pdftex.def)             Requested size: 433.62pt x 479.6763pt.
+ [19 <./Kernel/Combinations/K_MN.pdf>]
+[20 <./Kernel/1vp.pdf> <./Kernel/1vs.pdf> <./Kernel/Vponlyvp.pdf> <./Kernel/Vso
+nlyvp.pdf>] [21 <./Kernel/2vp.pdf> <./Kernel/2vs.pdf> <./Kernel/Vponlyvs.pdf> <
+./Kernel/Vsonlyvs.pdf>] [22 <./Kernel/VsonlyvsPP.pdf> <./Kernel/VsonlyvsPS.pdf>
+ <./Kernel/VsonlyvsSP.pdf> <./Kernel/VsonlyvsSS.pdf>] [23 <./Kernel/Combination
+s/K_vp.pdf>] [24 <./Kernel/Combinations/K_vs1.pdf>]
+<Kernel/Combinations/K_vs_recPS.pdf, id=264, 614.295pt x 483.8075pt>
+File: Kernel/Combinations/K_vs_recPS.pdf Graphic file (type pdf)
 
-<use PS_problem/h500.pdf>
-Package pdftex.def Info: PS_problem/h500.pdf used on input line 557.
-(pdftex.def)             Requested size: 216.81pt x 217.35814pt.
+<use Kernel/Combinations/K_vs_recPS.pdf>
+Package pdftex.def Info: Kernel/Combinations/K_vs_recPS.pdf used on input line 
+598.
+(pdftex.def)             Requested size: 433.62pt x 341.51251pt.
 
-<sigbee2/Fig/cuttruevp.pdf, id=99, 578.16pt x 289.08pt>
-File: sigbee2/Fig/cuttruevp.pdf Graphic file (type pdf)
+<sigbee2_new/Fig/Truevp.pdf, id=265, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/Truevp.pdf Graphic file (type pdf)
 
-<use sigbee2/Fig/cuttruevp.pdf>
-Package pdftex.def Info: sigbee2/Fig/cuttruevp.pdf used on input line 566.
+<use sigbee2_new/Fig/Truevp.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Truevp.pdf used on input line 610.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<sigbee2/Fig/cuttruevs.pdf, id=100, 578.16pt x 289.08pt>
-File: sigbee2/Fig/cuttruevs.pdf Graphic file (type pdf)
+<sigbee2_new/Fig/Truevs.pdf, id=266, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/Truevs.pdf Graphic file (type pdf)
 
-<use sigbee2/Fig/cuttruevs.pdf>
-Package pdftex.def Info: sigbee2/Fig/cuttruevs.pdf used on input line 567.
+<use sigbee2_new/Fig/Truevs.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Truevs.pdf used on input line 611.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<sigbee2/Fig/cutinitvp.pdf, id=101, 578.16pt x 289.08pt>
-File: sigbee2/Fig/cutinitvp.pdf Graphic file (type pdf)
+<sigbee2_new/Fig/Initvp.pdf, id=267, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/Initvp.pdf Graphic file (type pdf)
 
-<use sigbee2/Fig/cutinitvp.pdf>
-Package pdftex.def Info: sigbee2/Fig/cutinitvp.pdf used on input line 568.
+<use sigbee2_new/Fig/Initvp.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Initvp.pdf used on input line 612.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<sigbee2/Fig/cutinitvs.pdf, id=102, 578.16pt x 289.08pt>
-File: sigbee2/Fig/cutinitvs.pdf Graphic file (type pdf)
+<sigbee2_new/Fig/Initvs.pdf, id=268, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/Initvs.pdf Graphic file (type pdf)
 
-<use sigbee2/Fig/cutinitvs.pdf>
-Package pdftex.def Info: sigbee2/Fig/cutinitvs.pdf used on input line 569.
+<use sigbee2_new/Fig/Initvs.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Initvs.pdf used on input line 613.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<DIW_L2/1layer.pdf, id=103, 578.16pt x 289.08pt>
-File: DIW_L2/1layer.pdf Graphic file (type pdf)
- <use DIW_L2/1layer.pdf>
-Package pdftex.def Info: DIW_L2/1layer.pdf used on input line 578.
+<sigbee2_new/Fig/imageInitialvp.pdf, id=269, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/imageInitialvp.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/imageInitialvp.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/imageInitialvp.pdf used on input line 
+622.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<DIW_L2/1layerL2.pdf, id=104, 578.16pt x 289.08pt>
-File: DIW_L2/1layerL2.pdf Graphic file (type pdf)
- <use DIW_L2/1layerL2.pdf>
-Package pdftex.def Info: DIW_L2/1layerL2.pdf used on input line 579.
+<sigbee2_new/Fig/imageInitialvs.pdf, id=270, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/imageInitialvs.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/imageInitialvs.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/imageInitialvs.pdf used on input line 
+623.
+(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
+File: sigbee2_new/Fig/Initvp.pdf Graphic file (type pdf)
+ <use sigbee2_new/Fig/Initvp.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Initvp.pdf used on input line 624.
+(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
+File: sigbee2_new/Fig/Initvs.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/Initvs.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Initvs.pdf used on input line 625.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<DIW_L2/3layer.pdf, id=105, 578.16pt x 289.08pt>
-File: DIW_L2/3layer.pdf Graphic file (type pdf)
- <use DIW_L2/3layer.pdf>
-Package pdftex.def Info: DIW_L2/3layer.pdf used on input line 580.
+<sigbee2_new/Fig/RTIvp.pdf, id=271, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/RTIvp.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/RTIvp.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/RTIvp.pdf used on input line 633.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<DIW_L2/3layerL2.pdf, id=106, 578.16pt x 289.08pt>
-File: DIW_L2/3layerL2.pdf Graphic file (type pdf)
- <use DIW_L2/3layerL2.pdf>
-Package pdftex.def Info: DIW_L2/3layerL2.pdf used on input line 581.
+<sigbee2_new/Fig/RTIvs.pdf, id=272, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/RTIvs.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/RTIvs.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/RTIvs.pdf used on input line 634.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<DIW_L2/Sigsbee.pdf, id=107, 578.16pt x 289.08pt>
-File: DIW_L2/Sigsbee.pdf Graphic file (type pdf)
- <use DIW_L2/Sigsbee.pdf>
-Package pdftex.def Info: DIW_L2/Sigsbee.pdf used on input line 582.
-(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
+<sigbee2_new/Fig/imageTRUEvp.pdf, id=273, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/imageTRUEvp.pdf Graphic file (type pdf)
 
-<DIW_L2/complexL2.pdf, id=108, 578.16pt x 289.08pt>
-File: DIW_L2/complexL2.pdf Graphic file (type pdf)
- <use DIW_L2/complexL2.pdf>
-Package pdftex.def Info: DIW_L2/complexL2.pdf used on input line 583.
-(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
-
-<sigbee2/Fig/cutimage_initvp.pdf, id=109, 578.16pt x 289.08pt>
-File: sigbee2/Fig/cutimage_initvp.pdf Graphic file (type pdf)
-
-<use sigbee2/Fig/cutimage_initvp.pdf>
-Package pdftex.def Info: sigbee2/Fig/cutimage_initvp.pdf used on input line 589
+<use sigbee2_new/Fig/imageTRUEvp.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/imageTRUEvp.pdf used on input line 640
 .
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<sigbee2/Fig/cutimage_initvs.pdf, id=110, 578.16pt x 289.08pt>
-File: sigbee2/Fig/cutimage_initvs.pdf Graphic file (type pdf)
+<sigbee2_new/Fig/imageTRUEvs.pdf, id=274, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/imageTRUEvs.pdf Graphic file (type pdf)
 
-<use sigbee2/Fig/cutimage_initvs.pdf>
-Package pdftex.def Info: sigbee2/Fig/cutimage_initvs.pdf used on input line 590
+<use sigbee2_new/Fig/imageTRUEvs.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/imageTRUEvs.pdf used on input line 641
 .
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<sigbee2/badinitvp.pdf, id=111, 578.16pt x 289.08pt>
-File: sigbee2/badinitvp.pdf Graphic file (type pdf)
+<sigbee2_new/Fig/imageRTIvp.pdf, id=275, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/imageRTIvp.pdf Graphic file (type pdf)
 
-<use sigbee2/badinitvp.pdf>
-Package pdftex.def Info: sigbee2/badinitvp.pdf used on input line 591.
+<use sigbee2_new/Fig/imageRTIvp.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/imageRTIvp.pdf used on input line 642.
+
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<sigbee2/badinitvs.pdf, id=112, 578.16pt x 289.08pt>
-File: sigbee2/badinitvs.pdf Graphic file (type pdf)
+<sigbee2_new/Fig/imageRTIvs.pdf, id=276, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/imageRTIvs.pdf Graphic file (type pdf)
 
-<use sigbee2/badinitvs.pdf>
-Package pdftex.def Info: sigbee2/badinitvs.pdf used on input line 592.
-(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
+<use sigbee2_new/Fig/imageRTIvs.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/imageRTIvs.pdf used on input line 643.
 
-<sigbee2/Fig/newinit3vp.pdf, id=113, 578.16pt x 289.08pt>
-File: sigbee2/Fig/newinit3vp.pdf Graphic file (type pdf)
-
-<use sigbee2/Fig/newinit3vp.pdf>
-Package pdftex.def Info: sigbee2/Fig/newinit3vp.pdf used on input line 600.
-(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
-
-<sigbee2/Fig/newinit3vs.pdf, id=114, 578.16pt x 289.08pt>
-File: sigbee2/Fig/newinit3vs.pdf Graphic file (type pdf)
-
-<use sigbee2/Fig/newinit3vs.pdf>
-Package pdftex.def Info: sigbee2/Fig/newinit3vs.pdf used on input line 601.
-(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
-
-<sigbee2/Fig/cutimage_truevp.pdf, id=115, 578.16pt x 289.08pt>
-File: sigbee2/Fig/cutimage_truevp.pdf Graphic file (type pdf)
-
-<use sigbee2/Fig/cutimage_truevp.pdf>
-Package pdftex.def Info: sigbee2/Fig/cutimage_truevp.pdf used on input line 607
-.
-(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
-
-<sigbee2/Fig/cutimage_truevs.pdf, id=116, 578.16pt x 289.08pt>
-File: sigbee2/Fig/cutimage_truevs.pdf Graphic file (type pdf)
-
-<use sigbee2/Fig/cutimage_truevs.pdf>
-Package pdftex.def Info: sigbee2/Fig/cutimage_truevs.pdf used on input line 608
-.
-(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
-
-<sigbee2/Fig/cutimage_wertivp.pdf, id=117, 578.16pt x 289.08pt>
-File: sigbee2/Fig/cutimage_wertivp.pdf Graphic file (type pdf)
-
-<use sigbee2/Fig/cutimage_wertivp.pdf>
-Package pdftex.def Info: sigbee2/Fig/cutimage_wertivp.pdf used on input line 60
-9.
-(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
-
-<sigbee2/Fig/cutimage_wertivs.pdf, id=118, 578.16pt x 289.08pt>
-File: sigbee2/Fig/cutimage_wertivs.pdf Graphic file (type pdf)
-
-<use sigbee2/Fig/cutimage_wertivs.pdf>
-Package pdftex.def Info: sigbee2/Fig/cutimage_wertivs.pdf used on input line 61
-0.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 Missing character: There is no Ô in font cmr10!
 Missing character: There is no º in font cmr10!
@@ -890,176 +863,222 @@ Missing character: There is no Ô in font cmr10!
 Missing character: There is no º in font cmr10!
 Missing character: There is no õ in font cmr10!
 
-<sigbee2/Fig/DataPP_true.pdf, id=119, 289.08pt x 433.62pt>
+<sigbee2/Fig/DataPP_true.pdf, id=277, 289.08pt x 433.62pt>
 File: sigbee2/Fig/DataPP_true.pdf Graphic file (type pdf)
 
 <use sigbee2/Fig/DataPP_true.pdf>
-Package pdftex.def Info: sigbee2/Fig/DataPP_true.pdf used on input line 618.
+Package pdftex.def Info: sigbee2/Fig/DataPP_true.pdf used on input line 651.
 (pdftex.def)             Requested size: 143.09538pt x 214.63925pt.
 
-<sigbee2/Fig/DataPP_init.pdf, id=120, 289.08pt x 433.62pt>
+<sigbee2/Fig/DataPP_init.pdf, id=278, 289.08pt x 433.62pt>
 File: sigbee2/Fig/DataPP_init.pdf Graphic file (type pdf)
 
 <use sigbee2/Fig/DataPP_init.pdf>
-Package pdftex.def Info: sigbee2/Fig/DataPP_init.pdf used on input line 619.
+Package pdftex.def Info: sigbee2/Fig/DataPP_init.pdf used on input line 652.
 (pdftex.def)             Requested size: 143.09538pt x 214.63925pt.
 
-<sigbee2/Fig/DataPP_werti.pdf, id=121, 289.08pt x 433.62pt>
+<sigbee2/Fig/DataPP_werti.pdf, id=279, 289.08pt x 433.62pt>
 File: sigbee2/Fig/DataPP_werti.pdf Graphic file (type pdf)
 
 <use sigbee2/Fig/DataPP_werti.pdf>
-Package pdftex.def Info: sigbee2/Fig/DataPP_werti.pdf used on input line 620.
+Package pdftex.def Info: sigbee2/Fig/DataPP_werti.pdf used on input line 653.
 (pdftex.def)             Requested size: 143.09538pt x 214.63925pt.
 
-<sigbee2/Fig/DataPS_true.pdf, id=122, 289.08pt x 433.62pt>
+<sigbee2/Fig/DataPS_true.pdf, id=280, 289.08pt x 433.62pt>
 File: sigbee2/Fig/DataPS_true.pdf Graphic file (type pdf)
 
 <use sigbee2/Fig/DataPS_true.pdf>
-Package pdftex.def Info: sigbee2/Fig/DataPS_true.pdf used on input line 621.
+Package pdftex.def Info: sigbee2/Fig/DataPS_true.pdf used on input line 654.
 (pdftex.def)             Requested size: 143.09538pt x 214.63925pt.
 
-<sigbee2/Fig/DataPS_init.pdf, id=123, 289.08pt x 433.62pt>
+<sigbee2/Fig/DataPS_init.pdf, id=281, 289.08pt x 433.62pt>
 File: sigbee2/Fig/DataPS_init.pdf Graphic file (type pdf)
 
 <use sigbee2/Fig/DataPS_init.pdf>
-Package pdftex.def Info: sigbee2/Fig/DataPS_init.pdf used on input line 622.
+Package pdftex.def Info: sigbee2/Fig/DataPS_init.pdf used on input line 655.
 (pdftex.def)             Requested size: 143.09538pt x 214.63925pt.
 
-<sigbee2/Fig/DataPS_werti.pdf, id=124, 289.08pt x 433.62pt>
+<sigbee2/Fig/DataPS_werti.pdf, id=282, 289.08pt x 433.62pt>
 File: sigbee2/Fig/DataPS_werti.pdf Graphic file (type pdf)
 
 <use sigbee2/Fig/DataPS_werti.pdf>
-Package pdftex.def Info: sigbee2/Fig/DataPS_werti.pdf used on input line 623.
+Package pdftex.def Info: sigbee2/Fig/DataPS_werti.pdf used on input line 656.
 (pdftex.def)             Requested size: 143.09538pt x 214.63925pt.
 
 
-LaTeX Warning: Float too large for page by 37.84856pt on input line 631.
+LaTeX Warning: Float too large for page by 37.84856pt on input line 664.
 
-<sigbee2/LSF_Gra_vp.pdf, id=125, 578.16pt x 289.08pt>
+<sigbee2/LSF_Gra_vp.pdf, id=283, 578.16pt x 289.08pt>
 File: sigbee2/LSF_Gra_vp.pdf Graphic file (type pdf)
 
 <use sigbee2/LSF_Gra_vp.pdf>
-Package pdftex.def Info: sigbee2/LSF_Gra_vp.pdf used on input line 634.
+Package pdftex.def Info: sigbee2/LSF_Gra_vp.pdf used on input line 667.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<sigbee2/NoLSF_Gra_vp.pdf, id=126, 578.16pt x 289.08pt>
+<sigbee2/NoLSF_Gra_vp.pdf, id=284, 578.16pt x 289.08pt>
 File: sigbee2/NoLSF_Gra_vp.pdf Graphic file (type pdf)
 
 <use sigbee2/NoLSF_Gra_vp.pdf>
-Package pdftex.def Info: sigbee2/NoLSF_Gra_vp.pdf used on input line 635.
-(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
-File: sigbee2/Fig/newinit3vp.pdf Graphic file (type pdf)
- <use sigbee2/Fig/newinit3vp.pdf>
-Package pdftex.def Info: sigbee2/Fig/newinit3vp.pdf used on input line 636.
+Package pdftex.def Info: sigbee2/NoLSF_Gra_vp.pdf used on input line 668.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<sigbee2/NoLSF_vp.pdf, id=127, 578.16pt x 289.08pt>
-File: sigbee2/NoLSF_vp.pdf Graphic file (type pdf)
- <use sigbee2/NoLSF_vp.pdf>
-Package pdftex.def Info: sigbee2/NoLSF_vp.pdf used on input line 637.
+<sigbee2_new/Fig/EFWI_RTIvp.pdf, id=285, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/EFWI_RTIvp.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/EFWI_RTIvp.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/EFWI_RTIvp.pdf used on input line 680.
+
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<sigbee2/Fig/nodevp.pdf, id=128, 578.16pt x 289.08pt>
-File: sigbee2/Fig/nodevp.pdf Graphic file (type pdf)
+<sigbee2_new/Fig/EFWI_RTIvs.pdf, id=286, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/EFWI_RTIvs.pdf Graphic file (type pdf)
 
-<use sigbee2/Fig/nodevp.pdf>
-Package pdftex.def Info: sigbee2/Fig/nodevp.pdf used on input line 647.
+<use sigbee2_new/Fig/EFWI_RTIvs.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/EFWI_RTIvs.pdf used on input line 681.
+
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
 
-<sigbee2/Fig/nodevs.pdf, id=129, 578.16pt x 289.08pt>
-File: sigbee2/Fig/nodevs.pdf Graphic file (type pdf)
+<sigbee2_new/Fig/1_5km.pdf, id=287, 562.1pt x 378.41376pt>
+File: sigbee2_new/Fig/1_5km.pdf Graphic file (type pdf)
 
-<use sigbee2/Fig/nodevs.pdf>
-Package pdftex.def Info: sigbee2/Fig/nodevs.pdf used on input line 648.
-(pdftex.def)             Requested size: 216.81pt x 108.40472pt.
-
-<sigbee2/Fig/1km.pdf, id=130, 562.1pt x 378.41376pt>
-File: sigbee2/Fig/1km.pdf Graphic file (type pdf)
- <use sigbee2/Fig/1km.pdf>
-Package pdftex.def Info: sigbee2/Fig/1km.pdf used on input line 660.
+<use sigbee2_new/Fig/1_5km.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/1_5km.pdf used on input line 693.
 (pdftex.def)             Requested size: 216.81pt x 145.95824pt.
 
-<sigbee2/Fig/3km.pdf, id=131, 561.09625pt x 378.41376pt>
-File: sigbee2/Fig/3km.pdf Graphic file (type pdf)
+<sigbee2_new/Fig/3km.pdf, id=288, 562.1pt x 378.41376pt>
+File: sigbee2_new/Fig/3km.pdf Graphic file (type pdf)
 
-<use sigbee2/Fig/3km.pdf>
-Package pdftex.def Info: sigbee2/Fig/3km.pdf used on input line 661.
-(pdftex.def)             Requested size: 216.81pt x 146.21808pt.
- <sigbee2/3Hzvp.pdf, id=132, 578.16pt x 289.08pt>
-File: sigbee2/3Hzvp.pdf Graphic file (type pdf)
+<use sigbee2_new/Fig/3km.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/3km.pdf used on input line 694.
+(pdftex.def)             Requested size: 216.81pt x 145.95824pt.
 
-<use sigbee2/3Hzvp.pdf>
-Package pdftex.def Info: sigbee2/3Hzvp.pdf used on input line 675.
+<sigbee2_new/Fig/Cut3Hzvp.pdf, id=289, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/Cut3Hzvp.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/Cut3Hzvp.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Cut3Hzvp.pdf used on input line 708.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
- <sigbee2/3Hzvs.pdf, id=133, 578.16pt x 289.08pt>
-File: sigbee2/3Hzvs.pdf Graphic file (type pdf)
 
-<use sigbee2/3Hzvs.pdf>
-Package pdftex.def Info: sigbee2/3Hzvs.pdf used on input line 676.
+<sigbee2_new/Fig/Cut3Hzvs.pdf, id=290, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/Cut3Hzvs.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/Cut3Hzvs.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Cut3Hzvs.pdf used on input line 709.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
- <sigbee2/5Hzvp.pdf, id=134, 578.16pt x 289.08pt>
-File: sigbee2/5Hzvp.pdf Graphic file (type pdf)
 
-<use sigbee2/5Hzvp.pdf>
-Package pdftex.def Info: sigbee2/5Hzvp.pdf used on input line 677.
+<sigbee2_new/Fig/Cut5Hzvp.pdf, id=291, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/Cut5Hzvp.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/Cut5Hzvp.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Cut5Hzvp.pdf used on input line 710.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
- <sigbee2/5Hzvs.pdf, id=135, 578.16pt x 289.08pt>
-File: sigbee2/5Hzvs.pdf Graphic file (type pdf)
 
-<use sigbee2/5Hzvs.pdf>
-Package pdftex.def Info: sigbee2/5Hzvs.pdf used on input line 678.
+<sigbee2_new/Fig/Cut5Hzvs.pdf, id=292, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/Cut5Hzvs.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/Cut5Hzvs.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Cut5Hzvs.pdf used on input line 711.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
- <sigbee2/7Hzvp.pdf, id=136, 578.16pt x 289.08pt>
-File: sigbee2/7Hzvp.pdf Graphic file (type pdf)
 
-<use sigbee2/7Hzvp.pdf>
-Package pdftex.def Info: sigbee2/7Hzvp.pdf used on input line 679.
+<sigbee2_new/Fig/Cut7Hzvp.pdf, id=293, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/Cut7Hzvp.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/Cut7Hzvp.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Cut7Hzvp.pdf used on input line 712.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
- <sigbee2/7Hzvs.pdf, id=137, 578.16pt x 289.08pt>
-File: sigbee2/7Hzvs.pdf Graphic file (type pdf)
 
-<use sigbee2/7Hzvs.pdf>
-Package pdftex.def Info: sigbee2/7Hzvs.pdf used on input line 680.
+<sigbee2_new/Fig/Cut7Hzvs.pdf, id=294, 578.16pt x 289.08pt>
+File: sigbee2_new/Fig/Cut7Hzvs.pdf Graphic file (type pdf)
+
+<use sigbee2_new/Fig/Cut7Hzvs.pdf>
+Package pdftex.def Info: sigbee2_new/Fig/Cut7Hzvs.pdf used on input line 713.
 (pdftex.def)             Requested size: 216.81pt x 108.40472pt.
-) (./paper.bbl [21
+ [25
 
-] [22] [23])
 
-Package natbib Warning: There were undefined citations.
+ <./Kernel/Combinations/K_vs_recPS.pdf>]
+[26 <./sigbee2_new/Fig/Truevp.pdf> <./sigbee2_new/Fig/Truevs.pdf> <./sigbee2_ne
+w/Fig/Initvp.pdf> <./sigbee2_new/Fig/Initvs.pdf>] [27 <./sigbee2_new/Fig/imageI
+nitialvp.pdf> <./sigbee2_new/Fig/imageInitialvs.pdf> <./sigbee2_new/Fig/RTIvp.p
+df> <./sigbee2_new/Fig/RTIvs.pdf>] [28 <./sigbee2_new/Fig/imageTRUEvp.pdf> <./s
+igbee2_new/Fig/imageTRUEvs.pdf> <./sigbee2_new/Fig/imageRTIvp.pdf> <./sigbee2_n
+ew/Fig/imageRTIvs.pdf>] [29 <./sigbee2/Fig/DataPP_true.pdf> <./sigbee2/Fig/Data
+PP_init.pdf> <./sigbee2/Fig/DataPP_werti.pdf> <./sigbee2/Fig/DataPS_true.pdf> <
+./sigbee2/Fig/DataPS_init.pdf> <./sigbee2/Fig/DataPS_werti.pdf>] [30 <./sigbee2
+/LSF_Gra_vp.pdf> <./sigbee2/NoLSF_Gra_vp.pdf> <./sigbee2_new/Fig/EFWI_RTIvp.pdf
+> <./sigbee2_new/Fig/EFWI_RTIvs.pdf>] [31 <./sigbee2_new/Fig/1_5km.pdf> <./sigb
+ee2_new/Fig/3km.pdf>] [32 <./sigbee2_new/Fig/Cut3Hzvp.pdf> <./sigbee2_new/Fig/C
+ut3Hzvs.pdf> <./sigbee2_new/Fig/Cut5Hzvp.pdf> <./sigbee2_new/Fig/Cut5Hzvs.pdf> 
+<./sigbee2_new/Fig/Cut7Hzvp.pdf> <./sigbee2_new/Fig/Cut7Hzvs.pdf>] [33
 
-[24] [25 <./Kernel/1vp.pdf> <./Kernel/1vs.pdf> <./Kernel/Vponlyvp.pdf> <./Kerne
-l/Vsonlyvp.pdf>] [26 <./Kernel/2vp.pdf> <./Kernel/2vs.pdf> <./Kernel/Vponlyvs.p
-df> <./Kernel/Vsonlyvs.pdf>] [27 <./Kernel/VsonlyvsPP.pdf> <./Kernel/VsonlyvsPS
-.pdf> <./Kernel/VsonlyvsSP.pdf> <./Kernel/VsonlyvsSS.pdf>] [28 <./PS_problem/PS
-_refl.pdf> <./PS_problem/h1000.pdf> <./PS_problem/h500.pdf>] [29 <./sigbee2/Fig
-/cuttruevp.pdf> <./sigbee2/Fig/cuttruevs.pdf> <./sigbee2/Fig/cutinitvp.pdf> <./
-sigbee2/Fig/cutinitvs.pdf>] [30 <./DIW_L2/1layer.pdf> <./DIW_L2/1layerL2.pdf> <
-./DIW_L2/3layer.pdf> <./DIW_L2/3layerL2.pdf> <./DIW_L2/Sigsbee.pdf> <./DIW_L2/c
-omplexL2.pdf>] [31 <./sigbee2/Fig/cutimage_initvp.pdf> <./sigbee2/Fig/cutimage_
-initvs.pdf> <./sigbee2/badinitvp.pdf> <./sigbee2/badinitvs.pdf> <./sigbee2/Fig/
-newinit3vp.pdf> <./sigbee2/Fig/newinit3vs.pdf>] [32 <./sigbee2/Fig/cutimage_tru
-evp.pdf> <./sigbee2/Fig/cutimage_truevs.pdf> <./sigbee2/Fig/cutimage_wertivp.pd
-f> <./sigbee2/Fig/cutimage_wertivs.pdf>] [33 <./sigbee2/Fig/DataPP_true.pdf> <.
-/sigbee2/Fig/DataPP_init.pdf> <./sigbee2/Fig/DataPP_werti.pdf> <./sigbee2/Fig/D
-ataPS_true.pdf> <./sigbee2/Fig/DataPS_init.pdf> <./sigbee2/Fig/DataPS_werti.pdf
->] [34 <./sigbee2/LSF_Gra_vp.pdf> <./sigbee2/NoLSF_Gra_vp.pdf> <./sigbee2/NoLSF
-_vp.pdf>] [35 <./sigbee2/Fig/nodevp.pdf> <./sigbee2/Fig/nodevs.pdf> <./sigbee2/
-Fig/1km.pdf> <./sigbee2/Fig/3km.pdf>] [36 <./sigbee2/3Hzvp.pdf> <./sigbee2/3Hzv
-s.pdf> <./sigbee2/5Hzvp.pdf> <./sigbee2/5Hzvs.pdf> <./sigbee2/7Hzvp.pdf> <./sig
-bee2/7Hzvs.pdf>] (./paper.aux)
+]
+[34]
+
+LaTeX Warning: Reference `AdjointDeltaWE' on page 35 undefined on input line 91
+8.
+
+[35] <Kernel/Combinations/K_vs_src_new.pdf, id=534, 614.295pt x 592.2125pt>
+File: Kernel/Combinations/K_vs_src_new.pdf Graphic file (type pdf)
+
+<use Kernel/Combinations/K_vs_src_new.pdf>
+Package pdftex.def Info: Kernel/Combinations/K_vs_src_new.pdf used on input lin
+e 930.
+(pdftex.def)             Requested size: 433.62pt x 418.03398pt.
+
+<Kernel/Combinations/K_vs_recPP_new.pdf, id=535, 614.295pt x 483.8075pt>
+File: Kernel/Combinations/K_vs_recPP_new.pdf Graphic file (type pdf)
+
+<use Kernel/Combinations/K_vs_recPP_new.pdf>
+Package pdftex.def Info: Kernel/Combinations/K_vs_recPP_new.pdf used on input l
+ine 945.
+(pdftex.def)             Requested size: 433.62pt x 341.51251pt.
+ [36]
+Overfull \vbox (24.9823pt too high) has occurred while \output is active []
+
+
+[37 <./Kernel/Combinations/K_vs_src_new.pdf>] [38 <./Kernel/Combinations/K_vs_r
+ecPP_new.pdf>] <PS_problem/PS_refl.pdf, id=567, 361.35pt x 289.08pt>
+File: PS_problem/PS_refl.pdf Graphic file (type pdf)
+
+<use PS_problem/PS_refl.pdf>
+Package pdftex.def Info: PS_problem/PS_refl.pdf used on input line 1041.
+(pdftex.def)             Requested size: 173.44534pt x 138.75682pt.
+ [39]
+<PS_problem/h1000.pdf, id=572, 400.49625pt x 401.5pt>
+File: PS_problem/h1000.pdf Graphic file (type pdf)
+
+<use PS_problem/h1000.pdf>
+Package pdftex.def Info: PS_problem/h1000.pdf used on input line 1048.
+(pdftex.def)             Requested size: 216.81pt x 217.35814pt.
+
+<PS_problem/h500.pdf, id=573, 400.49625pt x 401.5pt>
+File: PS_problem/h500.pdf Graphic file (type pdf)
+ <use PS_problem/h500.pdf>
+Package pdftex.def Info: PS_problem/h500.pdf used on input line 1049.
+(pdftex.def)             Requested size: 216.81pt x 217.35814pt.
+) (./paper.bbl [40 <./PS_problem/PS_refl.pdf>] [41 <./PS_problem/h1000.pdf> <./
+PS_problem/h500.pdf>] [42]
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ê in font cmr10!
+ [43] [44] [45]) [46] (./paper.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 15442 strings out of 493089
- 294957 string characters out of 6134848
- 350917 words of memory out of 5000000
- 18565 multiletter control sequences out of 15000+600000
+ 15483 strings out of 493089
+ 296339 string characters out of 6134848
+ 340450 words of memory out of 5000000
+ 18608 multiletter control sequences out of 15000+600000
  13968 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,16n,54p,503b,378s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+ 55i,25n,54p,670b,378s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
 usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
@@ -1074,11 +1093,12 @@ xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texli
 ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/
 2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
 015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/201
-5/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on paper.pdf (36 pages, 1467636 bytes).
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on paper.pdf (46 pages, 4891822 bytes).
 PDF statistics:
- 627 PDF objects out of 1000 (max. 8388607)
- 405 compressed objects within 5 object streams
+ 675 PDF objects out of 1000 (max. 8388607)
+ 419 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
- 283 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 268 words of extra memory for PDF output out of 10000 (max. 10000000)
 

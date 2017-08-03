@@ -1,17 +1,17 @@
 \section{Introduction}
 With the emergence of long-offset wide-azimuth acquisitions and broad-band sources,
 full waveform inversion (FWI) has been recognized as an
-efficient tool for constructing velocity models and quantitative seismic imaging (see
-\cite{virieux2009overview} for a review).
+efficient tool for constructing velocity models and quantitative seismic imaging, see
+\cite{virieux2009overview} for a review.
 Though the acoustic FWI, primarily focusing on P-wave velocity inversion, has been
 widely studied in the past decades
 \cite[]{tarantola1984,pratt1998gauss,shipp:2002}, people are paying more attention
 to the waveform inversion under the elastic assumption, referred to as elastic full waveform inversion
 (EFWI) \cite[]{tarantola1986}.
-Though waveform inversion provides high-resolution model estimation of the elastic
-properties, it
-will suffer from the cycle-skipping easily because of its insensitivity to the low and intermediate wavenumber components of the model
-when the acquisition illumination is poor and/or good initial models are missing during the inversion\cite[]{sears2008,brossier2009}. 
+Waveform inversion provides high-resolution model estimation of the elastic
+properties, but it
+suffers from the cycle-skipping easily because of its insensitivity to the low and intermediate wavenumber components of the model
+when the acquisition illumination is poor and/or good initial models are unavailable during the inversion\cite[]{sears2008,brossier2009}. 
 Besides, multi-parameter trade-off effects and more complicated elastic wave phenomena 
 will further increase the difficulties for EFWI.
 To deal with the nonlinearities and parameter trade-offs, more
@@ -22,7 +22,7 @@ considered during EFWI
 %In the surface observation geometry, full waveform inversion (FWI) often suffers from the
 %local minimal due to the absence of low frequencies in the data when the low-wavenumber
 %component is missing in the initial model.
-In the classical FWI, the long-offset data
+For the classical FWI, the long-offset data
 corresponding to diving waves are very important to build the long-to-intermediate
 wavelengths of the model. However, the penetration depths of
 diving waves are always far from sufficient to reach the target in the deeper part
@@ -32,50 +32,51 @@ In addition, the low signal-to-noise ratio at the far
 offset is also a limit for the classical FWI relying on the diving waves. 
 Therefore, people tried to utilize the reflections
 to help build the macro-model containing low-to-intermediate wavenumber
-in the deep part\cite[]{ChaventEtAl1994,clement:2001,999999}{\color{red}(more
-reference)}.
+in the deep part\cite[]{Stork1992,ChaventEtAl1994,clement:2001,Symes2008a,xu:2012}.
 This process can be implemented in the image domain or the data domain. 
 Actually, the image-domain ray-based tomography
-\cite[]{Woodward1992,Woodward2008,Jones2010} has already been a standard workflow to obtain the background velocity by flatting the common
+\cite[]{Stork1992,Woodward1992,Woodward2008,Jones2010} has already been a standard workflow to obtain the background velocity by flatting the common
 image gathers. But when the lateral velocity variation is strong, the ray-based method would fail to
-present the wave propagation underground, which will probably lead to the failure of tomography.  
+present the wave propagation underground.
+%, which will probably lead to the failure of tomography.  
 To overcome the limit of ray theory, 
-the reflection inversion employed waveform or traveltime based on wave-equation
-draws a lot of consideration\cite[]{xu:2012,Ma2013,Wu2015b,Zhou2015,Wang2015,Chi2015}.
+people have made great efforts to develop the approaches of reflection inversion that employ
+waveform or traveltime information based on wave-equation
+\cite[]{xu:2012,Ma2013,Wu2015b,Zhou2015,Wang2015,Chi2015}.
 
 The misfit function of reflection inversion can be built in image domain in the manner of wave equation migration
 velocity analysis (WEMVA), which tries to maximize the
-energy at zero offset location in the extended image space
+energy at zero-offset location in the extended subsurface image gathers
 \cite[]{Symes2008,Almomin2012,SunEtAl2012,biondi2013}.
 %Alternatively, the image domain strategy also can be fulfilled by the wave equation
 %migration velocity analysis (WEMVA), in which velocity is updated
 %through minimizing the energy of non-zero offset on the extended-domain gathers \cite[]{Symes, 2008; Fleury
 %and Perrone, 2012; Biondi and Almomin, 2013}.
 \cite{RaknesEtAl2016} 
-developed the image-domain method to invert P-wave velocity ($V_p$) in the 3D elastic media. 
+developed an image-domain method to invert P-wave velocity ($V_p$) in the 3D elastic media. 
 \cite{Wang2017WEMVA} proposed to employ the extended PS image in WEMVA to update the
 S-wave velocity ($V_s$) with the help of elastic wave mode decomposition.
 %But it is a big issue that the extended domain approach requires huge computational cost,
 %especially in 3D case.
-However, the extended-domain methods are limited due to its prohibitively computational cost,
+However, the extended-domain methods are limited in filed data due to its prohibitively computational cost,
 especially in 3D case.
 While in the data domain,
 \cite{xu:2012} suggested using a reflection waveform inversion (RWI) method to suppress the
 nonlinearity in FWI, 
 which aim to invert the long-wavelength components of the model by using the reflections 
 predicted by migration/demigration process.
+Recently, \cite{Zhou2015} proposed a joint FWI method that combines the diving and reflected waves to
+utilize both RWI and the conventional FWI.
+\cite{Wu2015b} developed an RWI scheme to simultaneously invert the background velocity and the
+perturbation in acoustic media,  and recently extended to elastic case by
+\cite{Guo2016}.
 RWI highly relies on the accurate reflectivity to generate the reflections that can match the
 observed data. However, it is very challenging and also expensive to obtain a good reflectivity model through 
-least-square migration when initial model is far away from the true value.
-\cite{Zhou2015} proposed a joint FWI method to combine the diving and reflected waves to
-utilize both RWI and the conventional FWI.
-Recently, the RWI method is investigated
-by several works \cite[]{Wu2015b,Zhou2015}, and recently extended to elastic case by
-\cite{Guo2016}.
+least-square migration when initial model is far away from the true one.
 
 %In addition, \cite{Wang:2015} found that wave mode decomposition may be beneficial to deal with the
 %elastic parameter trade-offs.
-However, compared with the waveform information, 
+Compared with the waveform information, 
 %traveltime is more sensitive and linearly related to
 %low-wavenumber model perturbation. Using traveltime inversion will be more robust and helpful to
 %build appropriate initial models containing long-wavelength components for
@@ -84,28 +85,30 @@ traveltime is more sensitive and linearly related to
 the low-wavenumber components of the model. Therefore, traveltime inversion will be more robust and helpful to
 build good initial models for conventional FWI
 \cite[]{WangEtAl2014}.
-\cite{Ma2013} introduced a wave equation reflected traveltime inversion (WERTI) method
-based dynamic image warping (DIW) to build the low wavenumber of the model. 
+\cite{Ma2013} introduced a wave equation reflected traveltime inversion method
+based on dynamic image warping (DIW) to build the low wavenumber of the model. 
 \cite{Chi2015} and \cite{Wang2015} employed correlation-based method to extract the
 temporal or spatial lag to implement the reflection inversion. 
 Elastic reflections carry the background information of the P and S wave velocities, 
 which can help to rebuild the good initial velocity models for EFWI.
-Unfortunately, in elastic case, traveltimes of a particular wave modes are difficult
+Unfortunately, in elastic case, traveltime shifts of a particular wave mode are difficult
 to extract due to the complicated wave phenomenons, such as mode-conversions.
 %It is common to observe that different mode-conversions, mainly P-P
 %and P-S events, overlap and intersect with each other. The cross points between events
 %would be singularities for traveltime difference estimation even using the local shift estimation 
 %method like DIW.
 Therefore, the estimated time shifts would be inaccurate if using the
-original multicomponent seismograms.
+original multicomponent seismograms directly.
 %, which makes the elastic wave-equation reflection
 %traveltime inversion (ERTI) difficult to implement.
-Besides, since the multi-parameter trade-offs will increase the
+In addition, since the multi-parameter trade-offs will increase the
 nonlinearity of inversion, more hierarchical strategies should be considered to deal
 with this problem.
-\cite{WangEtAl2017} explained the mechanism that the wave mode decomposition can mitigate
-parameter trade-offs in EFWI by preconditioning the gradients. 
-As a natural tool to obtain the separated data subsets, wave mode decomposition similarly
+\cite{WangEtAl2017} 
+preconditioned the gradients of EFWI through wave mode decomposition to mitigate
+parameter trade-offs and explained that this precondition partially utilize the off-diagonal Hessian blocks
+when inverting $V_s$.  
+As a natural tool to obtain the separated data subsets, the wave mode decomposition similarly
 has the potential to precondition the elastic wave-equation reflection traveltime
 inversion (ERTI) with more flexible hierarchical strategies.
 
@@ -132,7 +135,7 @@ inversion (ERTI) with more flexible hierarchical strategies.
 %to extract due to the complicated mode-conversions. 
 
 In this paper,   
-we will tackle the traveltime misfits of PP and PS reflections to implement the ERTI
+we will exploit the traveltime misfits of PP and PS reflections to implement the ERTI
 approach with the aid
 of wave mode decomposition and DIW \cite[]{Hale2013}.
 %In this abstract, we separate the PP and PS reflections in the observed and predicted multicomponent data to
@@ -141,20 +144,23 @@ of wave mode decomposition and DIW \cite[]{Hale2013}.
 %separation. Dynamic image warping \cite[]{Hale2013} helps to extract the local traveltime residual
 %between the observed and the predicted data.
 First, 
-the elastic reflection wavepath and its components of different wave modes are
+the elastic reflection kernel and its components of different wave modes are
 calculated and the implications to suppress the artifacts in the gradient calculation
 are investigated.
 %to investigate  the effectiveness of mode decomposition on suppressing the artifacts in the gradient calculation.
 Then, P/S separation of multicomponent seismograms is applied to the observed and predicted reflection data 
-to extract the individual traveltime residuals through DIW. 
+to extract the individual traveltime residuals of PP and PS reflections through DIW. 
 Based on the analysis of elastic reflection kernels and the separated traveltime residuals, 
 we design a two-stage workflow to implement
 the ERTI method,
-in which the traveltime of PP is firstly used to recover the background
-$V_p$ model followed by inverting the background $V_s$ model through the traveltime of PS
-reflections.
-During the $V_s$ inversion, the PS reflections are predicted by the PP image to avoid
-the wrongly estimated time shifts when using PS image. Moreover, we precondition the $V_s$ gradient through spatial wave mode
+in which the traveltime of PP reflections are firstly used to recover the background
+$V_p$ model and then the traveltime of PS reflections are used to recover the background $V_s$ model
+.
+According to our investigation, it is quite difficult to estimate the time shifts of PS reflections if we
+use the PS image to predict the corresponding reflection using demigration.
+%During the $V_s$ inversion, the PS reflections are predicted by the PP image to avoid
+%the wrongly estimated time shifts when using PS image.
+Moreover, we precondition the $V_s$ gradient through the spatial wave mode
 decomposition.
 Finally, the numerical example of Sigsee2A model proves the robustness and validity of our
 ERTI method.

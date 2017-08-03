@@ -15,8 +15,9 @@
 \makeatletter
 \newcommand{\rome}[1]{\romannumeral #1}
 \newcommand{\Rome}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\newcommand{\bsy}[1]{\boldsymbol{{}#1}}
 \makeatother
-\title{Elastic wave-equation reflection traveltime inversion wave mode decomposition}
+\title{Elastic wave-equation-based reflection kernel analysis and traveltime inversion using wave mode decomposition}
 \author{
 	Tengfei Wang\footnotemark[1], Jiubing Cheng\footnotemark[2], Qiang Guo\footnotemark[3] and Chenlong Wang\footnotemark[4] 
 }
@@ -31,7 +32,7 @@
 	Shanghai, China. E-mail: cjb1206@tongji.edu.cn
 }
 \lefthead{Wang et al.}
-\righthead{Elastic WERTI based on mode decomposition}
+\righthead{Elastic reflection kernel analysis and traveltime inversion}
 \maketitle
 
 \begin{abstract}
@@ -45,23 +46,27 @@ extent, it is still stuck with the cycle-skipping problem due to the objective f
 %objective function will be less severe
 %compared with the previous one. 
 %Therefore, 
-Building initial P and S wave velocity models for EFWI by using elastic wave-equation
+Building initial P and S wave velocity models for EFWI through elastic wave-equation
 reflections traveltime inversion (ERTI) would be effective and robust
-since taveltime information relates to the background model more linearly. 
-The reflection kernels in elastic media are complicated and difficult to use, especially when
+since traveltime information relates to the background model more linearly. 
+The wave mode decomposition, both on the recording surface and in the underground space, are important for ERTI.
+On the one hand,
+P/S separation of multicomponent seismograms on the surface provides 
+individual P or S wave data residuals.
+Thus, we implement the ERTI using the $L_2$ norm of the isolated P or S wave traveltime
+residuals extracted by the dynamic image warping (DIW) as objective function.
+On the other hand, the underground spatial wave mode decomposition provides separated wavefields to precondition
+the kernels or gradients.
+However, the reflection kernels in elastic media are complicated and difficult to use, especially when
 calculating the gradient of S-wave
 velocity. The investigation of reflection kernels show that mode decomposition can suppress the artifacts in
 gradient calculation. 
-Besides, P/S separation of multicomponent seismograms can isolate the P or S recordings for
-individual data residuals.
 %Besides, the model regularization through local dip-dependent smooth filter ensures the inversion converging to a
 %geological model. 
-Thus, we implement the ERTI by using the $L_2$ norm of the traveltime
-residual extracted by the Dynamic image warping (DIW) as objective function.
-A two-step inversion strategy is adopted to effectively reduce the nonlinearty of inversion, in which PP reflections are first used to invert $V_p$,
-followed by $V_s$ inversion with PS reflections based on the well recoverd $V_p$. 
-To avoid the mismeasurement of PS traveltime residual, the well recovered PP image are used to
-generate the PS reflections. 
+Accordingly, a two-step inversion strategy is adopted to effectively reduce the nonlinearity of inversion, in which PP reflections are first used to invert $V_p$,
+followed by $V_s$ inversion with PS reflections based on the well recovered $V_p$. 
+%To avoid the mismeasurement of PS traveltime residual, the well recovered PP image are used to
+%generate the PS reflections. 
 %Through the layer stripping strategy, we rebuild the background elastic
 %model from shallow the deep.
 %P/S separation of multicomponent seismograms  spatial wave mode

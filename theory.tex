@@ -1,28 +1,28 @@
 \section{Theory of ERTI}
-rssume that there is a perturbation $\delta c_{ijkl}$ in the background elastic media
-$c_{ijkl}$, the background wavefileds $u_i$ and perturbed wavefields
-$\delta u_i$ satisfy:
+Assume that there is a perturbation $c^{1}_{ijkl}$ in the background elastic media
+$c^0_{ijkl}$, using the Born approximation, the background wavefields $u_i$ and perturbed wavefields
+$\hat{u}_i$ satisfy:
 \begin{equation}
     \rho \frac{\partial u^2_i}{\partial t^2}  -
     \frac{\partial}{\partial x_j}\left[ 
-        c_{ijkl}\frac{\partial u_{k}}{\partial
+        c^0_{ijkl}\frac{\partial u_{k}}{\partial
         x_l}\right]=f_i,
     \label{eq:WE} 
 \end{equation}
 and
 \begin{equation}
-    \rho \frac{\partial \delta u^2_i}{\partial t^2}  -
+	\rho \frac{\partial \hat{u}^2_i}{\partial t^2}  -
     \frac{\partial}{\partial x_j}\left[ 
-        c_{ijkl}\frac{\partial \delta u_{k}}{\partial
-        x_l}\right]=\frac{\partial}{\partial x_j}\left[\delta c_{ijkl}\frac{\partial u_{k}}{\partial x_l}\right],
+	c^0_{ijkl}\frac{\partial \hat{u}_{k}}{\partial
+        x_l}\right]=\frac{\partial}{\partial x_j}\left[c^1_{ijkl}\frac{\partial u_{k}}{\partial x_l}\right],
     \label{eq:DeltaWE} 
 \end{equation}
-in the sense of first-order elastic scattering, where $\delta u_i$ can be seen as the demigrated reflection data using the image
-perturbation $\delta c_{ijkl}$ obtained from RTM or other imaging method. In ERTI, we
-aim to minimize the traveltime differences between observed data
+in the sense of first-order elastic scattering, where $\hat{u}_i$ can be taken as the demigrated reflection data using the image
+perturbation $c^1_{ijkl}$ obtained from reverse time migration (RTM) or other imaging method. In ERTI, we
+aim to minimize the traveltime differences (or time shifts) between the observed data
 $\mathbf{d}^{o}$ and
-calculated data $\mathbf{d}^{c}$, then
-the objective function can be expressed as:
+the calculated data $\mathbf{d}^{c}$, using the following  
+the objective function: 
 %\begin{equation}
 %	E=\frac{1}{2}\int\tau^2(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s},
 %    \label{eq:Objectivefunction} 
@@ -30,29 +30,30 @@ the objective function can be expressed as:
 \begin{equation}
 	\left\{
 		\begin{aligned}
-			&\tau(\mathbf{x_r},t;\mathbf{x_s})=\mathop{\arg\min}_{\tau}
-			\parallel\mathbf{d}^{c}(\mathbf{x}_r,t;\mathbf{x}_s)-\mathbf{d}^{o}(\mathbf{x}_r,t+\tau;\mathbf{x}_s)\parallel^2\\
-    &E=\frac{1}{2}\int\tau^2(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s},
+			&\tau(\mathbf{x_r},t)=\mathop{\arg\min}_{\tau}
+			\int^T_0\sum_r\parallel\mathbf{d}^{c}(\mathbf{x}_r,t)-\mathbf{d}^{o}(\mathbf{x}_r,t+\tau)\parallel^2\\
+    &E=\frac{1}{2}\int^T_0\sum_r\tau^2(\mathbf{x_r},t)dt,
 		\end{aligned}
 	\right.
     \label{eq:Objectivefunction} 
 \end{equation}
-where the time differences $\tau(\mathbf{x_r},t;\mathbf{x_s})$ can be extracted
+where the time differences $\tau(\mathbf{x_r},t)$ can be extracted
 through DIW (The readers can refer to \cite{Hale2013} for detail).
-After a similar derivation as in \cite{Ma2013} (see Appendix A ), the gradients of equation \eqref{eq:Objectivefunction} can be expressed as:
+
+After the derivation in Appendix A using the adjoint state method, the gradients of equation \eqref{eq:Objectivefunction} can be expressed as:
 \begin{equation}
-	\frac{\partial E}{\partial c_{ijkl}}=-\int (\frac{\partial u_{i}}{\partial
-	x_j}\frac{\partial \delta \psi_{k}}{\partial x_l}+\frac{\partial \delta u_{i}}{\partial
+	\frac{\partial E}{\partial c^0_{ijkl}}=-\int (\frac{\partial u_{i}}{\partial
+	x_j}\frac{\partial \hat{\psi}_{k}}{\partial x_l}+\frac{\partial \hat{u}_{i}}{\partial
 	x_j}\frac{\partial \psi_{k}}{\partial x_l}),
     \label{eq:GradientCijkl}
 \end{equation}
-where $u_i$ and $\delta u_i$ are the state variables, while $\psi_i$ and $\delta
-\psi_i$ are the adjoint state variables satisfying:
+where $u_i$ and $\hat{u}_i$ are the state variables, while $\psi_i$ and $\hat{
+\psi}_i$ are the adjoint state variables satisfying:
 \begin{equation}
     \rho \frac{\partial \psi^2_i}{\partial t^2}  -
     \frac{\partial}{\partial x_j}\left[ 
         c_{ijkl}\frac{\partial \psi_{k}}{\partial
-		x_l}\right]=\tau(\mathbf{x_r},t;\mathbf{x_s})\frac{\dot{d}^o_i(\mathbf{x_r},t+\tau;\mathbf{x_s})}{h_i(\mathbf{x_r},t;\mathbf{x_s})},
+		x_l}\right]=\tau(\mathbf{x_r},t)\frac{\dot{d}^o_i(\mathbf{x_r},t+\tau)}{h_i(\mathbf{x_r},t)},
     \label{eq:AdjointWE} 
 \end{equation}
 and
@@ -66,19 +67,19 @@ and
 \end{equation}
 with
 $h_i(\mathbf{x_r},t)=\dot{d}^o_i(\mathbf{x_r},t+\tau)^2-\ddot{d}^o_i(\mathbf{x_r},t+\tau)(d^c_i(\mathbf{x_r},t)-d^o_i(\mathbf{x_r},t+\tau)$.
-(The hat dot denotes the time derivative.) On the right-hand-side (RHS) of equation
-\eqref{eq:GradientCijkl}, the two terms indicate the source and receiver
+The hat dot denotes the time derivative. On the right hand side of equation
+\eqref{eq:GradientCijkl}, the two terms indicate two cross-correlations that represent the source and receiver
 parts of the reflection wavepath, respectively. For simplicity, we derive the
 gradients of stiffness
 coefficients for inversion. But the velocity parameterization will be more reasonable
 to implement the traveltime inversion.
-Thus, we can get the gradients in terms of P- and S- wave velocities through the chain rule:
+Thus, we get the gradients in terms of P- and S- wave velocities through the chain rule, namely:
 \begin{equation}
 	\begin{split}
 	&\frac{\partial E}{\partial V_p}=2\rho V_p\frac{\partial E}{\partial
-		c_{ijkl}}\delta_{ij}\delta_{kl}, \\
+		c^0_{ijkl}}\delta_{ij}\delta_{kl}, \\
 	&\frac{\partial E}{\partial V_s}=2\rho V_s\frac{\partial
-	E}{\partial c_{ijkl}}(-2\delta_{ij}\delta_{kl}+\delta_{ik}\delta_{jl}+
+	E}{\partial c^0_{ijkl}}(-2\delta_{ij}\delta_{kl}+\delta_{ik}\delta_{jl}+
 	\delta_{il}\delta_{jk}).
 	\end{split}
     \label{eq:GradientVel}
@@ -91,61 +92,66 @@ but share the same reflection wavepath information (reflection kernels).
 %sources. 
 Therefore, the key point of reflection inversion is how to calculate and utilize the reflection kernel. 
 %Different types of objective funtion only induce different types of adjoint sources.
-In elastic case, due to the complex wave phenomenons, the cross-correlations between
-different wave mode conversions will generates cross-talks in the kernel. Therefore, the wavepath of elastic reflections will 
-be far more complicated than that in acoustic case \cite[]{Wang2017}.
 For simplicity, we rewrite \eqref{eq:GradientCijkl} as follow:
 \begin{equation}
     \nabla E(
     \mathbf{m}_0)=-\int(
-    \mathbf{u}\cdot\delta \boldsymbol{\psi}
-    +\delta
-    \mathbf{u}\cdot{\boldsymbol{\psi}})
+    \mathbf{u}\otimes\bsy{\hat\psi}
+    +
+	\mathbf{\hat{u}}\otimes{\bsy{\psi}})
     \label{eq:kernelgradient} 
 \end{equation} 
-with $\mathbf{m}_0$ is the background model, $\mathbf{u}$ and $\boldsymbol{\psi}$ are the forward and adjoint background wavefields,
-$\delta\mathbf{u}$ and $\delta \boldsymbol{\psi}$ are the forward and adjoint perturbed wavefields.
-The operator $\cdot$ denotes the cross correlation between two wavefields. 
+with $\mathbf{m}_0$ is the background model, $\mathbf{u}$ and $\mathbf{\hat{u}}$ are the incident
+and perturbed forward wavefields,
+ while $\bsy{\psi}$ and $\bsy{\hat\psi}$ are the incident and perturbed adjoint wavefields,
+ respectively.
+The operator $\otimes$ denotes the cross correlation between two wavefields. 
 Note that, equation \eqref{eq:kernelgradient} just schematically shows the manner of cross correlation. 
 The detailed formulas should be derived according to the parameterization through
 chain rule as in equation \eqref{eq:GradientVel}.
 
-Since in the elastic case, the four wavefields in eq. \eqref{kernelgradient} contain both P and S
-waves, the cross-correlation between different wave modes may cause interference to
-gradients \cite[]{Wang2017}.
+In elastic case, due to the complex wave phenomenons, the four wavefields in eq.
+\eqref{eq:kernelgradient} contain both P and S waves, then the cross-correlations between
+different wave mode conversions will generates cross-talks in the kernel \cite[]{Wang2017ERTI}. Therefore, the wavepath of elastic reflections will 
+be far more complicated than that in acoustic case.
+%Since in the elastic case, the four wavefields in eq. \eqref{eq:kernelgradient} contain both P and S
+%waves, the cross-correlation between different wave modes may cause interference to
+%gradients \cite[]{Wang2017ERTI}.
 To analyze the elastic reflection kernels, 
 we decompose the original kernel into four components which 
 correspond to the cross-correlation of different wave modes, respectively, as follows:
 %Tthe above formula can be decomposed into four types with:
 \begin{equation}
     K_{m_0}^{MN}     
-    =-\int(\mathbf{u}^M\cdot\delta \boldsymbol{\psi}^N
-    +\delta  \mathbf{u}^M\cdot\boldsymbol{\psi}^N),\\
+    =-\int(\mathbf{u}^M\otimes\bsy{\hat\psi}^N
+	+\mathbf{\hat{u}}^M\otimes\bsy{\psi}^N),\\
     \label{eq:decompkernel} 
 \end{equation}
 where $M,N\in\{P,S\}$.
 $K_{m_0}^{MN}$ represents the cross correlation between the $M$ mode forward wavefields and the 
 $N$ mode adjoint wavefields. 
-As illustrated in {\color{red}Fig. \ref{fig:11}}, this
+For example, $K^{PS}$ is the
+cross-correlation of P-mode forward wavefield and S-mode adjoint wavefields. So the $M$ or $N$ is
+the mode type of the wavefields involved in cross-correlation but not 
+the mode type of shot data.
+As illustrated in Fig. \ref{fig:kernel_mirror_src}, this
 kernel can be considered as the cross-correlation between the forward wavefields
 emitted from a virtual source at a mirror location and the adjoint wavefields
 back-propagated from the receiver. If the traveltime of the adjoint wavefields (injected at
-receiver) approximately equals to the forward wavefields, the cross-correlation will
-produce the low-frequency wavepath information. Otherwise, the cross-correlation
-should be a high-wavenumber migration impulse. For example, $K^{PS}$ is the
-cross-correlation of P-mode forward wavefield and S-mode adjoint wavefields, but has
-little to do with the PS mode data.
+receiver) is consistent with the forward wavefields, the cross-correlation will
+produce the low-frequency wavepath. Otherwise, the cross-correlation
+should be a high-wavenumber migration impulse. 
 %Note, it does not denote the kernel of $MN$ mode data. For example, the reflection 
-%kernel of PS data should be $(\mathbf{u}^P\cdot\delta \boldsymbol{\psi}^P +\delta
-%\mathbf{u}^S\cdot\boldsymbol{\psi}^S)$ but not $K^{PS}$.
+%kernel of PS data should be $(\mathbf{u}^P\cdot\delta \bsy{\psi}^P +\delta
+%\mathbf{u}^S\cdot\bsy{\psi}^S)$ but not $K^{PS}$.
 
-Numerically, we calculate the kernels with the single-source-receiver data
+For instance, we calculate the kernels with the single-source-receiver data
 which are synthesized for a single reflector with a pure P-wave source.
 %Here we use a waveform data residual as the adjoint source for back-propagation.
 Since different objective functions only induce different types of adjoint
-sources from the perspective of gradient calculation, the investigation of kernels can
-be done by using a waveform data residual as the adjoint source for back-propagation.
-We use the $V_p$ - $V_s$ parameterization as in equation \eqref{eq:GradientVel}.
+sources from the perspective of gradient calculation, we can investigate the reflection kernel 
+using the waveform data residual as the adjoint source for back-propagation.
+%We use the $V_p$ - $V_s$ parameterization as in equation \eqref{eq:GradientVel}.
 In the first test, we place a single $V_p$ reflector in the homogeneous background (Fig \ref{fig:kernel1_vp}a and b). 
 %We use the single source-receiver reflection data to calculate the kernel.
 Since there is no perturbation of $V_s$, only PP reflection exist in the data (almost
@@ -156,8 +162,7 @@ source and receiver parts. $K_{V_p}$ produces the low-wavenumber PP reflection
 wavepath as expected.
 While in $K_{V_s}$, the energy focus on the edge of the wavepath rather than the first Fresnel-Zone as in the $V_p$ kernel.
 One plausible reason is that the $V_s$ kernel is relatively insensitive to the PP data generated by $V_p$ reflector.
-Besides, we can see the migration impulse below the reflector due to the down-going perturbed wavefields
-(Zone D mentioned by \cite{Zhou2015}).
+Besides, we can see the migration impulse below the reflector due to the down-going perturbed wavefields.
 
 
 In the second test, we use the $V_s$ reflector (Fig \ref{fig:kernel2}a and b) to generate both PP
@@ -165,16 +170,16 @@ and PS reflections.
 %The $V_s$ reflector produces both PP and PS data. 
 The $V_p$ kernel excludes S-wavefield automatically because of the divergence operator 
 implied in the term $\delta_{ij}\delta_{kl}$ (see eq. \eqref{eq:GradientVel}). 
-However, $\delta \boldsymbol{\psi}$ contains the converted SP wavefields 
-induced by the back-propagated  $\boldsymbol{\psi}^S$ at the location of reflector.
+However, $\bsy{\hat\psi}$ contains the converted SP wavefields 
+induced by the back-propagated  $\bsy{\psi}^S$ at the location of reflector.
 These non-physical wavefields make the $V_p$ kernel slightly different from that in Figure \ref{fig:kernel1_vp}c.
 To remove these non-physical artifacts in $K_{V_p}$, we should only inject the PP data during the
 back-propagation. 
 %If we only back-propagate the PP data, $V_p$ kernel will be the same as Figure \ref{fig:kernel1_vp}c.
 
 For the $V_s$ kernel (Figure \ref{fig:kernel2}d), due to mode conversions, multi-wavepaths overlapping with each other 
-make it much more difficult to find the correct reflection kernel. 
-The straightforward utilization of this kernel in gradient calculation will very likely cause severe
+make it much more difficult to calculate and exploit the correct reflection kernel. 
+The straightforward utilization of this kernel in gradient calculation will very likely cause 
 cross-talk during reflection inversion.
 According to equation
 \eqref{eq:decompkernel}, we calculate the components of $K_{V_s}$, as shown in Figure
@@ -182,66 +187,121 @@ According to equation
 sign. This is because the term $\delta_{ij}\delta_{kl}$ implied divergence operator has
 a negative sign in the $V_s$ gradient (eq. \eqref{eq:GradientVel}).
 $K^{PS}_{V_s}$ and $K^{SP}_{V_s}$ mainly consist of high-wavenumber energy
-corresponding to the migration impulse of cross-mode wavefields. Most importantly, 
-we expect to update the $V_s$ model through the S-wavepath in PS reflection, which is
-exactly the component $K^{SS}_{V_s}$.  Figure \ref{fig:kernel2_vs_decomp}d shows that the
+corresponding to the migration impulse of cross-mode wavefields. 
+Figure \ref{fig:kernel2_vs_decomp}d shows that the
 separated S-wavepath of PS reflection is little affected by the P-wavefields. 
 %S-wave part of the PS reflection wavepath. 
-{\color{red}Therefore, we recommend using $K^{SS}_{V_s}$ to mitigate the cross-talks in $V_s$ gradient calculation.
-}
 
-To further investigate the implication of the components of the kernel, we take a more detailed
-separation 
+To further investigate the implication of the reflection kernel, we will
+analyze the generation of every parts by not only decomposing the spatial wavefields
+but also isolating the injection of PP or PS data.
+Taking the second test as example, we further decompose the kernels into 
+several parts by using the manner shown in the schematic illustrations, respectively. 
+The decomposition of $K_{V_p}$ is easy to understand 
+(Fig \ref{fig:kernel_vp_decomp}) 
+because only $K^{PP}$ is involved. In Fig
+\ref{fig:kernel_vp_decomp}e, only the PP data are injected as adjoint source, then the
+cross-correlation between
+perturbed wavefields $\bsy{\hat\psi}^{PP}$ and the background
+$\mathbf{u}^P$ produces a clean PP wavepath at the source side. The	schematic
+illustration with raypaths denotes the wave mode of
+the modelled and adjoint wavefields involved in the calculation. Note that,
+when PS data are injected, an SP conversion will
+occur at the interface, which will produce a migration impulse, as shown in
+Fig. \ref{fig:kernel_vp_decomp}f. Moreover, in
+Fig. \ref{fig:kernel_vp_decomp}h, 
+since a non-physical P wavefield is generated in $\psi$ due to the PS data injection
+\cite[]{Ravasi2013}, 
+another migration impulse can be seen at the receiver side. 
+Accordingly, the non-physical conversions related to the PS data injection will
+cause artifacts in the $K_{V_p}$ calculation. 
+
+Since $K_{V_s}$ is more complicated, we first decompose it into  source and receiver
+parts as shown in Fig \ref{fig:kernel_vs_decomp}c and d. Then, the isolation of PP
+and PS data injection provides four different components, respectively
+(Fig \ref{fig:kernel_vs_decomp}e to h).
+Fig \ref{fig:kernel_vs_decomp}e and f show the decomposition of
+the kernel in Fig. \ref{fig:kernel_vs_decomp}c
+while Fig \ref{fig:kernel_vs_decomp}g and h corresponds to the decomposition of the kernel in Fig.
+\ref{fig:kernel_vs_decomp}d.
+These four components can be further decomposed with the help of mode decomposition. 
+For simplicity, we will only analyze the decomposition of  Fig \ref{fig:kernel_vs_decomp}h,
+while the analyses of the rest three parts will be placed in Appendix B.
+In Fig \ref{fig:kernel_vs_recPS}, 
+P and S wavefields are
+generated simultaneously in $\psi$ when PS data is injected. 
+Although \ref{fig:kernel_vs_recPS}c denotes a same-mode correlation, 
+it generates a migration impulse 
+due to the  inconsistent traveltime of modelled $\mathbf{\hat{u}}^{PP}$ and non-physical
+converted $\psi^{P}$, as if a PP event is injected at the location of PS event.
+The cross-mode correlations in 
+Fig \ref{fig:kernel_vs_recPS}d and \ref{fig:kernel_vs_recPS}e
+also produce migration impulses. 
+Luckily, the cross-correlation between $\psi^{S}$ and $\mathbf{\hat{u}}^{PS}$ provides the
+low-wavenumber S-wavepath of the PS reflection.
+
+According to the above investigation, we know that the cross-correlation between
+different wave modes cause cross-talks in gradient calculation. The injection of separated PP
+reflection data helps to reduce the artifacts in $V_p$
+gradients, so does the injection of separated PS reflection data for $V_s$ gradient calculation.
+Most importantly, we expect to update the $V_s$ model through the S-wavepath in PS reflection, which is
+exactly the component $K^{SS}_{V_s}$.  
+Therefore, we recommend using $K^{SS}_{V_s}$ to mitigate the cross-talks in $V_s$ gradient calculation.
 
 \section{Workflow of elastic WERTI}
-In elastic case, it is common to observe that different mode-conversions, mainly PP
+In elastic case, it is common to observe that different mode-conversions, e.g. PP
 and PS events, overlap and intersect with each other in the original multi-component
 seismograms . The cross points between events
 would be singularities for traveltime difference estimation through DIW.
 %DIW extracts the reflection traveltime differences in data domain. In elastic case, %PP and PS reflections 
 %the cross points between different mode-conversions would be singularities for DIW.
-Therefore, the estimated $\tau(\mathbf{x_r},t;\mathbf{x_s})$ would be inaccurate due
+Therefore, the estimated $\tau(\mathbf{x_r},t)$ would be inaccurate due
 to these singularities.
 %if using the original multicomponent seismic data, which makes equation \eqref{eq:GradientVel} difficult to implement.
-Besides, according to the reflection kernel analysis, individually injecting separated
+Moreover, according to the reflection kernel analysis, individually injecting separated
 PP or PS seismograms
 can mitigate the cross-talk in gradient calculation. 
 Thus, we decompose the observed and synthesized data into P- and S-wave
 parts through P/S separation of multi-component seismograms \cite[]{Li2016a}.
-In this way, the traveltime differences can be decoupled into PP and
-PS parts by DIW. Accordingly, we implement the ERTI through a two-stage
-workflow, i.e. estimating $V_p$ using PP reflections followed by the $V_s$ estimation
+In this way, 
+it is relatively easier to estimate the time shifts through DIW for PP and PS reflection,
+respectively.
+%the traveltime differences can be decoupled into PP and
+%PS parts by DIW. 
+Accordingly, we implement the ERTI through a two-stage
+workflow, i.e. estimating $V_p$ using PP reflections followed by estimating $V_s$ 
 using PS reflections.
 
-\subsection{Stage \uppercase\expandafter{\romannumeral1}: PP reflection for $V_p$}
-In this stage, we use traveltimes of PP reflection to recover the low-to-intermediate wavenumbers of $V_p$ model. 
+\subsection{Stage \uppercase\expandafter{\romannumeral1}: ERTI of PP reflection}
+In this stage, we use traveltimes of PP reflection to recover the low-to-intermediate wavenumbers of
+the $V_p$ model. 
 The perturbation of $V_p$ ($\delta V_p$) is obtained through elastic reverse time migration (ERTM). 
 When the migration velocity model is inaccurate, 
 %the migration/demigration of large-offset data would produce deviated
 %zero-offset two-way travletime, which will increase the nonlinearity of inversion.
 %Therefore, 
-people always assume
-the two way travletime of zero-offset as an invariants during reflection inversion, such as reflection traveltime tomography or RWI,
+people always take
+the two-way travletime of zero-offset as an invariants during reflection inversion, such as reflection traveltime tomography or RWI,
 and thus use the zero or small offset data to generate the velocity perturbation \cite[]{Zhou2015}. 
-Nonetheless, this method still may have problem to ensure a correct zero offset traveltime in the
-demigration when velocity anomaly is complex. A better method would be the demigration with extended
-image \cite[]{Webill2013, Symes2015, Qiang2017}, but it is out of the scope of this paper.
+Nonetheless, this method still may fail to ensure a correct zero offset traveltime in the
+demigration when velocity anomaly is complex. A better method would be the demigration with the extended
+image \cite[]{Weibull2014, Hou2015, Qiang2017}, but it is out of the scope of this paper.
 Besides, since the traveltime rather than the amplitude is fitted in ERTI, 
 ERTM (instead of its least-squares counterpart) is sufficient to obtain the image perturbation for
-the kinematic demigration.
+the demigration.
 %but not a least-squares manner (LSRTM) to find the correct reflectivity. 
 Thus, the objective function can be written as:
 \begin{equation}
 	\left\{
 		\begin{aligned}
-			&\tau_{pp}(\mathbf{x_r},t;\mathbf{x_s})=\mathop{\arg\min}_{\tau}
-			\parallel\mathbf{d}^{c}_{pp}(\mathbf{x}_r,t;\mathbf{x}_s)-\mathbf{d}^{o}_{pp}(\mathbf{x}_r,t+\tau;\mathbf{x}_s)\parallel^2\\
-			&E_{pp}=\frac{1}{2}\int\tau^2_{pp}(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s},
+			&\tau_{pp}(\mathbf{x_r},t)=\mathop{\arg\min}_{\tau}
+			\parallel\mathbf{d}^{c}_{pp}(\mathbf{x}_r,t)-\mathbf{d}^{o}_{pp}(\mathbf{x}_r,t+\tau)\parallel^2\\
+			&E_{pp}=\frac{1}{2}\int\tau^2_{pp}(\mathbf{x_r},t)dtd\mathbf{x_r},
 		\end{aligned}
 	\right.
     \label{eq:ObjectivefunctionPP} 
 \end{equation}
-where $d^{c}_{pp}$ and $d^{o}_{pp}$ are synthesized and observed PP reflection through the P/S
+where $\mathbf{d}^{c}_{pp}$ and $\mathbf{d}^{o}_{pp}$ are synthesized and observed PP reflection after the P/S
 separation on the recording surface, respectively. According to the previous derivation, we can
 obtain the gradient of  $V_p$, i.e. $\frac{\partial E}{\partial
 V_p}$.
@@ -250,44 +310,652 @@ the divergence operator is implied in $\frac{\partial
 E}{\partial V_p}$, which makes the gradient calculation only involve PP reflection.
 %is similar to the $V_p$ gradient of EFWI.
 Therefore, the PP reflection traveltime inversion for $V_p$ in elastic media is similar to the acoustic case
-except that we need the isolation of PS component in the former one. In addition, the separated
+except that the isolation of PS component is required in the former one. In addition, the separated
 P-wave reflections may include some SP conversions due to the source-side effects in the elastic
-case. This may lead to the mismatch of the traveltime inversion.
-%calculate RHS of equation \eqref{eq:AdjointWE} and replacing $\delta c_{ijkl}$ with
-%$\delta V_p$ in equation \eqref{eq:DeltaWE} and \eqref{eq:AdjointDeltaWE}.
-\subsection{Stage \uppercase\expandafter{\romannumeral2}: PS reflection for $V_s$}
+case. %This may lead to the mismatch of the traveltime inversion.
+\subsection{Stage \uppercase\expandafter{\romannumeral2}: ERTI of PS reflection}
 In the second stage, we utilize the PS reflections to retrieve the background component of
 $V_s$ model. Similarly, the objective function becomes:
 \begin{equation}
 	\left\{
 		\begin{aligned}
-			&\tau_{ps}(\mathbf{x_r},t;\mathbf{x_s})=\mathop{\arg\min}_{\tau}
-			\parallel\mathbf{d}^{c}_{ps}(\mathbf{x}_r,t;\mathbf{x}_s)-\mathbf{d}^{o}_{ps}(\mathbf{x}_r,t+\tau;\mathbf{x}_s)\parallel^2\\
-			&E_{ps}=\frac{1}{2}\int\tau^2_{ps}(\mathbf{x_r},t;\mathbf{x_s})dtd\mathbf{x_r}d\mathbf{x_s}.
+			&\tau_{ps}(\mathbf{x_r},t)=\mathop{\arg\min}_{\tau}
+			\parallel\mathbf{d}^{c}_{ps}(\mathbf{x}_r,t)-\mathbf{d}^{o}_{ps}(\mathbf{x}_r,t+\tau)\parallel^2\\
+			&E_{ps}=\frac{1}{2}\int\tau^2_{ps}(\mathbf{x_r},t)dtd\mathbf{x_r}.
 		\end{aligned}
 	\right.
     \label{eq:ObjectivefunctionPP} 
 \end{equation}
-where $d^{c}_{ps}$ and $d^{o}_{ps}$ are synthesized and observed PS reflections, respectively.
-After the P-wave stage inversion, both the background model and the structural image 
+where $\mathbf{d}^{c}_{ps}$ and $\mathbf{d}^{o}_{ps}$ are synthesized and observed PS reflections, respectively.
+After the first stage inversion, both the background model and the structural image 
 perturbation of $V_p$ have been well recovered. These are the good constrains for the prediction 
 of PS reflection. Moreover, in
 most geological settings, $V_p$ and $V_s$ share the same structure in the subsurface. 
 It means that we can use the well-located $\delta V_p$ instead of $\delta V_s$ to generate the PS reflections. 
-Therefore, to fit the traveltimes, there are two ways to predict the PS reflection after the P-wave stage:
+Therefore, to fit the traveltimes, there are two ways to predict the PS reflection:
 
 {\bf{\uppercase\expandafter{\romannumeral1}}}: Migrate the observed PS data with inverted $V_p$ model and
 initial $V_s$ model to get the high wavenumber of $V_s$ ($\delta V_s$), then predict the PS reflection;
 
 {\bf{\uppercase\expandafter{\romannumeral2}}}: Start from the inverted $V_p$ model and initial $V_s$
-model, use the well-located $\delta V_p$ to generate the PS reflections. 
+model, use the well-located $\delta V_p$ as the virtual source to generate the PS reflections. 
 
 %However, the implementation is a little different from the previous stage. 
 
 Unfortunately, the predicted PS reflection with method {\bf\uppercase\expandafter{\romannumeral1}} are
-very sensitive to the error of $V_p$ model. This sensitivy makes the inversion more nonlinear.
+very sensitive to the error of $V_p$ model. 
+In Appendix C, we illustrate this damaging sensitivity for inversion through a single reflector
+example with
+map migration and demigration under the high-frequency approximation.
+Therefore, we recommend to use method {\bf\uppercase\expandafter{\romannumeral2}}.
+%which will make the inversion more nonlinear.
 %The difference between method {\bf\uppercase\expandafter{\romannumeral1}} and {\bf\uppercase\expandafter{\romannumeral1}} is that 
-Under the high-frequency approximation, we will explain this situation using a single reflector example through 
+Nonetheless, the amplitude of the predicted PS will be inaccurate when using 
+method {\bf\uppercase\expandafter{\romannumeral2}}, even if $\delta V_p$ is obtained by the
+least-squares ERTM. 
+Fortunately, the inaccurate amplitude of PS prediction has little effect on ERTI because ERTI only
+cares the kinematic information.
+Note that 
+the traveltime residuals of the PS reflection may be 
+large in the deeper part (Fig \ref{fig:Sens_vp}). DIW may suffer from the cycle-skipping problem in this
+situation. We can utilize the ``layer-stripping'' strategy to tackle this, during which the shallow part is
+inverted using the early arrived reflection while the deep part is inverted using the late
+arrived reflections gradually. In this way, the incorrect traveltime residuals of the deeper part will not
+mislead the inversion of shallow part. Vice versa, the reliable inversion of the shallow part
+guarantee
+the correctness of traveltime residual for the deeper part.
+
+In order to make sure that reflected S-wavepath is used to update $V_s$, the wave mode decomposition 
+is applied to calculate $K^{SS}_{V_s}$, namely:
+%we drop the first term in the RHS of equation \eqref{eq:GradientCijkl} when
+%calculating $\frac{\partial E}{\partial V_s}$. And also wave mode decomposition is
+%applied to make sure that only S-wave energy are involved:
+\begin{equation}
+	\frac{\partial E_{ps}}{\partial V_s}=-2\rho V_s
+	\int (\frac{\partial \hat{u}^S_{i}}{\partial
+    x_j}\frac{\partial \psi^S_{k}}{\partial x_l})
+	(\delta_{ik}\delta_{jl}+
+	\delta_{il}\delta_{jk}).
+    \label{eq:GradientVel_MD}
+\end{equation}
+This is similar to the gradient precondtioning for EFWI proposed by \cite{WangEtAl2017}. 
+It can mitigate parameter trade-offs and suppress artifacts for the
+$V_s$ inversion.
+\section{numerical example}
+We select a part of the Sigsbee2A model (Figure
+\ref{fig:TrueAndInitial}a and b) to test the inversion algorithm and strategy.
+The $V_s$ model is generated through $V_p$ model with a constant $V_p$-to-$V_s$ ratio of 0.66. 
+The initial model for ERTI are shown in 
+Figure \ref{fig:TrueAndInitial}c and d, which increase linearly with depth.
+The initial model of $V_p$ is generally lower (from 1500m/s to 1996m/s) while 
+$V_s$ is higher  (from 990m/s to 1317m/s) than the true model. 
+48 shots are evenly deployed on the surface.
+%in which 8 shots are beyond the right
+%boundary of the model to gain a better illumination.
+320 receivers are fixed at the calculation area.
+The main frequency of P-wave source is 15Hz.
+The spatial and time interval of forward modeling is 16m and 1.2ms, respectively.
+
+Figure \ref{fig:Results_init} is the results of ERTM and EFWI with the initial model.
+Since the initial
+$V_p$ and $V_s$ model are far from the true value, both the PP image ($\delta V_p$) and PS
+image ($\delta V_p$) are wrongly 
+%located even if only the small offset data are used 
+in the ERTM. Especially, the diffractions collapse in PP image and faults almost can not be seen
+in PS image. Meanwhile, we try the EFWI with the above initial model as well. 
+During the EFWI, 
+a four-stage hierarchical strategy 
+from low to high frequency is applied through the time-domain low-pass filter, in which the frequency bands
+are 0-2Hz, 0-4Hz, 0-6Hz and 0-8Hz. 
+We can see the showllow parts of inverted results 
+is acceptable due to the exsistence of diving wave and low-frequency data. However, the inversion of
+deep part suffer from the severe cycle-skipping problem because of the absence of
+low-to-intermediate components in the initial model, which leads to the failure of inversion.
+
+Starting from this initial model, we implement the proposed two-stage ERTI workflow.
+During the inversion, the direct waves are muted to make sure that only the reflection data are involved.
+%Since the linearly increased initial model is quite far from the true value, certainly there will be
+%cycle-skipping problem if we use this for conventional EFWI. However, 
+After
+40 iterations for each stage, ERTI provides a good recovery of the low-to-intermediate components of
+$V_p$ and $V_s$ model. 
+Figure \ref{fig:InvertedModel_ERTI}a and \ref{fig:InvertedModel_ERTI}b show the inverted $V_p$ and $V_s$ model of ERTI.
+%Nonetheless, on the right part, the reflection coverage of surface observation is insufficient for
+%ERTI to rebuild the long-wavelength components. 
+In addition, we apply the structure-oriented smooth filter to the gradients to regularize the
+model update based on the seismic image and structure tensor \cite[]{Hale2009Structure,
+Ma2010, Williamson2011}.
+Note, the structure-oriented smooth filter is an appropriate regularization to stabilize
+and accelerate the convergence. 
+%to models which are a priori more satisfying than others which fit the data. 
+In each iteration of ERTI, we constrain the gradients of ERTI with the seismic image
+obtained by ERTM. Figure \ref{fig:LSF_comparison}b shows the gradient of
+$V_p$ smoothed by an isotropic filter in the first iteration. Though there is no high wavenumber
+artifacts, the illumination footprints of acquisition geometry are obvious, which will cause
+improper update during inversion. After the structure-oriented smooth, the gradient is more balanced
+for the inversion of background velocity. 
+%And the inverted results of the two methods also
+%illustrate advantage of structrue-oriented smooth filter.
+
+Using the inverted results of ERTI as starting models, we also perform the conventional ERTM. 
+As shown in Figure \ref{fig:ERTM_comparison}c and d, 
+since the low-to-intermediate wavenumber components of $V_p$ and $V_s$ are well recovered,
+both of the PP and PS image are greatly improved. The location of reflectors and faults are almost correct and the
+diffractions are migrated as well. 
+%However, the image of the right part is not so good because the
+%recovery of low-to-intermediate components are not well in this area .
+%In addtion, we also compare the demigrated PP and PS reflections using initial and inverted model with
+%the true model (figure \ref{fig:Data_comparison}). 
+In addtion, figure \ref{fig:Data_comparison} shows the comparison between the demigrated PP and PS
+reflections using initial and inverted model with
+the true model. We can see that the main reflections of both PP and PS are well matched after the
+ERTI. Therefore, the cycle-skipping problem of EFWI will be mitigated greatly if using the starting model in
+figure \ref{fig:InvertedModel_ERTI}.
+%Accordingly, the EFWI results with the same
+%hierarchical strategy as the previous example (figure \ref{fig:Results_init}).
+Figure
+\ref{fig:EWERTI+EFWI} show the inverted results of conventional EFWI with the same
+four-stage hierarchical strategy from low to high frequency. Comparing with the 
+Fig \ref{fig:Results_init}, EFWI with the new starting model improves quite a lot,
+especially in the deep part. 
+On the bottom of model, the background components are not well recovered due to
+the lack of reflection coverage.
+That's why EFWI still cannot provide good recovery of this part.
+The vertical profiles at 1.4km and 3km validate the effectiveness of
+our workflow.
+%But the inversion of the right part is not as good as the
+%left part because of the mentioned unreasonable recovery for background model during ERTI.
+%if using the ERTI results as starting models, the cycle-skipping problem
+%of ERWI will be mitigated greatly.
+
+Usually, the low-frequency components in the data and the low-to-intermediate wavenumber in the
+initial model are two key factors to mitigate the cycle-skipping problem in FWI. In field data, the
+low frequency components are difficult to obtain and also more easily contaminated by the noises.
+Good initial models can reduce the nonlinearity caused by the lack of low frequency data.
+To check the robustness of the above ERTI models for EFWI, we will test the EFWI's dependency on 
+the low-frequency data.% when using the above ERTI results. 
+The low-cut frequency threshold are 3Hz,
+5Hz and 7Hz. The components lower than the threshold are filtered out when applying the similar
+hierarchical strategy from low to high frequency in time domain.
+As shown in figure \ref{fig:LowFreqCut_EFWI}, even starting from 5Hz, EFWI still
+provides the acceptable inverted results like
+the no-low-frequency-cut test (figure \ref{fig:EWERTI+EFWI}). 
+When the starting frequecy goes up to 7Hz, 
+because of the insufficient wavenumber coverage, the inversion acts more like a least-squares migration process which concentrates on
+the high-wavenumber update, especially in the deep part.
+Nonetheless, the reconstructed low-to-intermediate components by ERTI can help to reduce the
+dependency of EFWI on low-frequency data. 
+%However, on the right
+%part, the inversion are more dependent on the low-frequency components in the data due to the
+%improper recovery of the background components.
+\section{Conclusions}
+We extend the wave equation reflection travletime inversion towards elastic media to build the
+low-wavenumber
+component of elastic model. 
+ERTI can recover the low-wavenumber components effectively, because time misfits are more sensitive
+and linearly related to the low-wavenumber model perturbation. 
+%Compared with the correlation based method, DIW method provides more stable estimation of traveltime shifts 
+%especially when seismograms contain multi-reflections.
+%With the aid of DIW and mode decomposition, we extend the reflection travletime inversion towards elastic media. 
+The complicated mode conversions in elastic case make the reflection kernels very complex.
+The kernel analyses show that spatial mode decomposition and P/S separation of
+multicomponent data can suppress artifacts and recover the correct reflection wavepath in gradient calculation.
+With the aid of 
+P/S separation of 3C seismograms, we can obtain the separated PP and PS seismograms and then get
+travel time differences of PP and PS through DIW, respectively. 
+To build the long-wavelength component of the model, we introduce a two-stage ERTI
+workflow by firstly using PP then PS reflections, through which the nonlinearity of reflection
+inversion is reduced effectively. 
+In the second stage, the wave mode
+decomposition is introduced to calculate the gradient of $V_s$ to mitigate the trade-off between
+$V_p$ and $V_s$.
+The Sigsbee2A model example shows that even starting with a bad initial model, the
+two-stage ERTI can provide reliable starting model for conventional EFWI. 
+
+\section{Acknowledgement}
+This work is supported by the
+National Natural Science Foundation of China (NO.41474099, 41674117 \& 41630964). 
+This paper is also based upon the work supported by the King Abdullah University of Science
+and Technology (KAUST) Office of Sponsored Research (OSR) under award NO. 2230.
+We appreciate the open-source package of DENISE from
+\textit{https://github.com/daniel-koehn/} and Mines Java Toolkit from
+\textit{https://github.com/dhale}.
+We thank the useful advice from Tariq Alkhalifah (KAUST), Zedong Wu (KAUST),
+and Benxin Chi (Los Alamos).
+\clearpage
+\begin{figure}
+   \centering
+   {\includegraphics[width=0.5\textwidth]{Kernel/Combinations/K_MN.pdf}}
+   \caption{Schematic illustration of the reflection kernels $K^{MN}$. The
+   cross-correlation can be regarded as the conventional FWI kernel between the mirror
+   source and the receiver. The kernel can be a migration impulse or a
+   transimission-type wavepath.}
+   \label{fig:kernel_mirror_src}
+\end{figure}
+\begin{figure}[h]
+   \centering
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Kernel/1vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Kernel/1vs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Kernel/Vponlyvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{Kernel/Vsonlyvp.pdf}}\\
+   \caption{Kernels with single reflector in $V_p$ model. (a) $V_p$ model, (b) $V_s$ model, (c) $K_{V_p}$, (d) $K_{V_s}$.}
+   \label{fig:kernel1_vp}
+\end{figure}
+
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/2vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/2vs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/Vponlyvs.pdf}}
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/Vsonlyvs.pdf}}\\
+   \caption{Kernels with single reflector in $V_s$ model. (a) $V_p$ model, (b) $V_s$ model, (c) $K_{V_p}$, (d) $K_{V_s}$.}
+   \label{fig:kernel2}
+\end{figure}
+
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/VsonlyvsPP.pdf}}
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/VsonlyvsPS.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/VsonlyvsSP.pdf}}
+   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/VsonlyvsSS.pdf}}
+   \caption{Four components of $K_{V_s}$. Here we only decompose the subsurface wavefields as in
+   eq. \eqref{eq:decompkernel} but do not separate the data for injection. 
+   (a) $K_{V_s}^{PP}$, (b) $K_{V_s}^{PS}$, (c) $K_{V_s}^{SP}$, (d) $K_{V_s}^{SS}$.}
+   \label{fig:kernel2_vs_decomp}
+\end{figure}
+\begin{figure}[!htb]
+   \centering
+   {\includegraphics[width=0.8\textwidth]{Kernel/Combinations/K_vp.pdf}}
+   \caption{
+   Further decomposition of $K_{V_p}$ for the second test by injecting the PP
+   and PS event separately as adjoint source and decomposing the wavefields with different manners. 
+   (a) Original adjoint source
+   for back-propagation, (b) $K_{V_p}$, (c) Source side of $K_{V_p}$, (d)
+   Receiver side of $K_{V_p}$. (e)-(h): The first line denotes the adjoint source. 
+   The second line denotes the manner of mode decomposition. The last line
+   denote the corresponding kernel. Note that, when injecting PS data, a
+   non-physical SP conversion (red) is generated
+%   So that there will be a migration impulse
+   in panel (h)}
+   \label{fig:kernel_vp_decomp}
+\end{figure}
+\begin{figure}[!htb]
+   \centering
+   {\includegraphics[width=1.0\textwidth]{Kernel/Combinations/K_vs1.pdf}}
+   \caption{
+   Further decomposition of $K_{V_s}$ for the second test. Here we only separate PP and PS data
+   for injection. (a): Original adjoint source
+   , (b) $K_{V_s}$, (c) Source term of $K_{V_s}$, (d)
+   Receiver term of $K_{V_s}$. (e)-(h): The first line denotes the adjoint source for
+   injection. The second line denotes the decomposed kernels when separately
+   injecting PP and PS data. 
+   }
+   \label{fig:kernel_vs_decomp}
+\end{figure}
+\clearpage
+\begin{figure}[!htb]
+   \centering
+   {\includegraphics[width=1.0\textwidth]{Kernel/Combinations/K_vs_recPS.pdf}}
+   \caption{Further decomposed components of Fig \ref{fig:kernel_vs_decomp}h. (a) The adjoint source
+   for injection, (b) Receiver term of $K_{V_s}$ using (a) as adjoint source, (c)-(f) 
+   The first line denotes the manner and wavefield type for cross-correlation.
+   The second line denotes the corresponding kernels.
+   }
+   \label{fig:kernel_vs_recPS}
+\end{figure}
+
+
+\begin{figure}[!htb]
+   \centering
+   \subfloat{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Truevp.pdf}}
+   \subfloat{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Truevs.pdf}}\\
+   \subfloat{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Initvp.pdf}}
+   \subfloat{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Initvs.pdf}}
+   \caption{Sigbee2A model example. On the top are true models of 
+   $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
+   (d) linearly increasing with depth. }
+   \label{fig:TrueAndInitial}
+\end{figure}
+
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/imageInitialvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/imageInitialvs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Initvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Initvs.pdf}}\\
+   \caption{The results of ERTM and EFWI using initial model: (a) and (b) are PP and
+   PS image of ERTM with near offset data, (c) and (d) are inverted $V_p$ and $V_s$
+   with EFWI.}
+   \label{fig:Results_init}
+\end{figure}
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/RTIvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/RTIvs.pdf}}\\
+   \caption{Inverted results of ERTI: (a) $V_p$, (b) $V_s$.}
+   \label{fig:InvertedModel_ERTI}
+\end{figure}
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/imageTRUEvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/imageTRUEvs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/imageRTIvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/imageRTIvs.pdf}}
+   \caption{ERTM results using the true model (a, b) and
+   inverted model (c, d). (a) and (c) are the PP image；(b) and (d) are the PS
+   image}
+   \label{fig:ERTM_comparison}
+\end{figure}
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPP_true.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPP_init.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPP_werti.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPS_true.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPS_init.pdf}}
+   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPS_werti.pdf}}
+   \caption{Comparison of the observed and the demigrated reflection data using
+   initial model and the inverted model. The first row are the separated PP
+   reflection, while the second row are the separated PS reflection. 
+   The left, middle and right column are the observed reflection data, the
+   demigrated reflection data with initial model
+   and the demigrated data with inverted model, respectively. }
+   \label{fig:Data_comparison}
+\end{figure}
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/LSF_Gra_vp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/NoLSF_Gra_vp.pdf}}\\
+ %  \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/newinit3vp.pdf}}
+ %  \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/NoLSF_vp.pdf}}\\
+   \caption{The comparison of gradients and final inverted results with (left) and
+   without (right) 
+   the structure-oriented constrain: (a) and (c) are the $V_p$ gradients in the first
+   iteration, (b) and (d) are final inverted $V_p$ model.}
+   \label{fig:LSF_comparison}
+\end{figure}
+
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/EFWI_RTIvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/EFWI_RTIvs.pdf}}
+   \caption{
+	   EFWI results using the ERTI model as starting model. (a) $V_p$, (b) $V_s$.
+%	   Inverted results of WERTI and EFWI. (a) and (b) are inverted $V_p$ and
+%       $V_s$ model through two-stage elastic WERTI with the linearly increased models
+%       as initial models. (c) and (d) are inverted $V_p$ and $V_s$ through EFWI using
+%   (a) and (b) as starting models.
+   }
+   \label{fig:EWERTI+EFWI}
+\end{figure}
+\begin{figure}[!htb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/1_5km.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/3km.pdf}}
+   \caption{
+	   Vertical profile of ERTI and EFWI model at 1.4km (a) and 3km (b).
+	   The black and blue lines denote the true and initial model. The green and yellow denote
+	   the ERTI and EFWI model.
+%	   Vertical profiles of elastic WERTI and EFWI results at 1.4km (a) and
+%       3km (b). The black and blue lines indicate the true and linearly increased
+%       initial model. The green and yellow lines indicate the WERTI and EFWI results,
+%       respectively.
+   }
+   \label{fig:Profiles}
+\end{figure}
+\begin{figure}[!thb]
+   \centering
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Cut3Hzvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Cut3Hzvs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Cut5Hzvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Cut5Hzvs.pdf}}\\
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Cut7Hzvp.pdf}}
+   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2_new/Fig/Cut7Hzvs.pdf}}\\
+   \caption{EFWI results with different starting frequency. (a), (c), (e) are $V_p$,
+   (b), (d), (f) are $V_s$.
+   The starting frequency are 3Hz, 5Hz and 7Hz from top to bottom row, respectively.
+   }
+   \label{fig:LowFreqCut_EFWI}
+\end{figure}
+\clearpage
+\section{Appendix A}
+In this appendix, we will derive the gradients of ERTI using adjoint
+state methdo \cite{plessix2006,Liu2006}. Accoring to \cite{Hale2013}, DIW aims to minimize the
+distance between observed and calculated data:
+\begin{equation}
+	D(\tau)=\frac{1}{2}\int^T_0\sum_r[
+	(\mathbf{x}_r,t)-
+	d^o(\mathbf{x}_r,t+\tau(\mathbf{x}_r,t))]^2dt.
+        \label{eq:Dl}
+\end{equation}
+The optimazition of eq.\eqref{eq:Dl} satifies:
+\begin{equation}
+	\frac{\partial D}{\partial \tau}=\int^T_0\sum_r
+	\bsy{\alpha}(\mathbf{x}_r,t)dt=0.
+        \label{eq:PartialD}
+\end{equation}
+where $\bsy{\alpha}(\mathbf{x}_r,t)=\dot{d}^o(\mathbf{x}_r,t+\tau)(d^o(\mathbf{x}_r,t+\tau)-
+d^c(\mathbf{x}_r,t)$.
+For simpicity during derivation, we rewrite eq \eqref{eq:WE} and \eqref{eq:DeltaWE} as:
+\begin{equation}
+	\begin{split}
+	&\rho\partial^2_t \mathbf{u} -\bsy{\nabla\cdot}
+	(\bsy{\mathbf{c}}^0\bsy{:\nabla\mathbf{u}}) = \mathbf{f}\\
+	&\rho\partial^2_t
+	\mathbf{\hat{u}}-\bsy{\nabla\cdot}(\bsy{\mathbf{c}}^0\bsy{:\nabla\mathbf{\hat{u}}})=
+	\bsy{\nabla\cdot}(\mathbf{c}^1\bsy{:\nabla\mathbf{u}}),
+	\end{split}
+        \label{eq:VectorWE}
+\end{equation}
+where $\partial_t$ is the time derivative.
+Therefore, 
+using eq \eqref{eq:VectorWE} and \eqref{eq:PartialD}
+we can define the Lagrangian $\mathcal{L}$: 
+\begin{equation}
+	\begin{split}
+		\mathcal{L}
+%		(\bsy{\tau},\mathbf{u},\mathbf{\hat{u}},\bsy{\mu},
+%		\bsy{\psi},\bsy{\hat{\psi}})
+		&=\frac{1}{2}\sum_{r}\int^T_0\bsy{\tau}^2(\mathbf{x}_r,t)dt -\sum_{r}\int^T_0
+		\bsy{\mu}(\mathbf{x}_r,t)\bsy{\alpha}(\mathbf{x}_r,t)dt\\
+	&-\int^T_0\int_{\Omega} \bsy{\hat \psi}\left(\rho\partial^2_t \mathbf{u} -\bsy{\nabla
+	\cdot}
+	(\bsy{\mathbf{c}}^0\bsy{:}\bsy{\nabla\mathbf{u}}) - \mathbf{f}\right)d^3\mathbf{x}dt\\
+	&-\int^T_0\int_{\Omega} \bsy{\psi}\left(\rho\partial^2_t
+	\mathbf{\hat{u}}-\bsy{\nabla\cdot}(\bsy{\mathbf{c}}^0\bsy{:\nabla\mathbf{\hat{u}}})-
+	\bsy{\nabla\cdot}(\mathbf{c}^1\bsy{:\nabla\mathbf{u}})\right)d^3\mathbf{x}dt,
+	\end{split}
+        \label{eq:Lagrangian}
+\end{equation}
+in which $\bsy{\tau}$, $\mathbf{u}$ and $\mathbf{\hat{u}}$ are state variables, 
+$\Omega$ is the integration domain, 
+and 
+$\bsy{\mu}$, $\bsy{\psi}$ and $\bsy{\hat \psi}$ are Lagrange multipliers that need to be determined.
+Here, we only consider the variation of $\mathbf{c}^0$, then the change of eq.
+\eqref{eq:Lagrangian} is: 
+\begin{equation}
+	\begin{split}
+		\delta\mathcal{L}
+		&=\int^T_0\sum_{r}[\bsy{\tau}(\mathbf{x}_r,t)-\bsy{\mu}(\mathbf{x}_r,t)\mathbf{h}(\mathbf{x}_r,t)]\delta(\mathbf{x}-\mathbf{x})\bsy{\cdot}\delta
+		\bsy{\tau}dt \\
+		&-\int^T_0\int_{\Omega}
+		\bsy{\mu}(\mathbf{x}_r,t)\mathbf{\dot{d}}^o(\mathbf{x}_r,t+\bsy{\tau})\delta(\mathbf{x}-\mathbf{x})\bsy{\cdot}\delta
+		\mathbf{\hat{u}}d^3\mathbf{x}dt\\
+		&+\int^T_0\int_{\Omega}[
+		\bsy{\hat \psi}\bsy{\nabla\cdot}(\delta \mathbf{c}^0
+		\bsy{:\nabla\mathbf{u}})
+		+
+		\bsy{\psi}\bsy{\nabla\cdot}(\delta \mathbf{c}^0
+		\bsy{:\nabla\mathbf{\hat{u}}})]
+		d^3\mathbf{x}dt\\
+	&-\int^T_0\int_{\Omega} \bsy{\hat \psi}\left(\rho\partial^2_t \delta\mathbf{u} -\bsy{\nabla
+	\cdot}
+	(\bsy{\mathbf{c}}^0\bsy{:\nabla\delta\mathbf{u}})\right)d^3\mathbf{x}dt\\
+	&-\int^T_0\int_{\Omega} \bsy{\psi}\left(\rho\partial^2_t
+	\delta\mathbf{\hat{u}}-\bsy{\nabla\cdot}(\bsy{\mathbf{c}}^0\bsy{:\nabla\delta\mathbf{\hat{u}}})-
+	\bsy{\nabla\cdot}(\mathbf{c}^1\bsy{:\nabla\delta\mathbf{u}})\right)d^3\mathbf{x}dt,
+	\end{split}
+        \label{eq:DeltaLagrangian1}
+\end{equation}
+Upon integrating the terms involving spatial and temporal derivatives of $\mathbf{u}$,
+$\delta\mathbf{u}$, $\mathbf{\hat{u}}$ and $\delta\mathbf{\hat{u}}$
+%$\bsy{\psi}$ and $\bsy{\hat \psi}$ 
+by parts, we have:
+\begin{equation}
+	\begin{split}
+		\delta\mathcal{L}
+		& =\int^T_0\sum_{r}[\bsy{\tau}(\mathbf{x}_r,t)-\bsy{\mu}(\mathbf{x}_r,t)\mathbf{h}(\mathbf{x}_r,t)]\delta(\mathbf{x}-\mathbf{x})\bsy{\cdot}\delta
+		\bsy{\tau}dt \\
+		& -\int^T_0\int_{\Omega}
+		\bsy{\mu}(\mathbf{x}_r,t)\mathbf{\dot{d}}^o(\mathbf{x}_r,t+\bsy{\tau})\delta(\mathbf{x}-\mathbf{x})\bsy{\cdot}\delta
+		\mathbf{\hat{u}}d^3\mathbf{x}dt\\
+		& -\int^T_0\int_{\Omega}[
+		\bsy{\nabla\hat \psi:}\delta \bsy{\mathbf{c}}^0\bsy{:\nabla\mathbf{u}})
+		+\bsy{\nabla\psi:}\delta \bsy{\mathbf{c}}^0\bsy{: \nabla\mathbf{\hat{u}}})]
+		d^3\mathbf{x}dt\\
+		& -\int^T_0\int_{\Omega} \left(\rho\partial^2_t \bsy{\hat \psi} -\bsy{\nabla
+		\cdot}	(\bsy{\mathbf{c}}^0\bsy{:\nabla\bsy{\hat
+		\psi}})-\bsy{\nabla\cdot}(\bsy{\mathbf{c}}^1\bsy{:\nabla\psi})
+		\right)\delta\mathbf{u}d^3\mathbf{x}dt\\
+	&-\int^T_0\int_{\Omega} \left(\rho\partial^2_t
+	\bsy\psi-\bsy{\nabla\cdot}(\bsy{\mathbf{c}}^0\bsy{:\nabla\bsy\psi})\right)
+	\delta\mathbf{\hat{u}}d^3\mathbf{x}dt\\
+	&-\int_{\Omega} [\rho(\bsy{\hat \psi}
+	\bsy{\cdot}\partial_t\delta\mathbf{u}-\partial_t\bsy{\hat \psi}\bsy{\cdot}\delta\mathbf{u}
+	+\bsy{\psi}\bsy{\cdot}\partial_t\delta\mathbf{\hat{u}}-\partial_t
+	\bsy{\psi}\bsy{\cdot}\delta\mathbf{\hat{u}})]^T_0d^3\mathbf{x}	\\
+	&+\int^T_0\int_{\partial\Omega} \bsy{\hat
+	\psi}\bsy{\cdot}[\mathbf{n}\bsy{\cdot}(\delta\mathbf{c}^0:\bsy{\nabla}\mathbf{u}+\mathbf{c}^0:\bsy{\nabla}\delta\mathbf{u})]
+	-\mathbf{n}\bsy{\cdot}(\mathbf{c}^0:\bsy{\nabla}\bsy{\hat \psi})\bsy{\cdot}\delta\mathbf{u}d^2\mathbf{x}dt\\
+	&+\int^T_0\int_{\partial\Omega} \bsy{
+	\psi}\bsy{\cdot}[\mathbf{n}\bsy{\cdot}(\delta\mathbf{c}^0:\bsy{\nabla}\mathbf{\hat{u}}+\mathbf{c}^0:\bsy{\nabla}\delta\mathbf{\hat{u}})]
+	-\mathbf{n}\bsy{\cdot}(\mathbf{c}^0:\bsy{\nabla}\bsy{\psi})\bsy{\cdot}\delta\mathbf{\hat{u}}d^2\mathbf{x}dt\\
+	&+\int^T_0\int_{\partial\Omega} \bsy{
+	\psi}\bsy{\cdot}[\mathbf{n}\bsy{\cdot}(\mathbf{c}^1:\bsy{\nabla}\delta\mathbf{u})]
+	-\mathbf{n}\bsy{\cdot}(\mathbf{c}^1:\bsy{\nabla}\bsy{\psi})\bsy{\cdot}\delta\mathbf{u}d^2\mathbf{x}dt
+	\end{split}
+        \label{eq:DeltaLagrangian2}
+\end{equation}
+where $\mathbf{n}$ is the unit outward vector normal on the surface
+$\partial\Omega$. The displacement wavefields (state variables) are subject to the initial and boundary condition:
+\begin{equation}
+	\begin{split}
+	&\mathbf{u}(\mathbf{x},0)=0,\partial_t\mathbf{u}(\mathbf{x},0)=0,
+	\mathbf{u}(\mathbf{x},t)\rvert_{x\rightarrow\infty}\to0\\
+	&\mathbf{\hat{u}}(\mathbf{x},0)=0,\partial_t\mathbf{\hat{u}}(\mathbf{x},0)=0,
+	\mathbf{\hat{u}}(\mathbf{x},t)\rvert_{x\rightarrow\infty}\to0
+	\end{split}
+        \label{eq:InitialBoundary}
+\end{equation}
+while the adjoint state variables satisfy the ``final'' (at Time $T$) and boundary condition:
+\begin{equation}
+	\begin{split}
+	&\bsy{\psi}(\mathbf{x},T)=0,\partial_t\bsy{\psi}(\mathbf{x},T)=0,
+	\bsy{\psi}(\mathbf{x},t)\rvert_{x\rightarrow\infty}\to0\\
+	&\bsy{\hat\psi}(\mathbf{x},T)=0,\partial_t\bsy{\hat{\psi}}(\mathbf{x},T)=0,
+	\bsy{\hat{\psi}}(\mathbf{x},t)\rvert_{x\rightarrow\infty}\to0
+	\end{split}
+        \label{eq:InitialBoundary_2}
+\end{equation}
+Thus all the surface integrals in eq.\eqref{eq:DeltaLagrangian2} will disappear.
+To obtain the stationary point, setting the coeffients of $\delta \bsy{\tau}$, $\delta \mathbf{u}$
+and $\delta \mathbf{\hat{u}}$ to zero yields three adjoit state equations:  
+
+\begin{equation}
+	\begin{split}
+		&\bsy{\tau}(\mathbf{x}_r,t)-\bsy{\mu}(\mathbf{x}_r,t)\mathbf{h}(\mathbf{x}_r,t)
+	=0,\\
+	&\rho\partial^2_t \bsy{\hat \psi} -\bsy{\nabla\cdot}
+	(\bsy{\mathbf{c}}^0\bsy{:\nabla\bsy{\hat
+	\psi}})=\bsy{\nabla\cdot}(\bsy{\mathbf{c}}^1\bsy{:\nabla\psi})\\
+	&\rho\partial^2_t
+	\bsy\psi-\bsy{\nabla\cdot}(\bsy{\mathbf{c}}^0\bsy{:\nabla\bsy\psi})
+	=\bsy{\mu}(\mathbf{x}_r,t)\mathbf{\dot{d}}^o(\mathbf{x}_r,t+\bsy{\tau})	\\
+	\end{split}
+        \label{eq:AdjointAll}
+\end{equation}
+where 
+$\mathbf{h}(\mathbf{x_r},t)=(\dot{d}^o_i(\mathbf{x_r},t+\tau))^2-\ddot{d}^o_i(\mathbf{x_r},t+\tau)
+(d^c_i(\mathbf{x_r},t)-d^o_i(\mathbf{x_r},t+\tau))$.
+The adjoint state variables can be obtained by solving eq.\eqref{eq:AdjointAll}. Then, the gradient
+is: 
+\begin{equation}
+	\frac{\partial \mathcal{L}}{\partial \mathbf{c}^0}=-\int^T_0\int_{\Omega}[\bsy{\nabla\hat \psi} \bsy{\nabla\mathbf{u}}+
+	\bsy{\nabla\psi}\bsy{\nabla\mathbf{\hat{u}}}]d^3\mathbf{x}dt,
+\end{equation}
+or in a more detailed manner:
+\begin{equation}
+	\frac{\partial E}{\partial c^0_{ijkl}}=-\int (\frac{\partial u_{i}}{\partial
+	x_j}\frac{\partial \hat \psi_{k}}{\partial x_l}+\frac{\partial \hat{u}_{i}}{\partial
+	x_j}\frac{\partial \psi_{k}}{\partial x_l}),
+    \label{eq:GradientCijkl_app}
+\end{equation}
+
+\section{Appendix B: further decomposition of $V_s$ kernel}
+In the previously section, we give the further decomposition of Fig \ref{fig:kernel_vs_decomp}h. Here, we will
+investigate the decomposition of the rest three parts, i.e. Fig
+\ref{fig:kernel_vs_decomp}e-\ref{fig:kernel_vs_decomp}g.
+Fig. \ref{fig:kernel_vs_src} show the decomposition of two source terms. 
+When only injecting PP data, the wavefield $\bsy{\psi}^{PP-S}$ 
+will occur due to the non-physical mode conversions.
+In $\bsy{\psi}^{PP-S}$, PP indicates the injection data while S indicates the conversion type at receiver.
+The same definition is used in the following context.
+For simplicity, we only label the figure with $\psi$ to represent the wavefields 
+back-propagated in the background media.
+It is easy to recognize the PP wavepath shown in Fig. \ref{fig:kernel_vs_src}c. 
+While the cross-mode correlation produces high-wavenumber energy near the interface. 
+mode conversions will produce different type
+of migration impulse at the source side. 
+When only injecting PS data, the $\psi^{PS-P}$ will occur as well.
+Fig. \ref{fig:kernel_vs_src}g shows a similar case as the Fig. \ref{fig:kernel_vp_decomp}f.
+Note, in \ref{fig:kernel_vs_src}h there are 
+two migration impulse because two type of S-wave conversions exist in $\boldsymbol{\hat\psi}$. Fisrt,
+the normal $\boldsymbol{\psi}^{PS}$ wavefield produce a S-wave reflection $\boldsymbol{\psi}^{PS-S}$
+when incidenting at the interface. Second, the injection-induced non-physical conversion at receiver
+$\boldsymbol{\psi}^{PS-P}$ also generates a S-wave conversion $\boldsymbol{\psi}^{PS-P-S}$. 
+Separating the above two migration impulses is possible but requires more efforts and calculations in which one
+should separate the wavefields $\boldsymbol{\psi}$ into $\boldsymbol{\psi}^{PS}$ and $\boldsymbol{\psi}^{PS-P}$ in
+demigration (solving eq.\eqref{AdjointDeltaWE}). 
+
+Finally, we decompose the kernel in Fig \ref{fig:kernel_vs_decomp}g.
+Only PP data is injected. The non-physical conversions at receiver are highlighted as red. 
+Figure \ref{fig:kernel_vs_recPP}c shows the component of PP reflection wavepath.
+We can see the cross-mode correlations produce high-wave number energy near the interface or around the
+receiver location.
+In Fig.\ref{fig:kernel_vs_recPP}f,
+there is no energy in the SS-mode component. One plausible reason is that the two S-wavefields do
+not meet with each other to give a migration impulse due to the inconsistency of traveltime. 
+\begin{figure}[!htb]
+   \centering
+   {\includegraphics[width=1.0\textwidth]{Kernel/Combinations/K_vs_src_new.pdf}}
+   \caption{
+   Further decomposed components of Fig \ref{fig:kernel_vs_decomp}e and
+   \ref{fig:kernel_vs_decomp}f. (a) The PP data adjoint source
+   , (b) Source side of $K_{V_s}$ using (a) as adjoint source, 
+   (c) The PS data adjoint source,
+   (d) Source side of $K_{V_s}$ using (c) as adjoint source, 
+   (e)-(h): 
+   The first line denotes the manner and wavefield type for cross-correlation.
+   The second line denotes the corresponding kernels.
+   }
+   \label{fig:kernel_vs_src}
+\end{figure}
+\begin{figure}[!htb]
+   \centering
+   {\includegraphics[width=1.0\textwidth]{Kernel/Combinations/K_vs_recPP_new.pdf}}
+   \caption{Further decomposed components of Fig \ref{fig:kernel_vs_decomp}g. (a) The adjoint source
+   for injection, (b) Receiver term of $K_{V_s}$ using (a) as adjoint source, (c)-(f) 
+   The first line denotes the manner and wavefield type for cross-correlation.
+   The second line denotes the corresponding kernels.
+   }
+   \label{fig:kernel_vs_recPP}
+\end{figure}
+\section{Appendix C}
+Under the high-frequency approximation, we will illustrate the difference between method
+{\bf\uppercase\expandafter{\romannumeral1}} and {\bf\uppercase\expandafter{\romannumeral2}} when
+predicting the PS reflection.
+A single reflector example is adopted to show the damaging sensitivity of method
+{\bf\uppercase\expandafter{\romannumeral1}} for inversion through 
 map migration and demigration.
 
 %A slight deviation of $V_p$ around the true value will lead
@@ -295,7 +963,7 @@ map migration and demigration.
 %{\bf\uppercase\expandafter{\romannumeral2}} can provide correct traveltime residuals. 
 
 %Since the PS reflection is asymmetric, the ray path of PS is shown in 
-Figure \ref{fig:PS_refl} shows the asymmetricray path of PS reflection.
+Figure \ref{fig:PS_refl} shows the asymmetric ray path of PS reflection.
 According to the Snell's law and geometrical relationship, we have:
 \begin{equation}
 \begin{split}
@@ -344,7 +1012,7 @@ Then, the demigration process can be implemented with:
 where $z^{'}\in\{z_1,z_2\}$ is the migrated depth and $t^{'}$ is the corresponding two-way traveltime.
 
 To
-test the sensitivity of demigrated PS traveltime to $V^{'}_p$ and $h$, we compare the predicted traveltime
+test the sensitivity of demigrated PS traveltime to $V^{'}_p$ and $z$, we compare the predicted traveltime
 curves of the wrong velocity with the observed ones.
 Here, $V_p=2500m/s$, $V_s=1500m/s$, $V^{'}_s=1300m/s$ are fixed and the value of $V^{'}_p$
 are perturbed ($V^{'}_p=2450, 2500, 2550m/s$) to calculate the curves.
@@ -353,7 +1021,7 @@ the predicted PS traveltime with method
 \Rome{1} (black) oscillates around the true value (red). 
 Theoretically, the predicted
 curve should behave like the second black line ($V^{'}_p=V_p$), where the zero-offset traveltime is correct while
-the long offset traveltime is larger than the true one. Especially, when $V^{'}_p=2450m/s$, the
+the long offset traveltime is larger than the true one. Note, when $V^{'}_p=2450m/s$, the
 predicted curve is inconsistent with the S-wave velocity error
 ($V^{'}_s<V_s$). While when $V^{'}_p=2550m/s$ the predicted curve is below the true value. 
 This means that the sign of the traveltime residual will be very sensitive to the error of $V_p$ model,  
@@ -368,241 +1036,6 @@ with the S-wave velocity error.
 %However,
 %method \Rome{2} also provides correct time residuals as the previous one.
 According to the above analysis, we recommend method \Rome{2} to implement the PS stage inversion.
-
-Nonethelss, the amplitude of PS will be inaccurate since we use the $\delta
-V_p$ to generate PS reflection, even if $\delta V_p$ is obtained by the ELSRTM workflows
-Luckily, this has little effect on ERTI, because it does not rely on the amplitude information.
-As shown in figure \ref{fig:Sens_vp}, the traveltime residuals are 
-large for the PS reflection in the deeper part, DIW may suffer from the cycle-skipping problem in this
-situation. We can utilize the ``layer-stripping'' strategy to tackle this, during which the shallow part is
-inverted using the early arrived reflection followed by the inversion of deep part using the late
-arrived reflections gradually. In this way, the incorrect traveltime residuals of the deeper part will not
-mislead the inversion of shallow part. Vice versa, the reliable inversion of the shallow part
-guaranteen
-the correctness of traveltime residual for the deeper part.
-
-In order to make sure that reflected S-wavepath is used to update $V_s$, wave mode decomposition 
-is applied to calculate $K^{SS}_{V_s}$, namely:
-%we drop the first term in the RHS of equation \eqref{eq:GradientCijkl} when
-%calculating $\frac{\partial E}{\partial V_s}$. And also wave mode decomposition is
-%applied to make sure that only S-wave energy are involved:
-\begin{equation}
-	\frac{\partial E_{ps}}{\partial V_s}=-2\rho V_s
-	\int (\frac{\partial \delta u^S_{i}}{\partial
-    x_j}\frac{\partial \psi^S_{k}}{\partial x_l})
-	(\delta_{ik}\delta_{jl}+
-	\delta_{il}\delta_{jk}).
-    \label{eq:GradientVel_MD}
-\end{equation}
-This is similar to the gradient precondtioning for EFWI proposed by \cite{WangEtAl2017}. The mode
-decomposition based precondition can mitigate parameter trade-offs and suppress artifacts for the
-$V_s$ inversion.
-\section{numerical example}
-We select a part of the Sigsbee2A model (Figure
-\ref{fig:TrueAndInitial}a and b) to test the inversion algorithm and strategy.
-The $V_s$ model is generated through $V_p$ model with a constant scale factor of 0.66. 
-The initial model for E-WERTI are shown in 
-Figure \ref{fig:TrueAndInitial}c and d, which increase linearly with depth.
-The initial model of $V_p$ is generally lower (from 1500m/s to 1996m/s) while 
-$V_s$ is higher  (from 990m/s to 1317m/s) than the true model. 
-36 shots are evenly deployed on the surface and receivers are
-fixed with a maximum offset of 4km. 
-The main frequency of P-wave source is 15Hz.
-The spatial and time interval of forward modeling is 16m and 1.2ms, respectively.
-
-Figure \ref{fig:Results_init} is the results of ERTM and EFWI with the initial model. Since the
-$V_p$ and $V_s$ initial model are far from the true value, both the PP image ($\delta V_p$) and PS
-image ($\delta V_p$) are wrongly located even though only the small offset data are applied to the
-ERTM. Especially, the refracions are not correctly migrated in PP image and faults are almost
-disappear in PS image. Meanwhile, we try the EFWI with the above initial model. 
-During the EFWI, 
-a four-stage hierarchical strategy 
-from low to high frequency is applied through the time-domain low-pass filter, in which the frequency bands
-are 0-2Hz, 0-4Hz, 0-6Hz and 0-8Hz. 
-We can see the showllow parts of inverted results 
-is acceptable due to the exsistence of diving wave and low-frequency data. However, the inversion of
-deep part suffer from the severe cycle-skipping problem because of the absence of
-low-to-intermediate components in the initial model, which leads to the failure of inversion.
-
-Starting from this initial model, we implement the proposed ERTI workflow.
-During the inversion, the direct waves are muted to make sure that only the reflection data are involved.
-Figure \ref{fig:InvertedModel_ERTI}a and \ref{fig:InvertedModel_ERTI}b show the inverted $V_p$ and $V_s$ model of ERTI.
-%Since the linearly increased initial model is quite far from the true value, certainly there will be
-%cycle-skipping problem if we use this for conventional EFWI. However, 
-After
-40 iterations for each stage, ERTI provides a good recovery of the low-to-intermediate components of
-$V_p$ and $V_s$ model. 
-Nonetheless, on the right part, the reflection coverage of surface observation is insufficient for
-ERTI to rebuild the long-wavelength components. 
-
-%Besides, we apply the structure-oriented smooth filter to the gradients of inversion to regularize the
-%model update based on the seismic image and structure tensor \cite[]{Hale2009,
-%Ma2010, Williamson2011}.
-Note, the structure-oriented smooth filter is an appropriate regularization to stabilize
-and even accelerate convergence to models which are a priori more satisfying than others which fit
-the data. In each iteration of ERTI, we constrain the gradients of ERTI with the seismic image
-obtained by ERTM. Figure \ref{fig:LSF_comparison}b shows the gradient of
-$V_p$ smoothed by an isotropic filter in the first iteration. Though there is no high wavenumber
-artifacts, the illumination footprints of acquisition geometry are obvious, which will cause
-uncertainties during inversion. After the structure-oriented smooth, the gradient is more balanced
-for the inversion of background velocity. And the inverted results of the two methods also
-illustrate advantage of structrue-oriented smooth filter.
-
-Using the inverted results of ERTI as starting models, we also perform the conventional ERTM. 
-As shown in Figure \ref{fig:ERTM_comparison}c and d, 
-since the low-to-intermediate wavenumber components of $V_p$ and $V_s$ are well recovered,
-both of the PP and PS image are greatly improved. The location of reflectors and faults are almost correct and the
-refractions are migrated as well. 
-However, the image of the right part is not so good because the
-recovery of low-to-intermediate components are not well in this area .
-%In addtion, we also compare the demigrated PP and PS reflections using initial and inverted model with
-%the true model (figure \ref{fig:Data_comparison}). 
-In addtion, figure \ref{fig:Data_comparison} shows the comparison between the demigrated PP and PS
-reflections using initial and inverted model with
-the true model. We can see that the main reflections of both PP and PS are well matched after the
-ERTI. Therefore, the cycle-skipping problem will be mitigated greatly if using the starting model in
-figure \ref{fig:InvertedModel_ERTI} for EFWI.
-Accordingly, we implement the EFWI using the inverted results as starting models with the same
-hierarchical strategy as the previous example (figure \ref{fig:Results_init}).
-Figure
-\ref{fig:EWERTI+EFWI} show the inverted results of conventional EFWI. Comparing with the 
-inverted results using initial models (figure \ref{fig:Results_init}), EFWI improves quite a lot,
-especially in the deep part. The vertical profiles at 1.4km and 3km validate the effectiveness of
-EFWI with the new starting model as well. But the inversion of the right part is not as good as the
-left part because of the mentioned unreasonable recovery for background model during ERTI.
-%if using the ERTI results as starting models, the cycle-skipping problem
-%of ERWI will be mitigated greatly.
-
-Usually, the low-frequency components in the data and the low-to-intermediate wavenumber in the
-initial model are two key points to mitigate the cycle-skipping problem in FWI. In real data, the
-low frequency components are difficult to obtain and also more easily contaminated by the noises.
-Thus, the success of FWI more relies on the good intial models. 
-In this paper, we will test the dependency of EFWI on 
-the low-frequency data when using the above ERTI results. 
-The low-cut frequency threshold are 3Hz,
-5Hz and 7Hz. The components lower than the threshold are filtered out when applying the similar
-hierarchical strategy from low to high frequency in time domain.
-As shown in figure \ref{fig:LowFreqCut_EFWI}, for a starting frequency of 3Hz, EFWI provides almost the same inverted results with
-the no-low-frequency-cut test (figure \ref{fig:EWERTI+EFWI}). 
-On the left part, the inverted results are acceptable even when starting from 7Hz, which means the
-low-to-intermediate components in this area is particularly good for EFWI. However, on the right
-part, the inversion are more dependent on the low-frequency components in the data due to the
-improper recovery of the background components.
-\section{Discussion}
-%Comparison with correlation based objective function}
-Besides DIW method, the temporal or spatial correlation is also widely used to extract the
-traveltime differences \cite[]{vanLeeuwen:2010,chi2015,Wang2015}:
-\begin{equation}
-\left\{
-	\begin{aligned}
-		&\Delta t(h)=\mathop{\arg\max}_{\Delta t}\int d^{o}(t+\Delta t,h)d^{c}(t,h)dt,\\
-	&E_t=\frac{1}{2}\sum\parallel \Delta t(h)\parallel ^2
-	\end{aligned}
-	\right.
-    \label{eq:Obj_TimeCorr} 
-\end{equation}
-or 
-\begin{equation}
-\left\{
-	\begin{aligned}
-		&\Delta h(t)=\mathop{\arg\max}_{\Delta h}\int d^{o}(t,h+\Delta h)d^{c}(t,h)dt,\\
-	&E_h=\frac{1}{2}\sum\parallel \Delta h(t)\parallel ^2
-	\end{aligned}
-	\right.
-    \label{eq:Obj_SpatialCorr} 
-\end{equation}
-The traveltime residual extracted by correlation function is the global average delay of a single trace or time.
-If there are multi-arrivals in the seismograms, the correlation-based method can not
-accurately extract the local traveltime information, 
-whcih may increase the difficulty of event-to-event traveltime fitting.
-Nevertheless, DIW can estimate the local variation of traveltime differences
-, which have a higher resolution than the correlation-based method.
-
-To investigate the behaviors of DIW and correlation-based objective function, we use three 
-models of different complexity as shown in figure \ref{fig:DIW_L2}. 
-%Since the estimated PS
-%traveltime residual would be wrong if initial model is far from the true value with method \Rome{2}, 
-For simplicity,
-we only investigate the behavior of PP traveltime misfit
-function, which is almost the same as the acoustic case. 
-A constant background velocity ($V_p=2500m/s$) model and different reflectivity model
-are used to implement the Born modeling. We perturb the background velocity to calculate the
-objective function through migration/demigration process. 
-
-As shown in figure \ref{fig:DIW_L2}, we can see that for the simple one-reflector case, the temporal correlation objective function 
-has a better convexity than the spatial correlation and DIW method. But when there are
-multi-reflectors, the temporal correlation fails to find the correct minimal due to the
-multi-arrivals in the seismograms. While the behavior of spatial correlation and DIW method are
-robust to locate the correct solution. In the third test, we choose a part of Sigsbee2A model to
-simulate a complicated case. Figure \ref{fig:DIW_L2}e shows that the temporal correlation still
-fails to find the correct solution and the DIW method even has a best convexity, especailly when the initail velocity is high. The above investigation indicates that
-DIW method is robust and effective to extract traveltime residual, especially for the complicated
-model.
-\section{Conclusions}
-We extend the wave equation reflection travletime inversion towards elastic media to build the
-low-wavenumber
-component of elastic model. 
-RTI can recover the low-wavenumber components effectively, because time misfits are more sensitive
-and linearly related to the low-wavenumber model perturbation. 
-Compared with the correlation based method, DIW method provides more stable estimation of traveltime shifts 
-especially when seismograms contain multi-reflections.
-%With the aid of DIW and mode decomposition, we extend the reflection travletime inversion towards elastic media. 
-The complicated mode conversions in elastic case make the reflection kernels very complex.
-The kernel analysis of different wave modes show that mode decomposition can 
-suppress artifacts and recover the correct reflection wavepath in gradient calculation.
-With the aid of 
-P/S separation of 3C seismograms, we can obtain the separated PP and PS seismograms and then get
-travel time differences of PP and PS through DIW, respectively. 
-To build the long-wavelength component of the model, we introduce a two-stage ERTI
-workflow by firstly using PP then PS reflections, through which the nonlinearity of reflection
-inversion is reduced effectively. 
-In the second stage, the wave mode
-decomposition is introduced to calculate the gradient of $V_s$ to mitigate the trade-off between
-$V_p$ and $V_s$.
-The Sigsbee2A model example shows that even starting with a bad initial model, the
-two-stage E-WERTI can provide reliable starting model for conventional EFWI. 
-
-\section{Acknowledgement}
-This work is supported by the
-National Natural Science Foundation of China (NO.41474099, 41674117 \& 41630964). 
-This paper is also based upon the work supported by the King Abdullah University of Science
-and Technology (KAUST) Office of Sponsored Research (OSR) under award NO. 2230.
-We appreciate the open-source package of DENISE from
-\textit{https://github.com/daniel-koehn/} and Mines Java Toolkit from
-\textit{https://github.com/dhale}.
-We thank the useful advice from Tariq Alkhalifah (KAUST), Qiang Guo (KAUST), Zedong Wu (KAUST),
-Chenlong Wang (Tongji University) and Benxin Chi (Los Alamos).
-\clearpage
-\begin{figure}[h]
-   \centering
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Kernel/1vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Kernel/1vs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Kernel/Vponlyvp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{Kernel/Vsonlyvp.pdf}}\\
-   \caption{Kernels with single reflector in $V_p$ model. (a) $V_p$ model, (b) $V_s$ model, (c) $K_{V_p}$, (d) $K_{V_s}$.}
-   \label{fig:kernel1_vp}
-\end{figure}
-
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/2vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/2vs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/Vponlyvs.pdf}}
-   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/Vsonlyvs.pdf}}\\
-   \caption{Kernels with single reflector in $V_s$ model. (a) $V_p$ model, (b) $V_s$ model, (c) $K_{V_p}$, (d) $K_{V_s}$.}
-   \label{fig:kernel2}
-\end{figure}
-
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/VsonlyvsPP.pdf}}
-   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/VsonlyvsPS.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/VsonlyvsSP.pdf}}
-   \subfloat[]{\includegraphics[width=0.50\textwidth]{Kernel/VsonlyvsSS.pdf}}
-   \caption{Four components of $K_{V_s}$. (a) $K_{V_s}^{PP}$, (b) $K_{V_s}^{PS}$, (c) $K_{V_s}^{SP}$, (d) $K_{V_s}^{SS}$.}
-   \label{fig:kernel2_vs_decomp}
-\end{figure}
-
 \begin{figure}
    \centering
    \subfloat{\includegraphics[width=0.40\textwidth]{PS_problem/PS_refl.pdf}}
@@ -620,126 +1053,5 @@ Chenlong Wang (Tongji University) and Benxin Chi (Los Alamos).
    \label{fig:Sens_vp}
 \end{figure}
 
-\begin{figure}[!htb]
-   \centering
-   \subfloat{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/cuttruevp.pdf}}
-   \subfloat{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/cuttruevs.pdf}}\\
-   \subfloat{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/cutinitvp.pdf}}
-   \subfloat{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/cutinitvs.pdf}}
-   \caption{Sigbee2A model example. On the top are true models of 
-   $V_p$ (a) and $V_s$ (b). On the bottom are initial models of $V_p$ (c) and $V_s$
-   (d) linearly increasing with depth. }
-   \label{fig:TrueAndInitial}
-\end{figure}
 
-\begin{figure}
-   \centering
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{DIW_L2/1layer.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{DIW_L2/1layerL2.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{DIW_L2/3layer.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{DIW_L2/3layerL2.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{DIW_L2/Sigsbee.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{DIW_L2/complexL2.pdf}}
-   \caption{Normalized PP traveltime misfits for different objective functions for different model;}
-   \label{fig:DIW_L2}
-\end{figure}
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/cutimage_initvp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/cutimage_initvs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/badinitvp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/badinitvs.pdf}}\\
-   \caption{The results of ERTM and EFWI using initial model: (a) and (b) are PP and
-   PS image of ERTM with near offset data, (c) and (d) are inverted $V_p$ and $V_s$
-   with EFWI.}
-   \label{fig:Results_init}
-\end{figure}
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/newinit3vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/newinit3vs.pdf}}\\
-   \caption{Inverted results of ERTI: (a) $V_p$, (b) $V_s$.}
-   \label{fig:InvertedModel_ERTI}
-\end{figure}
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/cutimage_truevp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/cutimage_truevs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/cutimage_wertivp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/cutimage_wertivs.pdf}}
-   \caption{ERTM results using the true model (a, b) and
-   inverted model (c, d). (a) and (c) are the PP image；(b) and (d) are the PS
-   image}
-   \label{fig:ERTM_comparison}
-\end{figure}
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPP_true.pdf}}
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPP_init.pdf}}
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPP_werti.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPS_true.pdf}}
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPS_init.pdf}}
-   \subfloat[]{\includegraphics[width=0.33\textwidth]{sigbee2/Fig/DataPS_werti.pdf}}
-   \caption{Comparison of the observed and the demigrated reflection data using
-   initial model and the inverted model. The first row are the separated PP
-   reflection, while the second row are the separated PS reflection. 
-   The left, middle and right column are the observed reflection data, the
-   demigrated reflection data with initial model
-   and the demigrated data with inverted model, respectively. }
-   \label{fig:Data_comparison}
-\end{figure}
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/LSF_Gra_vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/NoLSF_Gra_vp.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/newinit3vp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/NoLSF_vp.pdf}}\\
-   \caption{The comparison of gradients and final inverted results with (left) and
-   without (right) 
-   the structure-oriented constrain: (a) and (c) are the $V_p$ gradients in the first
-   iteration, (b) and (d) are final inverted $V_p$ model.}
-   \label{fig:LSF_comparison}
-\end{figure}
 
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/nodevp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/nodevs.pdf}}
-   \caption{
-	   EFWI results using the ERTI model as starting model. (a) $V_p$, (b) $V_s$.
-%	   Inverted results of WERTI and EFWI. (a) and (b) are inverted $V_p$ and
-%       $V_s$ model through two-stage elastic WERTI with the linearly increased models
-%       as initial models. (c) and (d) are inverted $V_p$ and $V_s$ through EFWI using
-%   (a) and (b) as starting models.
-   }
-   \label{fig:EWERTI+EFWI}
-\end{figure}
-\begin{figure}[!htb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/1km.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/Fig/3km.pdf}}
-   \caption{
-	   Vertical profile of ERTI and EFWI model at 1.4km (a) and 3km (b).
-	   The black and blue lines denote the true and initial model. The green and yellow denote
-	   the ERTI and EFWI model.
-%	   Vertical profiles of elastic WERTI and EFWI results at 1.4km (a) and
-%       3km (b). The black and blue lines indicate the true and linearly increased
-%       initial model. The green and yellow lines indicate the WERTI and EFWI results,
-%       respectively.
-   }
-   \label{fig:Profiles}
-\end{figure}
-\begin{figure}[!thb]
-   \centering
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/3Hzvp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/3Hzvs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/5Hzvp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/5Hzvs.pdf}}\\
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/7Hzvp.pdf}}
-   \subfloat[]{\includegraphics[width=0.5\textwidth]{sigbee2/7Hzvs.pdf}}\\
-   \caption{EFWI results with different starting frequency. (a), (c), (e) are $V_p$,
-   (b), (d), (f) are $V_s$.
-   The starting frequency are 3Hz, 5Hz and 7Hz from top to bottom row, respectively.
-   }
-   \label{fig:LowFreqCut_EFWI}
-\end{figure}

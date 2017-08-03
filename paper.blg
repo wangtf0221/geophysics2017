@@ -1,18 +1,13 @@
 This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: paper.aux
-Case mismatch error between cite keys chi2015 and Chi2015
----line 44 of file paper.aux
- : \citation{vanLeeuwen:2010,chi2015
- :                                  ,Wang2015}
-I'm skipping whatever remains of this command
 The style file: seg.bst
 Database file #1: reference.bib
-I was expecting a `,' or a `}'---line 1342 of file reference.bib
+I was expecting a `,' or a `}'---line 1465 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 1351 of file reference.bib
+I was expecting a `,' or a `}'---line 1474 of file reference.bib
  : publisher={SEG}
  :                .
 I'm skipping whatever remains of this entry
@@ -22,6 +17,8 @@ Name 2 in "R. Brossier and S. Operto, and J. Virieux" has a comma at the end for
 while executing---line 1491 of file seg.bst
 Name 2 in "T.F. Wang and J.B. Cheng, and C.L. Wang" has a comma at the end for entry wang:2015
 while executing---line 1491 of file seg.bst
+Name 2 in "Clement, F. and Chavent, G., and Gomez, S." has a comma at the end for entry clement:2001
+while executing---line 1491 of file seg.bst
 Name 2 in "S. Xu and D. Wang, and F. Chen, and G. Lambare and Y. Zhang" has a comma at the end for entry xu:2012
 while executing---line 1491 of file seg.bst
 Name 3 in "S. Xu and D. Wang, and F. Chen, and G. Lambare and Y. Zhang" has a comma at the end for entry xu:2012
@@ -29,6 +26,8 @@ while executing---line 1491 of file seg.bst
 Name 2 in "Zhou, W. and Brossier, R., and Operto, S., and Virieux, J." has a comma at the end for entry Zhou2015
 while executing---line 1491 of file seg.bst
 Name 3 in "Zhou, W. and Brossier, R., and Operto, S., and Virieux, J." has a comma at the end for entry Zhou2015
+while executing---line 1491 of file seg.bst
+Name 2 in "B. Chi and L. Dong, and Y. Liu" has a comma at the end for entry Chi2015
 while executing---line 1491 of file seg.bst
 Name 1 in "C.L. Wang, and W. Weibull, and J.B. Cheng, and B. Arntsen" has a comma at the end for entry Wang2017WEMVA
 while executing---line 1491 of file seg.bst
@@ -38,13 +37,23 @@ Name 2 in "C.L. Wang, and W. Weibull, and J.B. Cheng, and B. Arntsen" has a comm
 while executing---line 1491 of file seg.bst
 Name 3 in "C.L. Wang, and W. Weibull, and J.B. Cheng, and B. Arntsen" has a comma at the end for entry Wang2017WEMVA
 while executing---line 1491 of file seg.bst
-Name 2 in "B. Chi and L. Dong, and Y. Liu" has a comma at the end for entry Chi2015
+Name 1 in "T.F. Wang, and J.B. Cheng, and Q. Guo, and C.L. Wang" has a comma at the end for entry Wang2017ERTI
+while executing---line 1491 of file seg.bst
+Name 1 in "T.F. Wang, and J.B. Cheng, and Q. Guo, and C.L. Wang" has a comma at the end for entry Wang2017ERTI
+while executing---line 1491 of file seg.bst
+Name 2 in "T.F. Wang, and J.B. Cheng, and Q. Guo, and C.L. Wang" has a comma at the end for entry Wang2017ERTI
+while executing---line 1491 of file seg.bst
+Name 3 in "T.F. Wang, and J.B. Cheng, and Q. Guo, and C.L. Wang" has a comma at the end for entry Wang2017ERTI
 while executing---line 1491 of file seg.bst
 Name 2 in "R. Brossier and S. Operto, and J. Virieux" has a comma at the end for entry brossier2009
 while executing---line 1586 of file seg.bst
 Name 2 in "B. Chi and L. Dong, and Y. Liu" has a comma at the end for entry Chi2015
+while executing---line 1586 of file seg.bst
+Name 2 in "Clement, F. and Chavent, G., and Gomez, S." has a comma at the end for entry clement:2001
 while executing---line 1586 of file seg.bst
 Warning--empty chapter in Guo2016
+Warning--empty chapter in Ma2010
+Warning--empty publisher in Ma2010
 Name 2 in "T.J. Sears and S.C. Singh, and P.J. Barton" has a comma at the end for entry sears2008
 while executing---line 1586 of file seg.bst
 Name 1 in "C.L. Wang, and W. Weibull, and J.B. Cheng, and B. Arntsen" has a comma at the end for entry Wang2017WEMVA
@@ -52,6 +61,12 @@ while executing---line 1586 of file seg.bst
 Name 2 in "C.L. Wang, and W. Weibull, and J.B. Cheng, and B. Arntsen" has a comma at the end for entry Wang2017WEMVA
 while executing---line 1586 of file seg.bst
 Name 3 in "C.L. Wang, and W. Weibull, and J.B. Cheng, and B. Arntsen" has a comma at the end for entry Wang2017WEMVA
+while executing---line 1586 of file seg.bst
+Name 1 in "T.F. Wang, and J.B. Cheng, and Q. Guo, and C.L. Wang" has a comma at the end for entry Wang2017ERTI
+while executing---line 1586 of file seg.bst
+Name 2 in "T.F. Wang, and J.B. Cheng, and Q. Guo, and C.L. Wang" has a comma at the end for entry Wang2017ERTI
+while executing---line 1586 of file seg.bst
+Name 3 in "T.F. Wang, and J.B. Cheng, and Q. Guo, and C.L. Wang" has a comma at the end for entry Wang2017ERTI
 while executing---line 1586 of file seg.bst
 Name 2 in "T.F. Wang and J.B. Cheng, and C.L. Wang" has a comma at the end for entry wang:2015
 while executing---line 1586 of file seg.bst
@@ -63,45 +78,45 @@ Name 2 in "Zhou, W. and Brossier, R., and Operto, S., and Virieux, J." has a com
 while executing---line 1586 of file seg.bst
 Name 3 in "Zhou, W. and Brossier, R., and Operto, S., and Virieux, J." has a comma at the end for entry Zhou2015
 while executing---line 1586 of file seg.bst
-You've used 32 entries,
+You've used 45 entries,
             2639 wiz_defined-function locations,
-            912 strings with 12061 characters,
-and the built_in function-call counts, 13273 in all, are:
-= -- 1432
-> -- 517
-< -- 21
-+ -- 186
-- -- 171
-* -- 1166
-:= -- 2256
-add.period$ -- 32
-call.type$ -- 32
-change.case$ -- 245
-chr.to.int$ -- 31
-cite$ -- 33
-duplicate$ -- 465
-empty$ -- 956
-format.name$ -- 227
-if$ -- 2756
-int.to.chr$ -- 2
+            995 strings with 14350 characters,
+and the built_in function-call counts, 18298 in all, are:
+= -- 1979
+> -- 696
+< -- 30
++ -- 248
+- -- 229
+* -- 1604
+:= -- 3107
+add.period$ -- 45
+call.type$ -- 45
+change.case$ -- 339
+chr.to.int$ -- 42
+cite$ -- 48
+duplicate$ -- 644
+empty$ -- 1331
+format.name$ -- 306
+if$ -- 3804
+int.to.chr$ -- 4
 int.to.str$ -- 0
-missing$ -- 33
-newline$ -- 100
-num.names$ -- 95
-pop$ -- 190
+missing$ -- 47
+newline$ -- 139
+num.names$ -- 132
+pop$ -- 265
 preamble$ -- 1
-purify$ -- 246
+purify$ -- 341
 quote$ -- 0
-skip$ -- 354
+skip$ -- 492
 stack$ -- 0
-substring$ -- 1031
-swap$ -- 52
-text.length$ -- 3
+substring$ -- 1413
+swap$ -- 70
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 190
-warning$ -- 1
-while$ -- 99
+type$ -- 266
+warning$ -- 3
+while$ -- 137
 width$ -- 0
-write$ -- 350
-(There were 26 error messages)
+write$ -- 487
+(There were 34 error messages)

@@ -1,0 +1,62 @@
+8,10c8,9
+< set terminal postscript enhanced size 8,4 eps
+< set output outputfilevs
+< #set output 'decompvsgnuplot.eps'
+---
+> set terminal postscript enhanced size 8.0,4 eps
+> set output outputfilevp
+14c13
+< set tics nomirror out scale 1.50
+---
+> set tics nomirror out scale 1.5
+19,20c18
+< set cbrange [1000:2000]
+< set style line 1 lt 1 lw 8 lc rgb "red"
+---
+> set cbrange [1500:3000]
+37c35
+< set x2tics ("0" 0, "1" 62,"2" 125, "3" 188, "4" 250, "5"  312) font "Times-Roman-bold, 28" offset 0,-0.2
+---
+> set x2tics ("0" 0, "1" 62,"2" 125, "3" 188, "4" 250, "5"  312) font "Times-Roman-bold, 28" offset 0,0.2
+40,41c38
+< set ytics ("0" 0, "1" 62,"2" 125) font "Times-Roman-bold, 28" \
+< offset 0.5,0
+---
+> set ytics ("0" 0, "1" 62,"2" 125) font "Times-Roman-bold, 28" offset 0.5,0
+44c41
+< set cbtics ("1" 1000, "1.5" 1500,"2" 2000) font "Times-Roman-bold, 28"  \
+---
+> set cbtics ("1.5" 1500, "2.0" 2000,"2.5" 2500,"3.0" 3000) font "Times-Roman-bold,28" \
+46,49c43,46
+< set cblabel 'Vs (km/s)' font "Times-Roman-bold, 28" offset 1.5,0
+< #set arrow from 440,150 to 540,180 head filled size screen 0.010,20,35 front ls 1
+< #set arrow from 950,240 to 1050,270 head filled size screen 0.010,20,35 front ls 1
+< #set arrow from 750,240 to 850,270 head filled size screen 0.010,20,35 front ls 1
+---
+> set cblabel 'Vp (km/s)' font "Times-Roman-bold, 28" offset 1.5,0
+> set style line 1 lt 1 lw 8 lc rgb "red"
+> #set arrow from 850,250 to 950,280 head filled size screen 0.010,20,35 front ls 1
+> #set arrow from 550,250 to 650,280 head filled size screen 0.010,20,35 front ls 1
+52,53c49,53
+< #set lmargin at screen 0.08;
+< set rmargin at screen 0.90;
+---
+> #set arrow from 1600,360 to 1700,330 head filled size screen 0.010,20,35 front ls 1
+> #set arrow from 1830,380 to 1850,330 head filled size screen 0.010,20,35 front ls 1
+> ##### Set the margin of the picture##########
+> set lmargin at screen 0.08;
+> set rmargin at screen 0.9;
+56,57c56,60
+< #set pm3d map
+< #set pm3d interpolate 0,0
+---
+> plot datafilevp binary array=320x150 scan=yx with image
+> 
+> #plot 'nx2800nz700dxdz5.vp' binary array=2800x700 scan=yx with image
+> #plot 'nx2800nz700dxdz5.vp' binary array=700x2800 with image
+> #plot 'nx2800nz700dxdz5.vp' binary center=(1400,350) rotation=-90d array=700x2800 with image
+59c62,63
+< plot datafilevs binary array=320x150 scan=yx with image
+---
+> #plot 'modeloutput_test_vs_stage4_it_24.bin' binary rotation=-90d array=700x2800 with image
+> #plot 'nx2800nz700dxdz5.smooth.vp' binary  array=700x2800 with image
